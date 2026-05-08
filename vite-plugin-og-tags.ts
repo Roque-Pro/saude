@@ -23,10 +23,19 @@ const extractFirstImage = (htmlContent: string): string | null => {
   return match ? match[1] : null
 }
 
+function sanitizeDescription(input: string | undefined, maxLen = 160) {
+  if (!input) return ''
+  let s = input.replace(/<[^>]*>/g, ' ')
+  s = s.replace(/&lt;/g, '<').replace(/&gt;/g, '>').replace(/&amp;/g, '&').replace(/&quot;/g, '"').replace(/&#039;/g, "'")
+  s = s.replace(/\s+/g, ' ').trim()
+  if (s.length > maxLen) s = s.slice(0, maxLen).trim()
+  return s
+}
+
 const generateMetaTagsHtml = (post: BlogPost, domain: string): string => {
   const firstImage = extractFirstImage(post.html_content)
   const imageUrl = firstImage || `${domain}/og-image-blog.png`
-  const description = post.excerpt || post.html_content.substring(0, 160).replace(/<[^>]*>/g, '')
+  const description = sanitizeDescription(post.excerpt || post.html_content)
   const postUrl = `${domain}/blog/${post.slug}`
 
   return `

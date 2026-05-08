@@ -70,7 +70,7 @@ export default async function handler(req: VercelRequest, res: VercelResponse) {
     const firstImage = extractFirstImage(blogPost.html_content)
     const domain = process.env.VITE_APP_URL || 'https://www.doutorsaullo.com.br'
     const imageUrl = firstImage || `${domain}/og-image-blog.png`
-    const description = blogPost.excerpt || blogPost.html_content.substring(0, 160).replace(/<[^>]*>/g, '')
+    const description = (blogPost.excerpt || blogPost.html_content).replace(/<[^>]*>/g, ' ').replace(/&lt;/g, '<').replace(/&gt;/g, '>').replace(/&amp;/g, '&').replace(/&quot;/g, '"').replace(/&#039;/g, "'").replace(/\s+/g, ' ').trim().slice(0,160)
     const postUrl = `${domain}/blog/${blogPost.slug}`
     const title = `${blogPost.title} | Doutor Saullo Blog`
 

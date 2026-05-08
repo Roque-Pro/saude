@@ -67,7 +67,7 @@ const isBotOrCrawler = (userAgent: string): boolean => {
 const generateMetaTagsHtml = (post: BlogPost, domain: string): string => {
   const firstImage = extractFirstImage(post.html_content)
   const imageUrl = firstImage || `${domain}/og-image-blog.png`
-  const description = post.excerpt || post.html_content.substring(0, 160).replace(/<[^>]*>/g, '')
+  const description = (post.excerpt || post.html_content).replace(/<[^>]*>/g, ' ').replace(/&lt;/g, '<').replace(/&gt;/g, '>').replace(/&amp;/g, '&').replace(/&quot;/g, '"').replace(/&#039;/g, "'").replace(/\s+/g, ' ').trim().slice(0,160)
   const postUrl = `${domain}/blog/${post.slug}`
 
   return `

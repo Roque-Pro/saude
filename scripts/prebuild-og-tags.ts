@@ -1,6 +1,41 @@
 import { createClient } from '@supabase/supabase-js'
+import { getBlogPostingSchema } from '../src/lib/seo-optimization'
 import fs from 'fs'
 import path from 'path'
+
+// Attempt to load .env into process.env when running locally (safe fallback)
+try {
+  const envPath = path.join(process.cwd(), '.env')
+  if (fs.existsSync(envPath)) {
+    const envFile = fs.readFileSync(envPath, 'utf-8')
+    envFile.split(/\r?\n/).forEach((line) => {
+      const match = line.match(/^\s*([A-Za-z_][A-Za-z0-9_]*)=(.*)\s*$/)
+      if (match) {
+        const key = match[1]
+        let val = match[2]
+        // remove surrounding quotes if any
+        if ((val.startsWith('"') && val.endsWith('"')) || (val.startsWith("'") && val.endsWith("'"))) {
+          val = val.slice(1, -1)
+        }
+        if (!process.env[key]) process.env[key] = val
+      }
+    })
+  }
+} catch (err) {
+  // ignore
+}
+
+function sanitizeDescription(input: string | undefined, maxLen = 160) {
+  if (!input) return ''
+  // remove HTML tags
+  let s = input.replace(/<[^>]*>/g, ' ')
+  // decode basic HTML entities
+  s = s.replace(/&lt;/g, '<').replace(/&gt;/g, '>').replace(/&amp;/g, '&').replace(/&quot;/g, '"').replace(/&#039;/g, "'")
+  // collapse whitespace and trim
+  s = s.replace(/\s+/g, ' ').trim()
+  if (s.length > maxLen) s = s.slice(0, maxLen).trim()
+  return s
+}
 
 /**
  * Script para pré-renderizar posts com OG tags dinâmicas
@@ -40,7 +75,7 @@ const escapeHtml = (text: string): string => {
 const generateMetaTagsHtml = (post: BlogPost, domain: string): string => {
   const firstImage = extractFirstImage(post.html_content)
   const imageUrl = firstImage || `${domain}/og-image-blog.png`
-  const description = post.excerpt || post.html_content.substring(0, 160).replace(/<[^>]*>/g, '')
+  const description = sanitizeDescription(post.excerpt || post.html_content)
   const postUrl = `${domain}/blog/${post.slug}`
 
   return `
@@ -108,6 +143,15 @@ async function main() {
       try {
         const metaTags = generateMetaTagsHtml(post, domain)
         const title = `${post.title} | Dr. Saullo Gomes`
+          // Generate JSON-LD schema for the blog posting to embed statically
+          const schema = getBlogPostingSchema({
+            title: post.title,
+            slug: post.slug,
+            excerpt: sanitizeDescription(post.excerpt || post.html_content),
+            htmlContent: post.html_content,
+            publishedAt: post.created_at,
+          }, extractFirstImage(post.html_content) || undefined)
+          const schemaTag = `    <script type="application/ld+json" data-generated="prebuild">${JSON.stringify(schema)}</script>`
 
         // Injeta meta tags no HTML
         let postHtml = baseHtml
@@ -120,7 +164,7 @@ async function main() {
           .replace(/<meta property="article:[^>]*>/i, '')
           .replace(/<meta name="twitter:[^>]*>/i, '')
           .replace(/<link rel="canonical"[^>]*>/i, '')
-          .replace(/(<\/head>)/i, `${metaTags}\n    $1`)
+          .replace(/(<\/head>)/i, `${metaTags}\n${schemaTag}\n    $1`)
 
         // Cria diretório se não existir
         const postDir = path.join(process.cwd(), 'dist', 'blog', post.slug)
