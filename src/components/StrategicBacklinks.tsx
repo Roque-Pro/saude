@@ -1,134 +1,75 @@
-import { ExternalLink } from "lucide-react";
 import { motion } from "framer-motion";
+import { ExternalLink } from "lucide-react";
 
-interface BacklinksProps {
-  postSlug: string;
-}
+const references = [
+  {
+    text: "Organização Mundial da Saúde: bem-estar e saúde",
+    url: "https://www.who.int/health-topics",
+    domain: "WHO",
+    category: "Saúde",
+  },
+  {
+    text: "Ministério da Saúde: cuidados e prevenção",
+    url: "https://www.gov.br/saude/pt-br",
+    domain: "Gov.br",
+    category: "Prevenção",
+  },
+  {
+    text: "OPAS Brasil: qualidade de vida e saúde pública",
+    url: "https://www.paho.org/pt/brasil",
+    domain: "OPAS",
+    category: "Bem-estar",
+  },
+  {
+    text: "Biblioteca Virtual em Saúde",
+    url: "https://bvsalud.org/",
+    domain: "BVS",
+    category: "Leitura",
+  },
+  {
+    text: "Fiocruz: conteúdos e educação em saúde",
+    url: "https://portal.fiocruz.br/",
+    domain: "Fiocruz",
+    category: "Pesquisa",
+  },
+  {
+    text: "Hospital Albert Einstein: saúde e hábitos",
+    url: "https://www.einstein.br/blog",
+    domain: "Einstein",
+    category: "Hábitos",
+  },
+];
 
-const StrategicBacklinks = ({ postSlug }: BacklinksProps) => {
-  // 15 backlinks estratégicos - Autoridade alta, tema relacionado
-  const backlinks = [
-    {
-      text: "Inteligência Artificial no Brasil",
-      url: "https://tecnoblog.net/tema/inteligencia-artificial/",
-      domain: "Tecnoblog",
-      category: "IA/ML",
+const containerVariants = {
+  hidden: { opacity: 0 },
+  visible: {
+    opacity: 1,
+    transition: {
+      staggerChildren: 0.05,
+      delayChildren: 0.1,
     },
-    {
-      text: "Transformação Digital Empresarial",
-      url: "https://blog.equinix.com/blog/2025/05/07/the-digital-pulse-of-latin-america-brazils-rise-as-a-global-tech-innovator/",
-      domain: "Equinix Blog",
-      category: "Consultoria",
-    },
-    {
-      text: "Segurança e Privacidade Digital",
-      url: "https://tecnoblog.net/tema/seguranca-e-privacidade/",
-      domain: "Tecnoblog",
-      category: "Segurança",
-    },
-    {
-      text: "Cloud Computing e Infraestrutura",
-      url: "https://www.sap.com/products/technology-platform.html",
-      domain: "SAP",
-      category: "Cloud",
-    },
-    {
-      text: "DevOps e Desenvolvimento",
-      url: "https://github.blog/enterprise-software/devops/",
-      domain: "GitHub Blog",
-      category: "DevOps",
-    },
-    {
-      text: "AWS Cloud e Inovação",
-      url: "https://aws.amazon.com/pt/blogs/",
-      domain: "AWS Blogs",
-      category: "Tecnologia",
-    },
-    {
-      text: "Análise de Dados e Business Intelligence",
-      url: "https://www.microsoft.com/pt-br/dynamics365/business-insights",
-      domain: "Microsoft",
-      category: "BI/Analytics",
-    },
-    {
-      text: "AI & ML no GitHub",
-      url: "https://github.blog/ai-and-ml/",
-      domain: "GitHub Blog",
-      category: "IA/ML",
-    },
-    {
-      text: "Marketing Automation e CRM",
-      url: "https://www.salesforce.com/crm/",
-      domain: "Salesforce",
-      category: "Marketing Tech",
-    },
-    {
-      text: "Inteligência Artificial Generativa",
-      url: "https://www.google.com/intl/pt-BR/cloud/solutions/ai/",
-      domain: "Google Cloud",
-      category: "IA",
-    },
-    {
-      text: "Negócios e Mercado de Tecnologia",
-      url: "https://tecnoblog.net/tema/negocios-e-mercado/",
-      domain: "Tecnoblog",
-      category: "Tecnologia",
-    },
-    {
-      text: "Infraestrutura e DevSecOps",
-      url: "https://github.blog/enterprise-software/devsecops/",
-      domain: "GitHub Blog",
-      category: "Segurança",
-    },
-    {
-      text: "Software e Desenvolvimento",
-      url: "https://tecnoblog.net/tema/software/",
-      domain: "Tecnoblog",
-      category: "Desenvolvimento",
-    },
-    {
-      text: "HashiCorp: Infraestrutura Moderna",
-      url: "https://www.hashicorp.com/blog",
-      domain: "HashiCorp Blog",
-      category: "Infrastructure",
-    },
-    {
-      text: "Tecnologia e Internet",
-      url: "https://tecnoblog.net/tema/internet/",
-      domain: "Tecnoblog",
-      category: "Tecnologia",
-    },
-  ];
+  },
+};
 
-  const containerVariants = {
-    hidden: { opacity: 0 },
-    visible: {
-      opacity: 1,
-      transition: {
-        staggerChildren: 0.05,
-        delayChildren: 0.1,
-      },
-    },
-  };
+const itemVariants = {
+  hidden: { opacity: 0, x: -10 },
+  visible: {
+    opacity: 1,
+    x: 0,
+    transition: { duration: 0.4 },
+  },
+};
 
-  const itemVariants = {
-    hidden: { opacity: 0, x: -10 },
-    visible: {
-      opacity: 1,
-      x: 0,
-      transition: { duration: 0.4 },
-    },
-  };
-
+const StrategicBacklinks = () => {
   return (
-    <section className="my-16 py-12 bg-gradient-to-r from-purple-50 via-white to-pink-50 rounded-2xl border-2 border-purple-200">
-      <div className="max-w-4xl mx-auto px-6">
+    <section className="my-16 rounded-2xl border-2 border-emerald-200 bg-gradient-to-r from-emerald-50 via-white to-teal-50 py-12">
+      <div className="mx-auto max-w-4xl px-6">
         <div className="mb-8">
-          <h3 className="text-2xl font-display font-bold text-gray-900 mb-3">
-            Recursos Relacionados e Referências
+          <h3 className="mb-3 text-2xl font-display font-bold text-gray-900">
+            Leituras e referências relacionadas
           </h3>
-          <p className="text-gray-600 text-sm">
-            Explore fontes especializadas e líderes de mercado sobre automação, tecnologia e IA
+          <p className="text-sm text-gray-600">
+            Fontes confiáveis para aprofundar a leitura sobre saúde, prevenção e bem-estar.
           </p>
         </div>
 
@@ -137,36 +78,37 @@ const StrategicBacklinks = ({ postSlug }: BacklinksProps) => {
           initial="hidden"
           whileInView="visible"
           viewport={{ once: true, margin: "0px 0px -100px 0px" }}
-          className="grid md:grid-cols-2 gap-3"
+          className="grid gap-3 md:grid-cols-2"
         >
-          {backlinks.map((link, index) => (
+          {references.map((link) => (
             <motion.a
-              key={index}
+              key={link.url}
               variants={itemVariants}
               href={link.url}
               target="_blank"
               rel="noopener noreferrer"
-              className="group flex items-center justify-between p-4 bg-white rounded-lg border-2 border-gray-200 hover:border-purple-400 hover:shadow-md transition-all duration-300"
+              className="group flex items-center justify-between rounded-lg border-2 border-gray-200 bg-white p-4 transition-all duration-300 hover:border-emerald-400 hover:shadow-md"
             >
               <div className="flex-1">
-                <div className="font-semibold text-gray-900 group-hover:text-purple-600 transition-colors line-clamp-2 text-sm">
+                <div className="line-clamp-2 text-sm font-semibold text-gray-900 transition-colors group-hover:text-emerald-700">
                   {link.text}
                 </div>
-                <div className="flex items-center gap-2 mt-2">
-                  <span className="text-xs font-medium px-2 py-1 bg-purple-100 text-purple-700 rounded-full">
+                <div className="mt-2 flex items-center gap-2">
+                  <span className="rounded-full bg-emerald-100 px-2 py-1 text-xs font-medium text-emerald-700">
                     {link.category}
                   </span>
                   <span className="text-xs text-gray-500">{link.domain}</span>
                 </div>
               </div>
-              <ExternalLink className="w-4 h-4 text-gray-400 group-hover:text-purple-600 transition-colors ml-3 flex-shrink-0" />
+              <ExternalLink className="ml-3 h-4 w-4 flex-shrink-0 text-gray-400 transition-colors group-hover:text-emerald-700" />
             </motion.a>
           ))}
         </motion.div>
 
-        <div className="mt-8 p-4 bg-purple-100 rounded-lg border border-purple-300">
-          <p className="text-sm text-purple-900">
-            <span className="font-semibold">💡 Dica SEO:</span> Estes links para autoridades setoriais amplificam a relevância do seu conteúdo. Cada referência contribui para melhor posicionamento em buscas e estabelece sua expertise.
+        <div className="mt-8 rounded-lg border border-emerald-300 bg-emerald-100 p-4">
+          <p className="text-sm text-emerald-900">
+            <span className="font-semibold">Dica editorial:</span> apoiar seus artigos com
+            referências confiáveis reforça a qualidade da leitura e a confiança no conteúdo.
           </p>
         </div>
       </div>

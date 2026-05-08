@@ -40,17 +40,17 @@ const generateMetaTagsHtml = (post: BlogPost, domain: string): string => {
     <meta property="og:image:width" content="1200" />
     <meta property="og:image:height" content="630" />
     <meta property="og:image:alt" content="${escapeHtml(post.title)}" />
-    <meta property="og:site_name" content="TechNexos" />
+    <meta property="og:site_name" content="Dr. Saullo Gomes" />
     <meta property="og:locale" content="pt_BR" />
     <meta property="article:published_time" content="${post.created_at}" />
-    <meta property="article:author" content="Roque Rafael Proença" />
-    <meta property="article:section" content="Tecnologia" />
+    <meta property="article:author" content="Dr. Saullo Gomes" />
+    <meta property="article:section" content="Saúde" />
     <meta name="twitter:card" content="summary_large_image" />
     <meta name="twitter:title" content="${escapeHtml(post.title)}" />
     <meta name="twitter:description" content="${escapeHtml(description)}" />
     <meta name="twitter:image" content="${imageUrl}" />
     <meta name="description" content="${escapeHtml(description)}" />
-    <meta name="keywords" content="${escapeHtml(post.title)}, blog, tecnologia, consultoria" />
+    <meta name="keywords" content="${escapeHtml(post.title)}, saúde, bem-estar, performance, dr saullo gomes" />
     <link rel="canonical" href="${postUrl}" />`
 }
 
@@ -107,7 +107,7 @@ export default function vitePluginOgTags(): Plugin {
     },
     async transformIndexHtml(html, ctx) {
       // Get domain from environment or infer from request
-      const domain = process.env.VITE_APP_URL || 'https://www.technexos.com.br'
+      const domain = process.env.VITE_APP_URL || 'https://www.drsaullo.com.br'
       const userAgent = ctx.request?.headers?.['user-agent'] || ''
       const url = ctx.request?.url || ''
 
@@ -129,7 +129,7 @@ export default function vitePluginOgTags(): Plugin {
 
           if (post) {
             const metaTagsHtml = generateMetaTagsHtml(post, domain)
-            const title = `${post.title} | TechNexos Blog`
+            const title = `${post.title} | Dr. Saullo Gomes`
 
             // Remove old generic og tags and add new ones
             let modifiedHtml = html

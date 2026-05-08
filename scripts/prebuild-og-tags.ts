@@ -53,11 +53,11 @@ const generateMetaTagsHtml = (post: BlogPost, domain: string): string => {
     <meta property="og:image:width" content="1200" />
     <meta property="og:image:height" content="630" />
     <meta property="og:image:alt" content="${escapeHtml(post.title)}" />
-    <meta property="og:site_name" content="TechNexos" />
+    <meta property="og:site_name" content="Dr. Saullo Gomes" />
     <meta property="og:locale" content="pt_BR" />
     <meta property="article:published_time" content="${post.created_at}" />
-    <meta property="article:author" content="Roque Rafael Proença" />
-    <meta property="article:section" content="Tecnologia" />
+    <meta property="article:author" content="Dr. Saullo Gomes" />
+    <meta property="article:section" content="Saúde" />
     <meta name="twitter:card" content="summary_large_image" />
     <meta name="twitter:title" content="${escapeHtml(post.title)}" />
     <meta name="twitter:description" content="${escapeHtml(description)}" />
@@ -101,13 +101,13 @@ async function main() {
       return
     }
 
-    const domain = 'https://www.technexos.com.br'
+    const domain = 'https://www.drsaullo.com.br'
 
     // Para cada post, cria um arquivo HTML com OG tags injetadas
     for (const post of posts as BlogPost[]) {
       try {
         const metaTags = generateMetaTagsHtml(post, domain)
-        const title = `${post.title} | TechNexos Blog`
+        const title = `${post.title} | Dr. Saullo Gomes`
 
         // Injeta meta tags no HTML
         let postHtml = baseHtml

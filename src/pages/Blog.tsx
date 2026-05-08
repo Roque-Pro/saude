@@ -1,18 +1,50 @@
-import { useState, useEffect } from "react";
-import { useNavigate } from "react-router-dom";
+import { useEffect, useState } from "react";
+import { Link } from "react-router-dom";
 import { motion } from "framer-motion";
 import { supabase } from "@/integrations/supabase/client";
 import { Button } from "@/components/ui/button";
 import { useToast } from "@/hooks/use-toast";
-import { ArrowRight } from "lucide-react";
+import { ArrowRight, Leaf } from "lucide-react";
 import { BlogPost } from "@/types";
 import BlogNavbar from "@/components/BlogNavbar";
+import { useSEO } from "@/hooks/useSEO";
+import { getBreadcrumbSchema } from "@/lib/seo-optimization";
 
 const Blog = () => {
-  const navigate = useNavigate();
   const { toast } = useToast();
   const [posts, setPosts] = useState<BlogPost[]>([]);
   const [loading, setLoading] = useState(true);
+
+  useSEO({
+    title: "Blog | Dicas de Saúde, Bem-Estar e Performance",
+    description:
+      "Acompanhe as últimas tendências e orientações sobre saúde integral, longevidade, nutrição e equilíbrio mental com Dr. Saullo Gomes.",
+    keywords: [
+      "blog de saúde",
+      "dicas de bem-estar",
+      "performance humana",
+      "longevidade",
+      "dr saullo gomes blog",
+      "viver melhor",
+      "hábitos saudáveis",
+    ],
+    schema: [
+      {
+        "@context": "https://schema.org",
+        "@type": "Blog",
+        name: "Blog Dr. Saullo Gomes",
+        description: "Artigos sobre saúde, bem-estar, nutrição e performance.",
+        publisher: {
+          "@type": "Person",
+          name: "Dr. Saullo Gomes"
+        }
+      },
+      getBreadcrumbSchema([
+        { name: "Home", item: "/" },
+        { name: "Blog", item: "/blog" },
+      ]),
+    ],
+  });
 
   useEffect(() => {
     loadPosts();
@@ -27,14 +59,13 @@ const Blog = () => {
         .order("created_at", { ascending: false });
 
       if (error) throw error;
-      
-      // Processa posts para garantir que featured_image está preenchido
-      const processedData = (data || []).map(post => ({
+
+      const processedData = (data || []).map((post) => ({
         ...post,
-        featured_image: post.featured_image || extractFirstImage(post.html_content)
+        featured_image: post.featured_image || extractFirstImage(post.html_content),
       }));
-      
-      setPosts(processedData as any);
+
+      setPosts(processedData as BlogPost[]);
     } catch (error: any) {
       toast({
         title: "Erro",
@@ -54,7 +85,6 @@ const Blog = () => {
     },
   };
 
-  // Extrair primeira imagem do HTML
   const extractFirstImage = (htmlContent: string): string | null => {
     const imgRegex = /<img[^>]+src=["']([^"']+)["']/;
     const match = htmlContent.match(imgRegex);
@@ -62,21 +92,20 @@ const Blog = () => {
   };
 
   return (
-    <div className="min-h-screen bg-gradient-to-b from-white via-white to-gray-50">
-      <BlogNavbar />
-      
-      {/* Header */}
-      <section className="relative pt-20 pb-16 px-4 sm:px-6 lg:px-8 mt-16">
-        <div className="max-w-5xl mx-auto text-center">
+    <div className="min-h-screen bg-gradient-to-b from-white via-white to-emerald-50">
+      <BlogNavbar hideAboutLink hideDiagnosticButton />
+
+      <section className="relative mt-16 px-4 pb-16 pt-20 sm:px-6 lg:px-8">
+        <div className="mx-auto max-w-5xl text-center">
           <motion.h1
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.8 }}
-            className="text-5xl sm:text-6xl md:text-7xl font-display font-black text-gray-900 mb-6 leading-tight"
+            className="mb-6 text-5xl font-display font-black leading-tight text-gray-900 sm:text-6xl md:text-7xl"
           >
-            Blog TechNexos{" "}
-            <span className="bg-gradient-to-r from-purple-500 to-purple-700 bg-clip-text text-transparent">
-              Consultoria
+            Blog{" "}
+            <span className="bg-gradient-to-r from-emerald-500 to-emerald-700 bg-clip-text text-transparent">
+              Dr Saullo Gomes
             </span>
           </motion.h1>
 
@@ -84,128 +113,127 @@ const Blog = () => {
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.8, delay: 0.2 }}
-            className="text-xl text-gray-600 mb-8 max-w-3xl mx-auto leading-relaxed"
+            className="mx-auto mb-8 max-w-3xl text-xl leading-relaxed text-gray-600"
           >
-            Insights, estratégias e tendências sobre transformação digital,
-            automação, inteligência artificial e tecnologia para impulsionar seu negócio
+            Insights, orientações e descobertas sobre nutrição, movimento,
+            saúde mental e equilíbrio para você viver a sua melhor versão.
           </motion.p>
 
           <motion.div
             initial={{ opacity: 0, scale: 0.9 }}
             animate={{ opacity: 1, scale: 1 }}
             transition={{ duration: 0.8, delay: 0.3 }}
-            className="w-12 h-1 bg-gradient-to-r from-purple-600 to-pink-500 rounded-full mx-auto"
+            className="mx-auto h-1 w-12 rounded-full bg-gradient-to-r from-emerald-600 to-green-500"
           />
         </div>
       </section>
 
-      {/* Posts Grid */}
-      <section className="py-20 px-4 sm:px-6 lg:px-8">
-        <div className="max-w-6xl mx-auto">
+      <section className="px-4 py-20 sm:px-6 lg:px-8">
+        <div className="mx-auto max-w-6xl">
           {loading ? (
-            <div className="text-center py-12">
-              <p className="text-gray-600">Carregando posts...</p>
+            <div className="py-12 text-center">
+              <p className="animate-pulse text-emerald-600">Carregando conteúdos...</p>
             </div>
           ) : posts.length === 0 ? (
-            <div className="text-center py-20 bg-white rounded-2xl border-2 border-dashed border-gray-200">
-              <p className="text-gray-600 mb-6 text-lg">
-                Nenhum post publicado ainda
+            <div className="rounded-2xl border-2 border-dashed border-emerald-100 bg-white py-20 text-center">
+              <p className="mb-6 text-lg text-gray-600">
+                Nenhuma publicação encontrada ainda.
               </p>
-              <Button
-                onClick={() => navigate("/")}
-                className="bg-purple-600 hover:bg-purple-700 text-white font-bold"
-              >
-                Voltar para Home
+              <Button asChild className="bg-emerald-600 font-bold text-white hover:bg-emerald-700">
+                <Link to="/">Voltar para Home</Link>
               </Button>
             </div>
           ) : (
-            <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
+            <div className="grid gap-8 md:grid-cols-2 lg:grid-cols-3">
               {posts.map((post) => {
-                const imageUrl = (post as any).featured_image || extractFirstImage(post.html_content);
+                const imageUrl =
+                  (post as any).featured_image || extractFirstImage(post.html_content);
+
                 return (
-                <motion.div
-                   key={post.id}
-                   variants={itemVariants}
-                   initial="hidden"
-                   whileInView="visible"
-                   viewport={{ once: true }}
-                   onClick={() => navigate(`/blog/${post.slug}`)}
-                   className="group cursor-pointer"
-                 >
-                   <div className="bg-white rounded-2xl overflow-hidden shadow-lg hover:shadow-2xl transition-all duration-300 border-2 border-gray-100 hover:border-purple-300 h-full flex flex-col">
-                     {/* Image with fallback */}
-                     <div className="w-full h-48 bg-gradient-to-br from-purple-200 via-pink-200 to-purple-300 group-hover:from-purple-300 group-hover:via-pink-300 group-hover:to-purple-400 transition-all duration-300 overflow-hidden">
-                       {imageUrl ? (
-                         <img 
-                           src={imageUrl} 
-                           alt={post.title}
-                           className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300"
-                         />
-                       ) : null}
-                     </div>
+                  <motion.article
+                    key={post.id}
+                    variants={itemVariants}
+                    initial="hidden"
+                    whileInView="visible"
+                    viewport={{ once: true }}
+                    className="group"
+                  >
+                    <Link
+                      to={`/blog/${post.slug}`}
+                      className="block h-full rounded-2xl focus:outline-none focus-visible:ring-2 focus-visible:ring-emerald-500"
+                      aria-label={`Ler publicação ${post.title}`}
+                    >
+                      <div className="flex h-full flex-col overflow-hidden rounded-2xl border-2 border-gray-100 bg-white shadow-lg transition-all duration-300 hover:border-emerald-300 hover:shadow-2xl">
+                        <div className="h-48 w-full overflow-hidden bg-gradient-to-br from-emerald-100 via-teal-100 to-emerald-200 transition-all duration-300 group-hover:from-emerald-200 group-hover:via-teal-200 group-hover:to-emerald-300">
+                          {imageUrl ? (
+                            <img
+                              src={imageUrl}
+                              alt={post.title}
+                              className="h-full w-full object-cover transition-transform duration-300 group-hover:scale-105"
+                            />
+                          ) : (
+                            <div className="flex h-full w-full items-center justify-center">
+                              <Leaf className="h-12 w-12 text-emerald-600/30" />
+                            </div>
+                          )}
+                        </div>
 
-                    {/* Content */}
-                    <div className="p-6 flex-1 flex flex-col">
-                      {/* Date */}
-                      <p className="text-sm text-gray-500 mb-3">
-                        {new Date(post.created_at).toLocaleDateString("pt-BR")}
-                      </p>
+                        <div className="flex flex-1 flex-col p-6">
+                          <p className="mb-3 text-sm text-gray-500">
+                            {new Date(post.created_at).toLocaleDateString("pt-BR")}
+                          </p>
 
-                      {/* Title */}
-                      <h3 className="text-xl font-display font-bold text-gray-900 mb-3 group-hover:text-purple-600 transition-colors line-clamp-3">
-                        {post.title}
-                      </h3>
+                          <h2 className="mb-3 line-clamp-3 text-xl font-display font-bold text-gray-900 transition-colors group-hover:text-emerald-600">
+                            {post.title}
+                          </h2>
 
-                      {/* Excerpt */}
-                      {post.excerpt && (
-                        <p className="text-gray-600 text-sm mb-4 line-clamp-2 flex-1">
-                          {post.excerpt}
-                        </p>
-                      )}
+                          {post.excerpt && (
+                            <p className="mb-4 flex-1 line-clamp-2 text-sm text-gray-600">
+                              {post.excerpt}
+                            </p>
+                          )}
 
-                      {/* Read time */}
-                      <p className="text-xs text-gray-500 mb-4">
-                        {Math.ceil(post.html_content.split(" ").length / 200)}{" "}
-                        min de leitura
-                      </p>
+                          <p className="mb-4 text-xs text-gray-500">
+                            {Math.ceil(post.html_content.split(" ").length / 200)} min de
+                            leitura
+                          </p>
 
-                      {/* CTA */}
-                      <div className="flex items-center gap-2 text-purple-600 font-semibold group-hover:gap-3 transition-all">
-                        Ler mais
-                        <ArrowRight className="w-4 h-4" />
+                          <div className="flex items-center gap-2 font-semibold text-emerald-600 transition-all group-hover:gap-3">
+                            Ler publicação
+                            <ArrowRight className="h-4 w-4" />
+                          </div>
+                        </div>
                       </div>
-                    </div>
-                    </div>
-                    </motion.div>
-                    );
-                    })}
-                    </div>
+                    </Link>
+                  </motion.article>
+                );
+              })}
+            </div>
           )}
         </div>
       </section>
 
-      {/* Bottom CTA */}
       {posts.length > 0 && (
-        <section className="py-20 px-4 sm:px-6 lg:px-8 bg-gradient-to-r from-purple-600 to-pink-600">
-          <div className="max-w-4xl mx-auto text-center">
+        <section className="bg-gradient-to-r from-emerald-600 to-teal-600 px-4 py-20 sm:px-6 lg:px-8">
+          <div className="mx-auto max-w-4xl text-center">
             <motion.div
               initial={{ opacity: 0, y: 20 }}
               whileInView={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.8 }}
               viewport={{ once: true }}
             >
-              <h2 className="text-4xl sm:text-5xl font-display font-black text-white mb-6">
-                Pronto para transformar sua empresa?
+              <h2 className="mb-6 text-4xl font-display font-black text-white sm:text-5xl">
+                Pronto para começar sua transformação?
               </h2>
-              <p className="text-xl text-white/90 mb-8 max-w-2xl mx-auto">
-                Descubra como a automação e a tecnologia certa podem revolucionar
-                seus processos.
+              <p className="mx-auto mb-8 max-w-2xl text-xl text-white/90">
+                Faça seu diagnóstico de bem-estar gratuito agora e descubra o
+                caminho para uma vida plena.
               </p>
               <Button
-                onClick={() => navigate("/diagnostico-gratuito")}
-                className="bg-white text-purple-600 hover:bg-white/90 font-bold px-8 py-6 text-lg"
+                asChild
+                className="rounded-xl bg-white px-8 py-6 text-lg font-bold text-emerald-600 shadow-xl hover:bg-white/90"
               >
-                Solicitar Diagnóstico Gratuito
+                <Link to="/diagnostico-gratuito">Solicitar Diagnóstico Gratuito</Link>
               </Button>
             </motion.div>
           </div>

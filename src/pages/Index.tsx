@@ -12,8 +12,27 @@ import ContactSection from "@/components/ContactSection";
 import Footer from "@/components/Footer";
 import WhatsAppFloat from "@/components/WhatsAppFloat";
 import AutoClubProDetailedSection from "@/components/AutoClubProDetailedSection";
+import { useSEO } from "@/hooks/useSEO";
+import { getLocalBusinessSchema, getFAQSchema } from "@/lib/seo-optimization";
 
 const Index = () => {
+  useSEO({
+    title: "Início",
+    schema: [
+      getLocalBusinessSchema(),
+      getFAQSchema([
+        {
+          question: "Como funciona a consultoria do Dr. Saullo Gomes?",
+          answer: "A consultoria foca em uma análise integral da saúde do paciente, abordando pilares como nutrição, movimento, sono e equilíbrio mental para otimizar a performance e longevidade.",
+        },
+        {
+          question: "Quais serviços são oferecidos?",
+          answer: "Oferecemos check-up de performance, consultoria de estilo de vida, plano nutricional personalizado e acompanhamento de biohacking seguro.",
+        },
+      ]),
+    ],
+  });
+
   return (
     <div className="min-h-screen bg-background text-foreground">
       <Navbar />

@@ -2,5 +2,6 @@ User-agent: *
 Allow: /
 Disallow: /admin
 Disallow: /private
+Disallow: /auth
 
-Sitemap: https://www.technexos.com.br/sitemap.xml
+Sitemap: https://www.drsaullo.com.br/sitemap.xml
