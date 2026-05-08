@@ -1,0 +1,49 @@
+name: SEO prebuild
+
+on:
+  push:
+    branches: [ main ]
+
+jobs:
+  seo:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+
+      - name: Setup Node
+        uses: actions/setup-node@v4
+        with:
+          node-version: '18'
+
+      - name: Install deps
+        run: npm ci
+
+      - name: Run prebuild (generate dist/blog)
+        run: npx tsx scripts/prebuild-og-tags.ts
+        env:
+          VITE_SUPABASE_URL: ${{ secrets.VITE_SUPABASE_URL }}
+          SUPABASE_ANON_KEY: ${{ secrets.SUPABASE_ANON_KEY }}
+
+      - name: Optimize OG images
+        run: node scripts/optimize-og-images.js
+
+      - name: Re-run prebuild to inject local OG images
+        run: npx tsx scripts/prebuild-og-tags.ts
+        env:
+          VITE_SUPABASE_URL: ${{ secrets.VITE_SUPABASE_URL }}
+          SUPABASE_ANON_KEY: ${{ secrets.SUPABASE_ANON_KEY }}
+
+      - name: Generate SEO report and sitemap
+        run: node scripts/generate-seo-report.js
+
+      - name: Commit generated files
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "github-actions[bot]@users.noreply.github.com"
+          git add public/sitemap.xml public/og/ reports/ || true
+          git commit -m "chore(seo): update sitemap and og images [ci skip]" || echo 'no changes to commit'
+          git push
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}

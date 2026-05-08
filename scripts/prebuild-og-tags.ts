@@ -166,15 +166,18 @@ async function main() {
           .replace(/<link rel="canonical"[^>]*>/i, '')
           .replace(/(<\/head>)/i, `${metaTags}\n${schemaTag}\n    $1`)
 
-        // Cria diretório se não existir
-        const postDir = path.join(process.cwd(), 'dist', 'blog', post.slug)
-        fs.mkdirSync(postDir, { recursive: true })
+            // Cria diretório se não existir
+            const postDir = path.join(process.cwd(), 'dist', 'blog', post.slug)
+            fs.mkdirSync(postDir, { recursive: true })
 
-        // Salva arquivo HTML
-        const postPath = path.join(postDir, 'index.html')
-        fs.writeFileSync(postPath, postHtml)
-
-        console.log(`✅ ${post.slug}`)
+            // Salva arquivo HTML — se já existir, pule (não sobrescrever posts antigos)
+            const postPath = path.join(postDir, 'index.html')
+            if (fs.existsSync(postPath)) {
+              console.log(`⏭️ Skipping existing post (preserve old): ${post.slug}`)
+            } else {
+              fs.writeFileSync(postPath, postHtml)
+              console.log(`✅ ${post.slug}`)
+            }
       } catch (err) {
         console.error(`❌ Erro ao processar ${post.slug}:`, err)
       }
