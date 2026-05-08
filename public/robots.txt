@@ -4,4 +4,4 @@ Disallow: /admin
 Disallow: /private
 Disallow: /auth
 
-Sitemap: https://www.drsaullo.com.br/sitemap.xml
+Sitemap: https://www.doutorsaullo.com.br/sitemap.xml

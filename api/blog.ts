@@ -80,10 +80,10 @@ const generateMetaTagsHtml = (post: BlogPost, domain: string): string => {
     <meta property="og:image:width" content="1200" />
     <meta property="og:image:height" content="630" />
     <meta property="og:image:alt" content="${escapeHtml(post.title)}" />
-    <meta property="og:site_name" content="TechNexos" />
+    <meta property="og:site_name" content="Doutor Saullo" />
     <meta property="og:locale" content="pt_BR" />
     <meta property="article:published_time" content="${post.created_at}" />
-    <meta property="article:author" content="Roque Rafael Proença" />
+    <meta property="article:author" content="Doutor Saullo" />
     <meta property="article:section" content="Tecnologia" />
     <meta name="twitter:card" content="summary_large_image" />
     <meta name="twitter:title" content="${escapeHtml(post.title)}" />
@@ -143,12 +143,12 @@ export default async function handler(req: VercelRequest, res: VercelResponse) {
     }
 
     const blogPost = post as BlogPost
-    const domain = process.env.VITE_APP_URL || 'https://www.technexos.com.br'
+    const domain = process.env.VITE_APP_URL || 'https://www.doutorsaullo.com.br'
 
     // Se for bot, injeta meta tags
     if (isBot) {
       const metaTags = generateMetaTagsHtml(blogPost, domain)
-      const title = `${blogPost.title} | TechNexos Blog`
+      const title = `${blogPost.title} | Doutor Saullo Blog`
 
       // Lê o HTML base
       const htmlPath = path.join(process.cwd(), 'dist', 'index.html')

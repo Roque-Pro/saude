@@ -101,7 +101,7 @@ async function main() {
       return
     }
 
-    const domain = 'https://www.drsaullo.com.br'
+    const domain = 'https://www.doutorsaullo.com.br'
 
     // Para cada post, cria um arquivo HTML com OG tags injetadas
     for (const post of posts as BlogPost[]) {

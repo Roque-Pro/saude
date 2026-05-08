@@ -107,7 +107,7 @@ export default function vitePluginOgTags(): Plugin {
     },
     async transformIndexHtml(html, ctx) {
       // Get domain from environment or infer from request
-      const domain = process.env.VITE_APP_URL || 'https://www.drsaullo.com.br'
+      const domain = process.env.VITE_APP_URL || 'https://www.doutorsaullo.com.br'
       const userAgent = ctx.request?.headers?.['user-agent'] || ''
       const url = ctx.request?.url || ''
 

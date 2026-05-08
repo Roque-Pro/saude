@@ -68,11 +68,11 @@ export default async function handler(req: VercelRequest, res: VercelResponse) {
 
     // Extract metadata
     const firstImage = extractFirstImage(blogPost.html_content)
-    const domain = process.env.VITE_APP_URL || 'https://www.technexos.com.br'
+    const domain = process.env.VITE_APP_URL || 'https://www.doutorsaullo.com.br'
     const imageUrl = firstImage || `${domain}/og-image-blog.png`
     const description = blogPost.excerpt || blogPost.html_content.substring(0, 160).replace(/<[^>]*>/g, '')
     const postUrl = `${domain}/blog/${blogPost.slug}`
-    const title = `${blogPost.title} | TechNexos Blog`
+    const title = `${blogPost.title} | Doutor Saullo Blog`
 
     // Return metadata as JSON (can be used by external services)
     res.status(200).json({
@@ -80,7 +80,7 @@ export default async function handler(req: VercelRequest, res: VercelResponse) {
       description,
       imageUrl,
       url: postUrl,
-      author: 'Roque Rafael Proença',
+      author: 'Doutor Saullo',
       publishedAt: blogPost.created_at,
     })
   } catch (error) {
