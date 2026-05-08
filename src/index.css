@@ -68,6 +68,17 @@
     @apply bg-background text-foreground font-body antialiased;
   }
 
+  /* Forçar texto branco em botões com fundo escuro */
+  button[class*="bg-black"], 
+  button[class*="bg-slate-9"], 
+  button[class*="bg-gray-9"], 
+  button[class*="bg-zinc-9"], 
+  button[class*="bg-neutral-9"],
+  button[class*="bg-emerald-6"],
+  button[class*="bg-emerald-7"] {
+    color: white !important;
+  }
+
   h1, h2, h3, h4, h5, h6 {
     @apply font-display;
   }

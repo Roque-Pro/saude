@@ -15,7 +15,7 @@ export default function ShareBlogPost({
 }: ShareBlogPostProps) {
   const [open, setOpen] = useState(false);
 
-  const postUrl = `https://www.vocesaude.com.br/blog/${slug}`;
+  const postUrl = `https://www.doutorsaullo.com.br/blog/${slug}`;
   const encodedUrl = encodeURIComponent(postUrl);
   const encodedTitle = encodeURIComponent(title);
 

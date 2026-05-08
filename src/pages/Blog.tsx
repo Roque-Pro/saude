@@ -212,33 +212,6 @@ const Blog = () => {
           )}
         </div>
       </section>
-
-      {posts.length > 0 && (
-        <section className="bg-gradient-to-r from-emerald-600 to-teal-600 px-4 py-20 sm:px-6 lg:px-8">
-          <div className="mx-auto max-w-4xl text-center">
-            <motion.div
-              initial={{ opacity: 0, y: 20 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.8 }}
-              viewport={{ once: true }}
-            >
-              <h2 className="mb-6 text-4xl font-display font-black text-white sm:text-5xl">
-                Pronto para começar sua transformação?
-              </h2>
-              <p className="mx-auto mb-8 max-w-2xl text-xl text-white/90">
-                Faça seu diagnóstico de bem-estar gratuito agora e descubra o
-                caminho para uma vida plena.
-              </p>
-              <Button
-                asChild
-                className="rounded-xl bg-white px-8 py-6 text-lg font-bold text-emerald-600 shadow-xl hover:bg-white/90"
-              >
-                <Link to="/diagnostico-gratuito">Solicitar Diagnóstico Gratuito</Link>
-              </Button>
-            </motion.div>
-          </div>
-        </section>
-      )}
     </div>
   );
 };

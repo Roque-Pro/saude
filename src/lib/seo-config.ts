@@ -1,8 +1,8 @@
 export const SEO_CONFIG = {
   siteName: "Dr. Saullo Gomes",
-  domain: "www.drsaullo.com.br",
+  domain: "www.doutorsaullo.com.br",
   protocol: "https",
-  baseUrl: "https://www.drsaullo.com.br",
+  baseUrl: "https://www.doutorsaullo.com.br",
   defaultTitle: "Dr. Saullo Gomes | Saúde, Bem-Estar e Performance",
   defaultDescription: "Consultoria especializada com Dr. Saullo Gomes. Foco em saúde integral, longevidade, performance e equilíbrio para uma vida plena.",
   defaultKeywords: [
