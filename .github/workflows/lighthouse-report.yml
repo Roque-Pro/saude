@@ -1,0 +1,35 @@
+name: Lighthouse Reports
+on:
+  workflow_dispatch:
+  push:
+    branches: [ main ]
+    paths-ignore:
+      - 'reports/**'
+      - '.github/workflows/lighthouse-report.yml'
+
+jobs:
+  lighthouse:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Setup Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: '18'
+
+      - name: Create reports dir
+        run: mkdir -p reports
+
+      - name: Run Lighthouse (desktop)
+        run: npx -y lighthouse "https://www.doutorsaullo.com.br/blog" --preset=desktop --output html --output-path reports/lighthouse-desktop.html --chrome-flags="--no-sandbox --headless"
+
+      - name: Run Lighthouse (mobile)
+        run: npx -y lighthouse "https://www.doutorsaullo.com.br/blog" --preset=mobile --output html --output-path reports/lighthouse-mobile.html --chrome-flags="--no-sandbox --headless"
+
+      - name: Upload reports
+        uses: actions/upload-artifact@v4
+        with:
+          name: lighthouse-reports
+          path: reports
