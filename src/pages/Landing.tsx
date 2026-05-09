@@ -263,6 +263,10 @@ const Landing = () => {
               <p className="mt-8 max-w-lg text-lg leading-relaxed text-slate-600 lg:text-xl">
                 Dr Saullo Gomes apresenta uma perspectiva humanizada sobre <strong>endocrinologia</strong> e <strong>longevidade</strong>. Descubra como pequenos ajustes metabólicos podem transformar sua vitalidade diária.
               </p>
+              
+              <p className="mt-4 text-sm font-bold tracking-widest text-emerald-800/80 uppercase">
+                CRM/ES 435671
+              </p>
 
               <div className="mt-12 flex flex-col gap-5 sm:flex-row sm:items-center">
                 <Button asChild size="lg" className="h-14 rounded-full bg-emerald-900 px-10 text-base font-bold text-white transition-all hover:bg-emerald-800 hover:shadow-xl hover:shadow-emerald-900/20 active:scale-95">
@@ -599,9 +603,14 @@ const Landing = () => {
           </div>
           
           <div className="mt-20 flex flex-col items-center justify-between gap-6 border-t border-slate-50 pt-10 md:flex-row">
-            <p className="text-xs text-slate-400">
-              &copy; {new Date().getFullYear()} Dr Saullo Gomes. Conteúdo informativo e educacional.
-            </p>
+            <div className="text-center md:text-left">
+              <p className="text-xs text-slate-400">
+                &copy; {new Date().getFullYear()} Dr Saullo Gomes. Conteúdo informativo e educacional.
+              </p>
+              <p className="mt-1 text-[10px] font-bold text-slate-500 uppercase tracking-wider">
+                CRM/ES 435671
+              </p>
+            </div>
             <div className="flex items-center gap-6">
               <span className="h-1.5 w-1.5 rounded-full bg-emerald-200" />
               <p className="text-[10px] font-bold uppercase tracking-widest text-slate-300">

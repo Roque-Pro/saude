@@ -3,6 +3,7 @@ import { Button } from "@/components/ui/button";
 import { useNavigate } from "react-router-dom";
 import roqueImage from "@/img/roque-rafael-proenca-consultor.png";
 import BlogNavbar from "@/components/BlogNavbar";
+import Footer from "@/components/Footer";
 
 const AboutMe = () => {
   const navigate = useNavigate();
@@ -521,6 +522,7 @@ const AboutMe = () => {
 
       {/* Footer spacer */}
       <section className="py-12" />
+      <Footer />
     </div>
   );
 };

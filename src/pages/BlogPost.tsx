@@ -273,6 +273,18 @@ const BlogPostPage = () => {
           </Button>
         </div>
       </div>
+
+      <footer className="border-t border-emerald-100 bg-white py-12">
+        <div className="mx-auto max-w-7xl px-6 lg:px-12 text-center">
+          <p className="font-serif text-xl font-bold text-emerald-950">Dr Saullo Gomes</p>
+          <p className="mt-2 text-xs text-slate-500">
+            &copy; {new Date().getFullYear()} Conteúdo informativo e educacional.
+          </p>
+          <p className="mt-1 text-[10px] font-bold text-slate-400 uppercase tracking-widest">
+            CRM/ES 435671
+          </p>
+        </div>
+      </footer>
     </div>
   );
 };
