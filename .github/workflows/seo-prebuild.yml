@@ -3,6 +3,10 @@ name: SEO prebuild
 on:
   push:
     branches: [ main ]
+    paths-ignore:
+      - 'public/sitemap.xml'
+      - 'public/og/**'
+      - 'reports/**'
 
 jobs:
   seo:
