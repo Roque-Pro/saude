@@ -80,11 +80,11 @@ const generateMetaTagsHtml = (post: BlogPost, domain: string): string => {
     <meta property="og:image:width" content="1200" />
     <meta property="og:image:height" content="630" />
     <meta property="og:image:alt" content="${escapeHtml(post.title)}" />
-    <meta property="og:site_name" content="Doutor Saullo" />
+    <meta property="og:site_name" content="Dr. Saullo Gomes" />
     <meta property="og:locale" content="pt_BR" />
     <meta property="article:published_time" content="${post.created_at}" />
-    <meta property="article:author" content="Doutor Saullo" />
-    <meta property="article:section" content="Tecnologia" />
+    <meta property="article:author" content="Dr. Saullo Gomes" />
+    <meta property="article:section" content="Saúde" />
     <meta name="twitter:card" content="summary_large_image" />
     <meta name="twitter:title" content="${escapeHtml(post.title)}" />
     <meta name="twitter:description" content="${escapeHtml(description)}" />
@@ -103,7 +103,6 @@ export default async function handler(req: VercelRequest, res: VercelResponse) {
   }
 
   try {
-    // Usar valores do ambiente ou fallback (valores padrão para desenvolvimento)
     const supabaseUrl = process.env.VITE_SUPABASE_URL || 
                        process.env.SUPABASE_URL || 
                        'https://rctrqntkfacxlweezbfu.supabase.co'
@@ -113,15 +112,11 @@ export default async function handler(req: VercelRequest, res: VercelResponse) {
 
     if (!supabaseUrl || !supabaseAnonKey) {
       console.error('Missing Supabase credentials')
-      // Retorna HTML normal se não conseguir configurar
-      try {
-        const htmlPath = path.join(process.cwd(), 'dist', 'index.html')
-        const html = fs.readFileSync(htmlPath, 'utf-8')
-        res.setHeader('Content-Type', 'text/html')
-        return res.send(html)
-      } catch {
-        return res.status(500).send('Configuration error')
-      }
+      // Fallback to index.html if config missing
+      const htmlPath = path.join(process.cwd(), 'index.html')
+      const html = fs.readFileSync(htmlPath, 'utf-8')
+      res.setHeader('Content-Type', 'text/html')
+      return res.send(html)
     }
 
     const supabase = createClient(supabaseUrl, supabaseAnonKey)
@@ -135,8 +130,8 @@ export default async function handler(req: VercelRequest, res: VercelResponse) {
       .single()
 
     if (error || !post) {
-      // Post não encontrado - retorna HTML normal para que React trate
-      const htmlPath = path.join(process.cwd(), 'dist', 'index.html')
+      // Post not found - return index.html so React can show 404
+      const htmlPath = path.join(process.cwd(), 'index.html')
       const html = fs.readFileSync(htmlPath, 'utf-8')
       res.setHeader('Content-Type', 'text/html')
       return res.send(html)
@@ -145,16 +140,15 @@ export default async function handler(req: VercelRequest, res: VercelResponse) {
     const blogPost = post as BlogPost
     const domain = process.env.VITE_APP_URL || 'https://www.doutorsaullo.com.br'
 
-    // Se for bot, injeta meta tags
+    // Bot detection for meta tag injection
     if (isBot) {
       const metaTags = generateMetaTagsHtml(blogPost, domain)
-      const title = `${blogPost.title} | Doutor Saullo Blog`
+      const title = `${blogPost.title} | Dr. Saullo Gomes`
 
-      // Lê o HTML base
-      const htmlPath = path.join(process.cwd(), 'dist', 'index.html')
+      // Use index.html as base (it's in root for Vercel builds)
+      const htmlPath = path.join(process.cwd(), 'index.html')
       let html = fs.readFileSync(htmlPath, 'utf-8')
 
-      // Remove meta tags genéricas e injeta novas
       html = html
         .replace(/<title>.*?<\/title>/i, `<title>${escapeHtml(title)}</title>`)
         .replace(/<meta property="og:title"[^>]*>/i, '')
@@ -172,15 +166,15 @@ export default async function handler(req: VercelRequest, res: VercelResponse) {
       return res.send(html)
     }
 
-    // Para usuários normais, retorna HTML padrão
-    const htmlPath = path.join(process.cwd(), 'dist', 'index.html')
+    // Normal user - serve index.html
+    const htmlPath = path.join(process.cwd(), 'index.html')
     const html = fs.readFileSync(htmlPath, 'utf-8')
     res.setHeader('Content-Type', 'text/html')
     res.setHeader('Cache-Control', 'public, max-age=0, s-maxage=3600')
     return res.send(html)
   } catch (error) {
     console.error('Error:', error)
-    const htmlPath = path.join(process.cwd(), 'dist', 'index.html')
+    const htmlPath = path.join(process.cwd(), 'index.html')
     const html = fs.readFileSync(htmlPath, 'utf-8')
     res.setHeader('Content-Type', 'text/html')
     return res.send(html)
