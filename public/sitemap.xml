@@ -138,10 +138,21 @@
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
+
+  
   <url>
     <loc>https://www.doutorsaullo.com.br/blog/o-fenmeno-do-silenciamento-metablico-por-que-o-corpo-para-de-lutar-contra-a-balana</loc>
     <lastmod>2026-05-11</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
+
+    <url>
+    <loc>https://www.doutorsaullo.com.br/blog/o-que-esta-por-tras-da-dificuldade-de-emagrecer-mesmo-fazendo-dieta</loc>
+    <lastmod>2026-05-11</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+
+  
 </urlset>
