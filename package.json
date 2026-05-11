@@ -5,7 +5,8 @@
   "type": "module",
   "scripts": {
     "dev": "vite",
-    "build": "vite build && tsx scripts/prebuild-og-tags.ts",
+    "build": "vite build && tsx scripts/prebuild-og-tags.ts && tsx scripts/generate-sitemap.ts",
+    "generate-sitemap": "tsx scripts/generate-sitemap.ts",
     "build:dev": "vite build --mode development",
     "lint": "eslint .",
     "preview": "vite preview",
