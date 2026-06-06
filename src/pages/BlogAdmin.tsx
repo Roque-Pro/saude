@@ -184,23 +184,23 @@ const BlogAdmin = () => {
 
     return (
         <div className="min-h-screen bg-[#f8fafc] text-slate-900 font-sans overflow-x-hidden">
-            {/* Header Sóbrio */}
-            <header className="sticky top-0 z-50 w-full border-b border-slate-200 bg-white/80 py-4 backdrop-blur-xl shadow-sm">
-                <div className="mx-auto flex max-w-7xl items-center justify-between px-4 sm:px-6">
-                    <div className="flex items-center gap-3 sm:gap-6">
+            {/* Header Sóbrio e Altamente Responsivo */}
+            <header className="sticky top-0 z-50 w-full border-b border-slate-200 bg-white/80 py-3 sm:py-4 backdrop-blur-xl shadow-sm">
+                <div className="w-full flex items-center justify-between px-3 sm:px-6">
+                    <div className="flex items-center gap-2 sm:gap-6">
                         <Button
                             variant="ghost"
                             onClick={() => navigate("/crm")}
-                            className="h-8 px-2 sm:h-9 sm:px-3 text-[10px] sm:text-xs font-bold text-slate-600 hover:bg-slate-100"
+                            className="h-8 w-8 sm:h-9 sm:w-auto p-0 sm:px-3 text-xs font-bold text-slate-600 hover:bg-slate-100"
                         >
-                            <ArrowLeft className="sm:mr-2 h-3.5 w-3.5 sm:h-4 sm:w-4" />
-                            <span className="hidden xs:inline">CRM</span>
+                            <ArrowLeft className="h-4 w-4 sm:mr-2" />
+                            <span className="hidden sm:inline">CRM</span>
                         </Button>
-                        <div className="hidden xxs:block">
-                            <h1 className="font-serif text-base sm:text-lg font-bold tracking-tight text-emerald-950 truncate">
+                        <div>
+                            <h1 className="font-serif text-sm sm:text-lg font-bold tracking-tight text-emerald-950 truncate max-w-[120px] sm:max-w-none">
                                 Editor
                             </h1>
-                            <p className="text-[9px] sm:text-[10px] font-bold uppercase tracking-widest text-emerald-700/70">
+                            <p className="hidden xxs:block text-[8px] sm:text-[10px] font-bold uppercase tracking-widest text-emerald-700/70">
                                 Blog Estratégico
                             </p>
                         </div>
@@ -212,40 +212,40 @@ const BlogAdmin = () => {
                         }}
                         className="h-8 px-3 sm:h-9 sm:px-6 bg-emerald-900 text-[10px] sm:text-xs font-bold text-white hover:bg-emerald-800"
                     >
-                        <Plus className="sm:mr-2 h-3.5 w-3.5 sm:h-4 sm:w-4" />
-                        <span className="hidden xs:inline">Nova Publicação</span>
-                        <span className="xs:hidden">Novo</span>
+                        <Plus className="mr-1 sm:mr-2 h-3.5 w-3.5 sm:h-4 sm:w-4" />
+                        <span>Novo</span>
+                        <span className="hidden xs:inline ml-1">Post</span>
                     </Button>
                 </div>
             </header>
 
-            <main className="mx-auto max-w-5xl px-3 sm:px-6 py-6 sm:py-12">
-                {/* Form Refinado e Altamente Responsivo */}
+            <main className="w-full px-2 sm:px-6 py-4 sm:py-12">
+                {/* Form com largura total no mobile */}
                 {showForm && (
                     <motion.div
                         initial={{ opacity: 0, y: 20 }}
                         animate={{ opacity: 1, y: 0 }}
-                        className="mb-10 sm:mb-16 rounded-2xl sm:rounded-[40px] border border-slate-200 bg-white p-4 sm:p-10 shadow-2xl shadow-emerald-900/5"
+                        className="mb-8 sm:mb-16 rounded-xl sm:rounded-[40px] border border-slate-200 bg-white p-3 sm:p-12 shadow-2xl shadow-emerald-900/5"
                     >
-                        <h2 className="font-serif text-lg sm:text-2xl font-bold text-slate-900 mb-6 sm:mb-8">
+                        <h2 className="font-serif text-base sm:text-2xl font-bold text-slate-900 mb-5 sm:mb-8">
                             {editingId ? "Refinar Publicação" : "Nova Publicação Estratégica"}
                         </h2>
 
-                        <form onSubmit={handleSubmit} className="space-y-5 sm:space-y-8">
-                            <div className="grid gap-5 sm:grid-cols-2">
-                                <div className="space-y-1.5">
-                                    <Label className="text-[9px] sm:text-[10px] font-bold uppercase tracking-[0.2em] text-slate-400">Título da Matéria *</Label>
+                        <form onSubmit={handleSubmit} className="space-y-4 sm:space-y-8">
+                            <div className="grid gap-4 sm:grid-cols-2">
+                                <div className="space-y-1">
+                                    <Label className="text-[9px] font-bold uppercase tracking-widest text-slate-400">Título *</Label>
                                     <Input
-                                        placeholder="Ex: A Ciência da Primeira Impressão"
+                                        placeholder="Ex: A Ciência da Performance"
                                         value={formData.title}
                                         onChange={handleTitleChange}
                                         required
-                                        className="h-11 sm:h-12 rounded-xl border-slate-200 bg-white text-sm sm:text-base focus-visible:ring-emerald-900"
+                                        className="h-10 sm:h-12 rounded-lg border-slate-200 bg-white text-sm focus-visible:ring-emerald-900"
                                     />
                                 </div>
 
-                                <div className="space-y-1.5">
-                                    <Label className="text-[9px] sm:text-[10px] font-bold uppercase tracking-[0.2em] text-slate-400">Slug / URL Amigável *</Label>
+                                <div className="space-y-1">
+                                    <Label className="text-[9px] font-bold uppercase tracking-widest text-slate-400">Slug / URL *</Label>
                                     <Input
                                         placeholder="url-da-materia"
                                         value={formData.slug}
@@ -253,28 +253,28 @@ const BlogAdmin = () => {
                                             setFormData({ ...formData, slug: e.target.value })
                                         }
                                         required
-                                        className="h-11 sm:h-12 rounded-xl border-slate-200 bg-white text-sm sm:text-base focus-visible:ring-emerald-900"
+                                        className="h-10 sm:h-12 rounded-lg border-slate-200 bg-white text-sm focus-visible:ring-emerald-900"
                                     />
                                 </div>
                             </div>
 
-                            <div className="space-y-1.5">
-                                <Label className="text-[9px] sm:text-[10px] font-bold uppercase tracking-[0.2em] text-slate-400">Resumo Executivo (Excerpt)</Label>
+                            <div className="space-y-1">
+                                <Label className="text-[9px] font-bold uppercase tracking-widest text-slate-400">Resumo (Excerpt)</Label>
                                 <textarea
-                                    placeholder="Breve descrição para atrair o leitor..."
+                                    placeholder="Breve descrição..."
                                     value={formData.excerpt}
                                     onChange={(e) =>
                                         setFormData({ ...formData, excerpt: e.target.value })
                                     }
-                                    className="w-full h-20 sm:h-24 rounded-2xl border border-slate-200 bg-white p-3 sm:p-4 text-sm focus:border-emerald-900 focus:ring-4 focus:ring-emerald-900/5 transition-all outline-none resize-none"
+                                    className="w-full h-20 rounded-lg border border-slate-200 bg-white p-3 text-sm focus:border-emerald-900 transition-all outline-none resize-none"
                                 />
                             </div>
 
-                            <div className="space-y-1.5">
-                                <Label className="text-[9px] sm:text-[10px] font-bold uppercase tracking-[0.2em] text-slate-400">Conteúdo em HTML Estruturado *</Label>
-                                <div className="rounded-2xl border border-slate-200 bg-slate-50 p-2 sm:p-4">
+                            <div className="space-y-1">
+                                <Label className="text-[9px] font-bold uppercase tracking-widest text-slate-400">Conteúdo HTML *</Label>
+                                <div className="rounded-xl border border-slate-200 bg-slate-50 p-1.5 sm:p-4">
                                     <textarea
-                                        placeholder="Insira o HTML da matéria aqui..."
+                                        placeholder="Insira o HTML aqui..."
                                         value={formData.html_content}
                                         onChange={(e) =>
                                             setFormData({
@@ -283,12 +283,12 @@ const BlogAdmin = () => {
                                             })
                                         }
                                         required
-                                        className="w-full h-[250px] sm:h-[400px] rounded-xl border border-slate-200 bg-white p-3 sm:p-4 font-mono text-xs sm:text-sm focus:border-emerald-900 transition-all outline-none resize-vertical"
+                                        className="w-full h-[250px] sm:h-[450px] rounded-lg border border-slate-200 bg-white p-2 sm:p-4 font-mono text-[11px] sm:text-sm focus:border-emerald-900 transition-all outline-none resize-vertical"
                                     />
                                 </div>
                             </div>
 
-                            <div className="flex items-center gap-3 p-3 sm:p-4 rounded-xl sm:rounded-2xl bg-slate-50 border border-slate-200">
+                            <div className="flex items-center gap-3 p-3 rounded-lg bg-slate-50 border border-slate-200">
                                 <input
                                     type="checkbox"
                                     id="published"
@@ -296,29 +296,29 @@ const BlogAdmin = () => {
                                     onChange={(e) =>
                                         setFormData({ ...formData, published: e.target.checked })
                                     }
-                                    className="w-5 h-5 shrink-0 rounded-lg border-slate-300 text-emerald-900 focus:ring-emerald-900"
+                                    className="w-4 h-4 shrink-0 rounded border-slate-300 text-emerald-900 focus:ring-emerald-900"
                                 />
                                 <label
                                     htmlFor="published"
-                                    className="text-[11px] sm:text-sm font-bold text-slate-700 cursor-pointer"
+                                    className="text-[10px] sm:text-sm font-bold text-slate-700 cursor-pointer"
                                 >
-                                    Tornar esta publicação visível no site agora
+                                    Visível no site agora
                                 </label>
                             </div>
 
-                            <div className="flex flex-col sm:flex-row gap-3 pt-2">
+                            <div className="flex flex-col sm:flex-row gap-2 sm:gap-4 pt-2">
                                 <Button
                                     type="submit"
-                                    className="h-11 sm:h-12 bg-emerald-900 px-10 text-sm font-bold text-white hover:bg-emerald-800 active:scale-95 transition-all shadow-lg shadow-emerald-900/10"
+                                    className="h-10 sm:h-12 bg-emerald-900 px-8 text-xs sm:text-sm font-bold text-white hover:bg-emerald-800"
                                 >
                                     <Save className="mr-2 h-4 w-4" />
-                                    {editingId ? "Salvar Alterações" : "Publicar Matéria"}
+                                    {editingId ? "Salvar" : "Publicar"}
                                 </Button>
                                 <Button
                                     type="button"
                                     variant="ghost"
                                     onClick={resetForm}
-                                    className="h-11 sm:h-12 px-8 text-sm font-bold text-red-400 hover:bg-red-50 hover:text-red-600"
+                                    className="h-10 px-6 text-xs sm:text-sm font-bold text-red-400 hover:bg-red-50 hover:text-red-600"
                                 >
                                     Descartar
                                 </Button>
