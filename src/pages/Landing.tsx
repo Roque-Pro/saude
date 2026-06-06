@@ -78,44 +78,46 @@ const Landing = () => {
       </header>
 
       <main className="relative z-10">
-        {/* HERO: Cinematic Metabolic Integration */}
+        {/* HERO: Immersive Metabolic Engineering */}
         <section id="ciência" className="relative flex min-h-screen items-center overflow-hidden bg-[#020808]">
           
-          {/* THE BACKGROUND LAYER: The Photo itself ('Por baixo') */}
+          {/* THE IMMERSIVE BACKGROUND: Photo 'Por baixo' with seamless fusion */}
           <div className="absolute inset-0 z-0">
-             <div className="absolute right-0 top-0 h-full w-full lg:w-3/4">
-                <img 
-                    src={drSaulloImage} 
-                    alt="Dr Saullo Gomes Background" 
-                    className="h-full w-full object-cover object-top opacity-80" 
-                />
-                {/* THE RADICAL GRADIENT: Flows from background/title into the image */}
-                <div className="absolute inset-0 bg-gradient-to-r from-[#020808] via-[#020808]/80 to-transparent lg:from-10% lg:via-40%" />
-                <div className="absolute inset-0 bg-gradient-to-t from-[#020808] via-transparent to-transparent opacity-60" />
-             </div>
+             {/* The Photo: Fullscreen coverage, positioned to keep Dr. Saullo visible */}
+             <img 
+                src={drSaulloImage} 
+                alt="Dr Saullo Gomes Cinematic Background" 
+                className="h-full w-full object-cover object-[75%_top] lg:object-[85%_top]" 
+             />
              
-             {/* Base Clinical Gradient behind text */}
-             <div className="absolute left-0 top-0 h-full w-full bg-[radial-gradient(circle_at_20%_50%,_rgba(16,185,129,0.1),_transparent_50%)]" />
+             {/* THE MASTER FUSION GRADIENT: Solid color from left to right */}
+             <div className="absolute inset-0 bg-gradient-to-r from-[#020808] via-[#020808]/80 to-transparent lg:from-20% lg:via-50%" />
+             
+             {/* THE VERTICAL FUSION: Solid color from bottom to top */}
+             <div className="absolute inset-0 bg-gradient-to-t from-[#020808] via-transparent to-transparent lg:from-5% lg:via-30%" />
+             
+             {/* Subtle technical glow overlay */}
+             <div className="absolute left-0 top-0 h-full w-full bg-[radial-gradient(circle_at_20%_50%,_rgba(16,185,129,0.05),_transparent_50%)]" />
           </div>
 
-          <div className="relative z-10 mx-auto max-w-[1600px] w-full px-10 lg:px-24 py-40">
+          <div className="relative z-10 mx-auto max-w-[1600px] w-full px-10 lg:px-24">
             <div className="max-w-4xl">
               <motion.div
-                initial={{ opacity: 0, y: 30 }}
+                initial={{ opacity: 0, y: 40 }}
                 animate={{ opacity: 1, y: 0 }}
-                transition={{ duration: 1.2 }}
+                transition={{ duration: 1.2, ease: "easeOut" }}
               >
-                <h1 className="text-6xl font-bold leading-[1] tracking-tighter text-white sm:text-8xl lg:text-[110px]">
+                <h1 className="text-6xl font-bold leading-[1.05] tracking-tighter text-white sm:text-8xl lg:text-[115px]">
                   Engenharia <br />
-                  <span className="text-emerald-500 italic">Metabólica.</span>
+                  <span className="text-emerald-500 italic font-medium">Metabólica.</span>
                 </h1>
 
-                <p className="mt-12 max-w-xl text-xl leading-relaxed text-slate-300 font-medium lg:text-2xl drop-shadow-sm">
+                <p className="mt-12 max-w-xl text-xl leading-relaxed text-slate-300 font-medium lg:text-2xl drop-shadow-2xl">
                   Sua fisiologia é o motor da sua carreira. Construímos estratégias hormonais sob medida para médicos e advogados que exigem performance cerebral e vitalidade física extrema.
                 </p>
 
                 <div className="mt-16 flex flex-col gap-10 sm:flex-row sm:items-center">
-                  <Button asChild size="lg" className="h-24 rounded-full bg-emerald-500 px-16 text-xl font-bold text-[#020808] transition-all hover:bg-emerald-400 hover:scale-[1.05] active:scale-95 shadow-[0_20px_50px_rgba(16,185,129,0.4)]">
+                  <Button asChild size="lg" className="h-24 rounded-full bg-emerald-500 px-16 text-xl font-bold text-[#020808] transition-all hover:bg-emerald-400 hover:scale-[1.05] active:scale-95 shadow-[0_30px_60px_rgba(16,185,129,0.4)]">
                     <Link to="/diagnostico-gratuito">
                       Iniciar Scan Clínico
                       <ArrowRight className="ml-4 h-6 w-6" />
