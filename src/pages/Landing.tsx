@@ -81,34 +81,31 @@ const Landing = () => {
         {/* HERO: Cinematic Metabolic Integration */}
         <section id="ciência" className="relative flex min-h-screen items-center overflow-hidden bg-[#020808]">
           
-          {/* THE BACKGROUND: Photo 'Por baixo' with true cinematic fusion */}
-          <div className="absolute inset-0 z-0 overflow-hidden">
-             {/* The Photo: Fullscreen coverage, positioned right */}
-             <div className="absolute right-0 top-0 h-full w-full lg:w-4/5 xl:w-2/3">
-                <img 
-                    src={drSaulloImage} 
-                    alt="Dr Saullo Gomes Cinematic Portrait" 
-                    className="h-full w-full object-cover object-center lg:object-top" 
-                />
-             </div>
+          {/* THE IMMERSIVE BACKGROUND: Photo 'Por baixo' with seamless fusion */}
+          <div className="absolute inset-0 z-0">
+             {/* The Photo: Fullscreen coverage, positioned to keep Dr. Saullo visible */}
+             <img 
+                src={drSaulloImage} 
+                alt="Dr Saullo Gomes Cinematic Background" 
+                className="h-full w-full object-cover object-[75%_top] lg:object-[85%_top]" 
+             />
              
-             {/* THE MASTER FUSION: Solid background to transparent gradient */}
-             {/* Left-to-Right: Covers the left part and fades into the photo */}
-             <div className="absolute inset-0 bg-gradient-to-r from-[#020808] via-[#020808] to-transparent lg:via-[35%] xl:via-[45%]" />
+             {/* THE MASTER FUSION GRADIENT: Solid color from left to right */}
+             <div className="absolute inset-0 bg-gradient-to-r from-[#020808] via-[#020808]/80 to-transparent lg:from-20% lg:via-50%" />
              
-             {/* Bottom-to-Top: Seamless blend into the page floor */}
-             <div className="absolute inset-0 bg-gradient-to-t from-[#020808] via-transparent to-transparent lg:via-[20%]" />
+             {/* THE VERTICAL FUSION: Solid color from bottom to top */}
+             <div className="absolute inset-0 bg-gradient-to-t from-[#020808] via-transparent to-transparent lg:from-5% lg:via-30%" />
              
-             {/* Subtle medical glow behind text area */}
-             <div className="absolute left-0 top-0 h-full w-1/2 bg-[radial-gradient(circle_at_20%_50%,_rgba(16,185,129,0.08),_transparent_60%)]" />
+             {/* Subtle technical glow overlay */}
+             <div className="absolute left-0 top-0 h-full w-full bg-[radial-gradient(circle_at_20%_50%,_rgba(16,185,129,0.05),_transparent_50%)]" />
           </div>
 
           <div className="relative z-10 mx-auto max-w-[1600px] w-full px-10 lg:px-24">
             <div className="max-w-4xl">
               <motion.div
-                initial={{ opacity: 0, y: 50 }}
+                initial={{ opacity: 0, y: 40 }}
                 animate={{ opacity: 1, y: 0 }}
-                transition={{ duration: 1.2, ease: [0.16, 1, 0.3, 1] }}
+                transition={{ duration: 1.2, ease: "easeOut" }}
               >
                 <h1 className="text-6xl font-bold leading-[1.05] tracking-tighter text-white sm:text-8xl lg:text-[115px]">
                   Engenharia <br />
@@ -120,7 +117,7 @@ const Landing = () => {
                 </p>
 
                 <div className="mt-16 flex flex-col gap-10 sm:flex-row sm:items-center">
-                  <Button asChild size="lg" className="h-24 rounded-full bg-emerald-500 px-16 text-xl font-bold text-[#020808] transition-all hover:bg-emerald-400 hover:scale-[1.05] active:scale-95 shadow-[0_30px_70px_rgba(16,185,129,0.3)]">
+                  <Button asChild size="lg" className="h-24 rounded-full bg-emerald-500 px-16 text-xl font-bold text-[#020808] transition-all hover:bg-emerald-400 hover:scale-[1.05] active:scale-95 shadow-[0_30px_60px_rgba(16,185,129,0.4)]">
                     <Link to="/diagnostico-gratuito">
                       Iniciar Scan Clínico
                       <ArrowRight className="ml-4 h-6 w-6" />
@@ -132,16 +129,6 @@ const Landing = () => {
                   </div>
                 </div>
               </motion.div>
-            </div>
-          </div>
-        </section>              
-              <div className="absolute -right-20 -top-20 h-96 w-96 rounded-full bg-emerald-500/5 blur-[120px]" />
-              <div className="absolute -left-20 -bottom-20 h-96 w-96 rounded-full bg-blue-500/5 blur-[120px]" />
-            </div>
-          </div>
-        </section>              
-              <div className="absolute -right-20 -top-20 h-96 w-96 rounded-full bg-emerald-500/5 blur-[120px]" />
-              <div className="absolute -left-20 -bottom-20 h-96 w-96 rounded-full bg-blue-500/5 blur-[120px]" />
             </div>
           </div>
         </section>
