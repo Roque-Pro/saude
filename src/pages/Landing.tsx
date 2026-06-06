@@ -79,29 +79,33 @@ const Landing = () => {
 
       <main className="relative z-10">
         {/* HERO: Cinematic Metabolic Integration */}
-        <section id="ciência" className="relative flex min-h-screen items-center overflow-hidden bg-[#020808]">
+        <section id="ciência" className="relative flex min-h-screen items-center overflow-hidden bg-[#020808] pt-32 lg:pt-48">
           
-          {/* THE IMMERSIVE BACKGROUND: Photo 'Por baixo' with seamless fusion */}
-          <div className="absolute inset-0 z-0">
-             {/* The Photo: Fullscreen coverage, positioned to keep Dr. Saullo visible */}
-             <img 
-                src={drSaulloImage} 
-                alt="Dr Saullo Gomes Cinematic Background" 
-                className="h-full w-full object-cover object-[75%_top] lg:object-[85%_top]" 
-             />
+          {/* THE IMMERSIVE BACKGROUND: Photo 'Por baixo' with controlled proportion */}
+          <div className="absolute inset-0 z-0 overflow-hidden">
+             {/* The Photo: Reduced proportion as requested (lg:w-[65%]) */}
+             <div className="absolute right-0 top-0 h-full w-full lg:w-[65%] xl:w-[60%]">
+                <img 
+                    src={drSaulloImage} 
+                    alt="Dr Saullo Gomes Cinematic Background" 
+                    className="h-full w-full object-cover object-top" 
+                />
+                {/* Master Fusion Gradient inside the image container to blend its left edge */}
+                <div className="absolute inset-0 bg-gradient-to-r from-[#020808] via-[#020808]/50 to-transparent" />
+             </div>
              
              {/* THE MASTER FUSION GRADIENT: Solid color from left to right */}
-             <div className="absolute inset-0 bg-gradient-to-r from-[#020808] via-[#020808]/80 to-transparent lg:from-20% lg:via-50%" />
+             <div className="absolute inset-0 bg-gradient-to-r from-[#020808] via-[#020808] to-transparent lg:via-[40%] xl:via-[50%]" />
              
              {/* THE VERTICAL FUSION: Solid color from bottom to top */}
-             <div className="absolute inset-0 bg-gradient-to-t from-[#020808] via-transparent to-transparent lg:from-5% lg:via-30%" />
+             <div className="absolute inset-0 bg-gradient-to-t from-[#020808] via-transparent to-transparent lg:via-[15%]" />
              
              {/* Subtle technical glow overlay */}
              <div className="absolute left-0 top-0 h-full w-full bg-[radial-gradient(circle_at_20%_50%,_rgba(16,185,129,0.05),_transparent_50%)]" />
           </div>
 
           <div className="relative z-10 mx-auto max-w-[1600px] w-full px-10 lg:px-24">
-            <div className="max-w-4xl">
+            <div className="max-w-4xl py-20 lg:py-40">
               <motion.div
                 initial={{ opacity: 0, y: 40 }}
                 animate={{ opacity: 1, y: 0 }}
