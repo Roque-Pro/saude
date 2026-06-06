@@ -23,7 +23,9 @@ import {
   Waves,
   BrainCircuit,
   Cpu,
-  ShieldAlert
+  ShieldAlert,
+  Menu,
+  X
 } from "lucide-react";
 import { Link } from "react-router-dom";
 
@@ -34,6 +36,7 @@ import drSaulloImage from "@/img/drsaulo.jpg";
 
 const Landing = () => {
   const [scrolled, setScrolled] = useState(false);
+  const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
 
   useEffect(() => {
     const handleScroll = () => setScrolled(window.scrollY > 50);
@@ -47,6 +50,13 @@ const Landing = () => {
     keywords: ["endocrinologista de elite", "performance metabólica", "hormônios e carreira", "dr saullo gomes", "longevidade estratégica", "saúde para executivos"],
   });
 
+  const navItems = [
+    { label: "Ciência", href: "#ciência" },
+    { label: "Protocolos", href: "#protocolos" },
+    { label: "Engenharia", href: "#fluxo" },
+    { label: "Acervo", href: "#acervo" },
+  ];
+
   return (
     <div className="min-h-screen bg-[#020808] text-slate-200 font-sans selection:bg-emerald-500/30 selection:text-emerald-100 antialiased overflow-x-hidden">
       {/* Blueprint Visual Layer - Clinical/Technical Grid */}
@@ -56,7 +66,7 @@ const Landing = () => {
       </div>
 
       {/* Sophisticated Clinical Navigation */}
-      <header className={`fixed top-0 z-50 w-full transition-all duration-1000 ${scrolled ? "bg-[#020808]/95 backdrop-blur-3xl border-b border-emerald-500/10 py-5" : "py-12"}`}>
+      <header className={`fixed top-0 z-50 w-full transition-all duration-1000 ${scrolled || mobileMenuOpen ? "bg-[#020808]/95 backdrop-blur-3xl border-b border-emerald-500/10 py-5" : "py-12"}`}>
         <div className="mx-auto flex max-w-[1600px] items-center justify-between px-10 lg:px-24">
           <div className="flex items-center gap-8">
             <div className="flex flex-col">
@@ -68,17 +78,67 @@ const Landing = () => {
             </div>
           </div>
           
+          {/* Desktop Navigation */}
           <nav className="hidden lg:flex items-center gap-16">
-            <a href="#ciência" className="text-[11px] font-bold uppercase tracking-[0.3em] text-slate-500 hover:text-emerald-400 transition-all">Ciência</a>
-            <a href="#protocolos" className="text-[11px] font-bold uppercase tracking-[0.3em] text-slate-500 hover:text-emerald-400 transition-all">Protocolos</a>
-            <a href="#fluxo" className="text-[11px] font-bold uppercase tracking-[0.3em] text-slate-500 hover:text-emerald-400 transition-all">Engenharia</a>
-            <a href="#acervo" className="text-[11px] font-bold uppercase tracking-[0.3em] text-slate-500 hover:text-emerald-400 transition-all">Acervo</a>
+            {navItems.map((item) => (
+              <a key={item.label} href={item.href} className="text-[11px] font-bold uppercase tracking-[0.3em] text-slate-500 hover:text-emerald-400 transition-all">
+                {item.label}
+              </a>
+            ))}
             <div className="h-5 w-[1px] bg-white/5" />
             <Link to="/crm" className="text-[11px] font-bold uppercase tracking-[0.3em] text-slate-500 hover:text-emerald-400 transition-all">
               Restrito
             </Link>
           </nav>
+
+          {/* Mobile Menu Trigger */}
+          <button 
+            className="lg:hidden p-2 text-white hover:text-emerald-400 transition-colors"
+            onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
+            aria-label="Toggle Menu"
+          >
+            {mobileMenuOpen ? <X className="h-6 w-6" /> : <Menu className="h-6 w-6" />}
+          </button>
         </div>
+
+        {/* Mobile Menu Overlay */}
+        <AnimatePresence>
+          {mobileMenuOpen && (
+            <motion.div
+              initial={{ opacity: 0, height: 0 }}
+              animate={{ opacity: 1, height: "auto" }}
+              exit={{ opacity: 0, height: 0 }}
+              className="lg:hidden border-t border-emerald-500/10 bg-[#020808]/98 overflow-hidden"
+            >
+              <div className="flex flex-col px-10 py-8 gap-6">
+                {navItems.map((item) => (
+                  <a 
+                    key={item.label} 
+                    href={item.href} 
+                    className="text-[12px] font-bold uppercase tracking-[0.4em] text-slate-400 hover:text-emerald-400 py-2 border-b border-white/5"
+                    onClick={() => setMobileMenuOpen(false)}
+                  >
+                    {item.label}
+                  </a>
+                ))}
+                <Link 
+                  to="/crm" 
+                  className="text-[12px] font-bold uppercase tracking-[0.4em] text-emerald-400 py-2"
+                  onClick={() => setMobileMenuOpen(false)}
+                >
+                  Área Restrita
+                </Link>
+                <Link 
+                  to="/diagnostico-gratuito"
+                  className="mt-4 flex items-center justify-center h-14 rounded-full bg-emerald-500 text-[11px] font-bold uppercase tracking-[0.3em] text-[#020808]"
+                  onClick={() => setMobileMenuOpen(false)}
+                >
+                  Scan Clínico
+                </Link>
+              </div>
+            </motion.div>
+          )}
+        </AnimatePresence>
       </header>
 
       <main className="relative z-10">
