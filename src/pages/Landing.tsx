@@ -70,8 +70,8 @@ const Landing = () => {
             <a href="#protocolos" className="text-[11px] font-bold uppercase tracking-[0.3em] text-slate-500 hover:text-emerald-400 transition-all">Protocolos</a>
             <a href="#briefings" className="text-[11px] font-bold uppercase tracking-[0.3em] text-slate-500 hover:text-emerald-400 transition-all">Briefings</a>
             <div className="h-5 w-[1px] bg-white/5" />
-            <Link to="/diagnostico-gratuito" className="group relative overflow-hidden rounded-full border border-emerald-500/20 bg-emerald-500/5 px-10 py-3.5 transition-all hover:border-emerald-500 hover:bg-emerald-500 hover:text-slate-950">
-              <span className="relative z-10 text-[11px] font-bold uppercase tracking-[0.3em]">Mapeamento Metabólico</span>
+            <Link to="/crm" className="text-[11px] font-bold uppercase tracking-[0.3em] text-slate-500 hover:text-emerald-400 transition-all">
+              Restrito
             </Link>
           </nav>
         </div>
@@ -131,29 +131,70 @@ const Landing = () => {
                 </div>
 
                 {/* Tactical Medical Modules Overlay */}
-                <div className="absolute inset-0 p-12 flex flex-col justify-between pointer-events-none">
+                <div className="absolute inset-0 p-8 lg:p-12 flex flex-col justify-between pointer-events-none">
                     <div className="flex justify-between items-start">
-                         <div className="rounded-[32px] border border-white/10 bg-[#020808]/80 p-7 backdrop-blur-xl shadow-2xl pointer-events-auto">
-                            <div className="flex items-center gap-5 mb-4">
-                                <Activity className="h-5 w-5 text-emerald-500" />
-                                <span className="text-[10px] font-bold uppercase tracking-widest text-slate-500">Insulin Sensitivity</span>
+                         {/* Card 1: Insulin Sensitivity */}
+                         <motion.div 
+                            animate={{ y: [0, -10, 0] }}
+                            transition={{ duration: 4, repeat: Infinity, ease: "easeInOut" }}
+                            className="rounded-[28px] border border-white/10 bg-[#020808]/90 p-6 backdrop-blur-xl shadow-2xl pointer-events-auto"
+                         >
+                            <div className="flex items-center gap-4 mb-3">
+                                <div className="h-2 w-2 rounded-full bg-emerald-500 animate-pulse" />
+                                <span className="text-[9px] font-black uppercase tracking-widest text-slate-500">Insulin Sensitivity</span>
                             </div>
                             <div className="flex items-baseline gap-2">
-                                <p className="text-3xl font-bold text-white">Optimal</p>
-                                <span className="text-xs text-emerald-400 font-bold tracking-tighter">REF-09</span>
+                                <p className="text-2xl font-bold text-white tracking-tight">Optimal</p>
+                                <span className="text-[10px] text-emerald-400 font-bold">98.2%</span>
                             </div>
-                         </div>
-                         <div className="h-12 w-12 rounded-full border border-emerald-500/20 flex items-center justify-center bg-emerald-500/5">
-                            <div className="h-2 w-2 rounded-full bg-emerald-500 animate-pulse" />
-                         </div>
+                         </motion.div>
+
+                         {/* Card 2: Bio-Age Status */}
+                         <motion.div 
+                            animate={{ y: [0, 10, 0] }}
+                            transition={{ duration: 5, repeat: Infinity, ease: "easeInOut", delay: 1 }}
+                            className="h-14 w-14 rounded-full border border-emerald-500/20 flex items-center justify-center bg-emerald-500/5 backdrop-blur-md pointer-events-auto"
+                         >
+                            <span className="text-[10px] font-black text-emerald-400">AGE-X</span>
+                         </motion.div>
                     </div>
                     
-                    <div className="flex flex-col gap-6 items-start">
-                        <div className="rounded-[40px] border border-emerald-500/20 bg-emerald-950/90 p-8 backdrop-blur-xl shadow-2xl pointer-events-auto max-w-[240px]">
-                            <Heart className="h-8 w-8 text-emerald-400 mb-5" />
+                    <div className="flex flex-col gap-5 items-start">
+                        {/* Card 3: Hormonal Balance Graph */}
+                        <motion.div 
+                            initial={{ x: -20, opacity: 0 }}
+                            animate={{ x: 0, opacity: 1 }}
+                            transition={{ delay: 0.5 }}
+                            className="rounded-[32px] border border-white/10 bg-slate-950/80 p-6 backdrop-blur-xl shadow-2xl pointer-events-auto w-full max-w-[220px]"
+                        >
+                            <div className="flex items-center justify-between mb-4">
+                                <span className="text-[8px] font-black uppercase tracking-[0.2em] text-slate-400">Hormonal Balance</span>
+                                <Activity className="h-3 w-3 text-emerald-500" />
+                            </div>
+                            <div className="flex items-end gap-1.5 h-8">
+                                {[40, 70, 50, 90, 60, 80].map((h, i) => (
+                                    <div key={i} className="flex-1 bg-emerald-500/10 rounded-t-sm relative overflow-hidden" style={{ height: '100%' }}>
+                                        <motion.div 
+                                            initial={{ height: 0 }}
+                                            animate={{ height: `${h}%` }}
+                                            transition={{ duration: 1, delay: 1 + (i * 0.1) }}
+                                            className="absolute bottom-0 left-0 right-0 bg-emerald-500"
+                                        />
+                                    </div>
+                                ))}
+                            </div>
+                        </motion.div>
+
+                        {/* Card 4: Metabolic Yield */}
+                        <motion.div 
+                            animate={{ scale: [1, 1.02, 1] }}
+                            transition={{ duration: 3, repeat: Infinity }}
+                            className="rounded-[40px] border border-emerald-500/20 bg-emerald-950/90 p-8 backdrop-blur-xl shadow-2xl pointer-events-auto w-full max-w-[240px]"
+                        >
+                            <Zap className="h-7 w-7 text-emerald-400 mb-4" />
                             <p className="text-4xl font-bold text-white tracking-tighter">100%</p>
-                            <p className="mt-2 text-[10px] font-bold uppercase tracking-[0.3em] text-emerald-500/70">Metabolic Yield</p>
-                        </div>
+                            <p className="mt-2 text-[9px] font-black uppercase tracking-[0.3em] text-emerald-500/70">Metabolic Precision</p>
+                        </motion.div>
                     </div>
                 </div>
               </motion.div>
