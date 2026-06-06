@@ -78,8 +78,11 @@ const Landing = () => {
       </header>
 
       <main className="relative z-10">
-        {/* HERO: Metabolic Flow with Background Gradient */}
-        <section id="ciência" className="relative mx-auto flex min-h-screen max-w-[1600px] items-center px-10 lg:px-24 pt-40 pb-20 overflow-hidden bg-gradient-to-r from-[#020808] via-[#041a17] to-[#020808]">
+        {/* HERO: Metabolic Flow with Professional Gradient */}
+        <section id="ciência" className="relative mx-auto flex min-h-screen max-w-[1600px] items-center px-10 lg:px-24 pt-40 pb-20 overflow-hidden bg-[#020808]">
+          {/* Enhanced Background Gradient: From Title to Photo */}
+          <div className="absolute inset-0 z-0 bg-gradient-to-r from-[#041f1b] via-[#020808] to-[#020808] opacity-100" />
+          
           <div className="relative z-10 grid gap-24 lg:grid-cols-[1.1fr_0.9fr] lg:items-center w-full">
             <motion.div
               initial={{ opacity: 0, x: -30 }}
@@ -109,20 +112,30 @@ const Landing = () => {
               </div>
             </motion.div>
 
-            {/* THE MEDICAL PORTRAIT: Sophisticated & Clean */}
+            {/* THE MEDICAL PORTRAIT: High Fidelity, No Filters */}
             <div className="relative">
               <motion.div 
                 initial={{ opacity: 0, scale: 0.98 }}
                 animate={{ opacity: 1, scale: 1 }}
                 transition={{ duration: 1.5, ease: [0.16, 1, 0.3, 1] }}
-                className="relative z-10 rounded-[80px] border border-white/5 bg-slate-900/10 p-2 shadow-2xl backdrop-blur-sm overflow-hidden"
+                className="relative z-10 rounded-[80px] border border-white/5 bg-white/5 p-2 shadow-2xl backdrop-blur-sm overflow-hidden"
               >
-                <div className="relative rounded-[72px] overflow-hidden">
-                    <img src={drSaulloImage} alt="Dr Saullo Gomes" className="w-full aspect-[4/5] object-cover transition-all duration-1000" />
-                    <div className="absolute inset-0 bg-gradient-to-t from-[#020808] via-transparent to-transparent opacity-40" />
+                <div className="relative rounded-[72px] overflow-hidden bg-slate-900">
+                    <img 
+                        src={drSaulloImage} 
+                        alt="Dr Saullo Gomes" 
+                        className="w-full aspect-[4/5] object-cover transition-all duration-1000" 
+                    />
+                    {/* Natural Fade at the bottom only */}
+                    <div className="absolute inset-0 bg-gradient-to-t from-[#020808]/80 via-transparent to-transparent" />
                 </div>
               </motion.div>
               
+              <div className="absolute -right-20 -top-20 h-96 w-96 rounded-full bg-emerald-500/5 blur-[120px]" />
+              <div className="absolute -left-20 -bottom-20 h-96 w-96 rounded-full bg-blue-500/5 blur-[120px]" />
+            </div>
+          </div>
+        </section>              
               <div className="absolute -right-20 -top-20 h-96 w-96 rounded-full bg-emerald-500/5 blur-[120px]" />
               <div className="absolute -left-20 -bottom-20 h-96 w-96 rounded-full bg-blue-500/5 blur-[120px]" />
             </div>
