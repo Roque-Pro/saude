@@ -15,7 +15,12 @@ import {
   Users,
   LineChart,
   PieChart,
-  Command
+  Command,
+  Heart,
+  Dna,
+  Stethoscope,
+  Microscope,
+  Waves
 } from "lucide-react";
 import { Link } from "react-router-dom";
 
@@ -34,182 +39,182 @@ const Landing = () => {
   }, []);
 
   useSEO({
-    title: "Dr Saullo Gomes | Strategic Operating System para Médicos e Advogados",
-    description: "A ciência da medicina encontra a precisão da gestão estratégica. Portal exclusivo para profissionais de elite que buscam escala, segurança e autoridade.",
-    keywords: ["gestão médica", "estratégia para advogados", "consultoria de elite", "dr saullo gomes", "crm médico", "performance profissional"],
+    title: "Dr Saullo Gomes | Endocrinologia & Engenharia Metabólica de Alta Performance",
+    description: "Medicina de precisão para médicos e advogados. Estratégias hormonais e metabólicas para quem busca performance máxima e longevidade real.",
+    keywords: ["endocrinologista de elite", "performance metabólica", "hormônios e carreira", "dr saullo gomes", "longevidade estratégica", "saúde para executivos"],
   });
 
   return (
-    <div className="min-h-screen bg-[#020617] text-slate-200 font-sans selection:bg-emerald-500/30 selection:text-emerald-100 antialiased overflow-x-hidden">
-      {/* Visual background setup - Technical Grid */}
-      <div className="fixed inset-0 z-0 pointer-events-none opacity-[0.05]">
-        <div className="absolute inset-0" style={{ backgroundImage: 'linear-gradient(#94a3b8 1px, transparent 1px), linear-gradient(90deg, #94a3b8 1px, transparent 1px)', backgroundSize: '60px 60px' }} />
-        <div className="absolute inset-0 bg-gradient-to-tr from-[#020617] via-transparent to-transparent" />
+    <div className="min-h-screen bg-[#020808] text-slate-200 font-sans selection:bg-emerald-500/30 selection:text-emerald-100 antialiased overflow-x-hidden">
+      {/* Blueprint Visual Layer - Clinical/Technical Grid */}
+      <div className="fixed inset-0 z-0 pointer-events-none opacity-[0.04]">
+        <div className="absolute inset-0" style={{ backgroundImage: 'linear-gradient(#94a3b8 1px, transparent 1px), linear-gradient(90deg, #94a3b8 1px, transparent 1px)', backgroundSize: '80px 80px' }} />
+        <div className="absolute inset-0 bg-[radial-gradient(circle_at_center,_transparent_0%,_#020808_80%)]" />
       </div>
 
-      {/* Modern Navigation */}
-      <header className={`fixed top-0 z-50 w-full transition-all duration-700 ${scrolled ? "bg-[#020617]/95 backdrop-blur-3xl border-b border-white/5 py-4" : "py-10"}`}>
-        <div className="mx-auto flex max-w-[1500px] items-center justify-between px-8 lg:px-20">
-          <div className="flex items-center gap-6">
-            <div className="flex h-12 w-12 items-center justify-center rounded-2xl bg-emerald-950 border border-emerald-500/30">
-                <Command className="h-6 w-6 text-emerald-400" />
-            </div>
+      {/* Sophisticated Clinical Navigation */}
+      <header className={`fixed top-0 z-50 w-full transition-all duration-1000 ${scrolled ? "bg-[#020808]/90 backdrop-blur-3xl border-b border-emerald-500/10 py-5" : "py-12"}`}>
+        <div className="mx-auto flex max-w-[1600px] items-center justify-between px-10 lg:px-24">
+          <div className="flex items-center gap-8">
             <div className="flex flex-col">
-              <span className="font-serif text-2xl font-black tracking-tight text-white leading-none">DR SAULLO GOMES</span>
-              <span className="mt-1 text-[9px] font-black uppercase tracking-[0.4em] text-emerald-500/60">Strategic Performance Engine</span>
+              <span className="text-xl font-bold tracking-[0.2em] text-white">DR SAULLO GOMES</span>
+              <div className="mt-1.5 flex items-center gap-3">
+                <span className="h-[1px] w-6 bg-emerald-500/50" />
+                <span className="text-[10px] font-bold uppercase tracking-[0.5em] text-emerald-500/80">Endocrinologia & Performance</span>
+              </div>
             </div>
           </div>
           
           <nav className="hidden lg:flex items-center gap-16">
-            <a href="#sistema" className="text-[10px] font-black uppercase tracking-[0.3em] text-slate-500 hover:text-white transition-colors">Sistema</a>
-            <a href="#modulos" className="text-[10px] font-black uppercase tracking-[0.3em] text-slate-500 hover:text-white transition-colors">Módulos</a>
-            <a href="#briefings" className="text-[10px] font-black uppercase tracking-[0.3em] text-slate-500 hover:text-white transition-colors">Briefings</a>
-            <div className="h-4 w-px bg-white/10" />
-            <Link to="/crm" className="group flex items-center gap-3 rounded-full border border-white/10 bg-white/5 px-8 py-3 transition-all hover:bg-white hover:text-slate-950">
-              <span className="text-[10px] font-black uppercase tracking-[0.3em]">Acesso de Elite</span>
-              <ChevronRight className="h-4 w-4 transition-transform group-hover:translate-x-1" />
+            <a href="#ciência" className="text-[11px] font-bold uppercase tracking-[0.3em] text-slate-500 hover:text-emerald-400 transition-all">Ciência</a>
+            <a href="#protocolos" className="text-[11px] font-bold uppercase tracking-[0.3em] text-slate-500 hover:text-emerald-400 transition-all">Protocolos</a>
+            <a href="#briefings" className="text-[11px] font-bold uppercase tracking-[0.3em] text-slate-500 hover:text-emerald-400 transition-all">Briefings</a>
+            <div className="h-5 w-[1px] bg-white/5" />
+            <Link to="/diagnostico-gratuito" className="group relative overflow-hidden rounded-full border border-emerald-500/20 bg-emerald-500/5 px-10 py-3.5 transition-all hover:border-emerald-500 hover:bg-emerald-500 hover:text-slate-950">
+              <span className="relative z-10 text-[11px] font-bold uppercase tracking-[0.3em]">Mapeamento Metabólico</span>
             </Link>
           </nav>
         </div>
       </header>
 
       <main className="relative z-10">
-        {/* HERO SECTION: The Operational Command Center */}
-        <section id="sistema" className="mx-auto flex min-h-screen max-w-[1500px] items-center px-8 lg:px-20 pt-32">
-          <div className="grid gap-16 lg:grid-cols-[1.1fr_0.9fr] lg:items-center">
+        {/* HERO: Metabolic Command Center */}
+        <section id="ciência" className="mx-auto flex min-h-screen max-w-[1600px] items-center px-10 lg:px-24 pt-40 pb-20">
+          <div className="grid gap-24 lg:grid-cols-[1.1fr_0.9fr] lg:items-center">
             <div>
-              <div className="mb-10 inline-flex items-center gap-4 rounded-2xl border border-emerald-500/20 bg-emerald-500/5 px-6 py-2.5">
-                <div className="relative h-2 w-2">
-                    <div className="absolute inset-0 rounded-full bg-emerald-500 animate-ping opacity-75" />
-                    <div className="relative rounded-full h-2 w-2 bg-emerald-500" />
+              <motion.div
+                initial={{ opacity: 0, x: -30 }}
+                animate={{ opacity: 1, x: 0 }}
+                transition={{ duration: 1 }}
+              >
+                <div className="mb-12 inline-flex items-center gap-5 rounded-full border border-emerald-500/10 bg-emerald-500/5 px-8 py-3">
+                  <Dna className="h-4 w-4 text-emerald-500" />
+                  <span className="text-[10px] font-bold uppercase tracking-[0.5em] text-emerald-400">Clinical Protocol: Active</span>
                 </div>
-                <span className="text-[10px] font-black uppercase tracking-[0.4em] text-emerald-400">Core System: Operational</span>
-              </div>
 
-              <h1 className="font-serif text-6xl font-black leading-[0.9] tracking-tighter text-white sm:text-8xl lg:text-[120px]">
-                Gestão de <br />
-                <span className="relative inline-block italic text-emerald-500">
-                  elite
-                  <svg className="absolute -bottom-4 left-0 h-4 w-full text-emerald-500/20" viewBox="0 0 100 10" preserveAspectRatio="none">
-                    <path d="M0 5 Q 25 0, 50 5 T 100 5" fill="none" stroke="currentColor" strokeWidth="6" />
-                  </svg>
-                </span>
-                <br />
-                zero ruído.
-              </h1>
+                <h1 className="text-6xl font-bold leading-[1.05] tracking-tight text-white sm:text-8xl lg:text-[110px]">
+                  Engenharia <br />
+                  <span className="text-emerald-500">Metabólica.</span>
+                </h1>
 
-              <p className="mt-12 max-w-xl text-xl leading-relaxed text-slate-400 font-medium lg:text-2xl">
-                Você é pago para ser brilhante em sua técnica. Nós construímos a infraestrutura para que sua gestão brilhe na mesma intensidade.
-              </p>
+                <p className="mt-14 max-w-xl text-xl leading-relaxed text-slate-400 font-medium lg:text-2xl">
+                  Sua fisiologia é o motor da sua carreira. Construímos estratégias hormonais sob medida para médicos e advogados que exigem performance cerebral e vitalidade física extrema.
+                </p>
 
-              <div className="mt-16 flex flex-col gap-8 sm:flex-row sm:items-center">
-                <Button asChild size="lg" className="h-20 rounded-[32px] bg-emerald-500 px-14 text-lg font-black text-[#020617] transition-all hover:bg-emerald-400 hover:scale-[1.02] active:scale-95 shadow-[0_20px_50px_rgba(16,185,129,0.3)]">
-                  <Link to="/diagnostico-gratuito">
-                    Run Strategic Scan
-                    <Zap className="ml-3 h-6 w-6 fill-current" />
-                  </Link>
-                </Button>
-                <div className="flex items-center gap-6 border-l border-white/10 pl-8">
-                    <div className="flex flex-col">
-                        <span className="text-[10px] font-black uppercase tracking-widest text-slate-500">Medical Authority</span>
-                        <span className="text-lg font-bold text-white">CRM/ES 435671</span>
-                    </div>
+                <div className="mt-20 flex flex-col gap-10 sm:flex-row sm:items-center">
+                  <Button asChild size="lg" className="h-24 rounded-[40px] bg-white px-16 text-xl font-bold text-[#020808] transition-all hover:bg-emerald-500 hover:text-white hover:scale-[1.03] active:scale-95 shadow-2xl shadow-emerald-500/10">
+                    <Link to="/diagnostico-gratuito">
+                      Iniciar Scan Clínico
+                      <ArrowRight className="ml-4 h-6 w-6" />
+                    </Link>
+                  </Button>
+                  <div className="flex flex-col border-l-2 border-emerald-500/20 pl-10">
+                      <span className="text-[10px] font-bold uppercase tracking-[0.4em] text-slate-500 mb-2">Autoridade Médica</span>
+                      <span className="text-xl font-bold text-white tracking-widest">CRM/ES 435671</span>
+                  </div>
                 </div>
-              </div>
+              </motion.div>
             </div>
 
-            {/* THE CRM MOCKUP: Asymmetrical & Technical */}
+            {/* THE MEDICAL DASHBOARD: Human-Made High Fidelity */}
             <div className="relative">
               <motion.div 
-                initial={{ opacity: 0, scale: 0.9 }}
+                initial={{ opacity: 0, scale: 0.95 }}
                 animate={{ opacity: 1, scale: 1 }}
                 transition={{ duration: 1.5, ease: [0.16, 1, 0.3, 1] }}
-                className="relative z-10 rounded-[60px] border border-white/10 bg-slate-900/50 p-4 shadow-2xl backdrop-blur-3xl overflow-hidden"
+                className="relative z-10 rounded-[80px] border border-white/5 bg-slate-900/30 p-5 shadow-[0_0_100px_rgba(16,185,129,0.05)] backdrop-blur-3xl overflow-hidden"
               >
-                <div className="absolute inset-0 bg-gradient-to-br from-emerald-500/10 via-transparent to-transparent" />
-                <div className="relative rounded-[48px] overflow-hidden">
-                    <img src={drSaulloImage} alt="Strategic Lead" className="w-full aspect-[4/5] object-cover grayscale opacity-40 mix-blend-luminosity hover:grayscale-0 hover:opacity-100 transition-all duration-1000" />
+                <div className="absolute inset-0 bg-gradient-to-br from-emerald-500/5 via-transparent to-transparent" />
+                <div className="relative rounded-[64px] overflow-hidden">
+                    <img src={drSaulloImage} alt="Dr Saullo Gomes" className="w-full aspect-[4/5] object-cover grayscale opacity-50 contrast-125 mix-blend-screen" />
+                    <div className="absolute inset-0 bg-gradient-to-t from-[#020808] via-transparent to-transparent opacity-80" />
                 </div>
 
-                {/* Status Overlay Modules */}
-                <div className="absolute inset-0 p-10 flex flex-col justify-between pointer-events-none">
-                    <div className="flex justify-end">
-                         <div className="rounded-3xl border border-white/10 bg-slate-950/80 p-5 backdrop-blur-md shadow-2xl pointer-events-auto">
-                            <div className="flex items-center gap-4 mb-2">
-                                <LineChart className="h-4 w-4 text-emerald-500" />
-                                <span className="text-[9px] font-black uppercase tracking-widest text-slate-400">Yield Engine</span>
+                {/* Tactical Medical Modules Overlay */}
+                <div className="absolute inset-0 p-12 flex flex-col justify-between pointer-events-none">
+                    <div className="flex justify-between items-start">
+                         <div className="rounded-[32px] border border-white/10 bg-[#020808]/80 p-7 backdrop-blur-xl shadow-2xl pointer-events-auto">
+                            <div className="flex items-center gap-5 mb-4">
+                                <Activity className="h-5 w-5 text-emerald-500" />
+                                <span className="text-[10px] font-bold uppercase tracking-widest text-slate-500">Insulin Sensitivity</span>
                             </div>
-                            <p className="text-2xl font-serif font-black text-white">+42%</p>
+                            <div className="flex items-baseline gap-2">
+                                <p className="text-3xl font-bold text-white">Optimal</p>
+                                <span className="text-xs text-emerald-400 font-bold tracking-tighter">REF-09</span>
+                            </div>
+                         </div>
+                         <div className="h-12 w-12 rounded-full border border-emerald-500/20 flex items-center justify-center bg-emerald-500/5">
+                            <div className="h-2 w-2 rounded-full bg-emerald-500 animate-pulse" />
                          </div>
                     </div>
                     
-                    <div className="flex flex-col gap-4 max-w-[200px]">
-                        <div className="rounded-3xl border border-emerald-500/30 bg-emerald-950/90 p-6 backdrop-blur-md shadow-2xl pointer-events-auto">
-                            <Users className="h-6 w-6 text-emerald-400 mb-3" />
-                            <p className="text-3xl font-serif font-black text-white">+5k</p>
-                            <p className="text-[9px] font-black uppercase tracking-[0.2em] text-emerald-500/70">Verified Leads</p>
+                    <div className="flex flex-col gap-6 items-start">
+                        <div className="rounded-[40px] border border-emerald-500/20 bg-emerald-950/90 p-8 backdrop-blur-xl shadow-2xl pointer-events-auto max-w-[240px]">
+                            <Heart className="h-8 w-8 text-emerald-400 mb-5" />
+                            <p className="text-4xl font-bold text-white tracking-tighter">100%</p>
+                            <p className="mt-2 text-[10px] font-bold uppercase tracking-[0.3em] text-emerald-500/70">Metabolic Yield</p>
                         </div>
                     </div>
                 </div>
               </motion.div>
-
-              {/* Decorative Blueprint elements */}
-              <div className="absolute -right-20 -top-20 h-64 w-64 rounded-full bg-emerald-500/10 blur-[100px]" />
-              <div className="absolute -left-20 -bottom-20 h-80 w-80 rounded-full bg-blue-500/5 blur-[120px]" />
+              
+              {/* Technical Aura Decorations */}
+              <div className="absolute -right-20 -top-20 h-96 w-96 rounded-full bg-emerald-500/5 blur-[120px]" />
+              <div className="absolute -left-20 -bottom-20 h-96 w-96 rounded-full bg-blue-500/5 blur-[120px]" />
             </div>
           </div>
         </section>
 
-        {/* METHODOLOGY SECTION: The Module Grid */}
-        <section id="modulos" className="bg-white py-32 lg:py-56 rounded-[100px] lg:rounded-[160px] relative">
-          <div className="mx-auto max-w-[1500px] px-8 lg:px-20">
-            <div className="mb-32 flex flex-col lg:flex-row lg:items-end justify-between gap-16">
-              <div className="max-w-2xl">
-                <div className="mb-6 h-1 w-24 bg-emerald-900" />
-                <span className="text-[10px] font-black uppercase tracking-[0.5em] text-emerald-700">OS Architecture</span>
-                <h2 className="mt-8 font-serif text-5xl font-black leading-none tracking-tighter text-slate-950 lg:text-[90px]">
-                    O Sistema <br />
-                    <span className="italic text-slate-300">Modular.</span>
+        {/* METHODOLOGY: The Clinical OS */}
+        <section id="protocolos" className="bg-white py-40 lg:py-64 rounded-[120px] lg:rounded-[200px] relative overflow-hidden">
+          <div className="mx-auto max-w-[1600px] px-10 lg:px-24">
+            <div className="mb-40 flex flex-col lg:flex-row lg:items-end justify-between gap-24">
+              <div className="max-w-3xl">
+                <div className="mb-10 h-[2px] w-32 bg-emerald-900" />
+                <span className="text-[11px] font-bold uppercase tracking-[0.6em] text-emerald-700">Strategic Healthcare</span>
+                <h2 className="mt-10 text-6xl font-bold leading-[0.9] tracking-tighter text-slate-950 lg:text-[100px]">
+                    O Próximo <br />
+                    <span className="text-slate-300">Nível Fisiológico.</span>
                 </h2>
               </div>
-              <p className="max-w-md text-xl leading-relaxed text-slate-500 font-medium">
-                Elimine a improvisação. Cada aspecto da sua jornada profissional é tratado como um módulo de alta precisão.
+              <p className="max-w-md text-2xl leading-relaxed text-slate-500 font-medium italic border-l-4 border-emerald-100 pl-10">
+                "Medicina não é apenas sobre curar doenças, é sobre expandir os limites da performance humana."
               </p>
             </div>
 
-            <div className="grid gap-8 lg:grid-cols-3">
+            <div className="grid gap-12 lg:grid-cols-3">
               {[
                 { 
-                  title: "Workflow Engine", 
-                  id: "WF-01", 
-                  desc: "Redesenho radical do seu funil de atendimento. Transformamos consultas em experiências de alto valor.",
-                  icon: Activity 
+                  title: "Bio-Optimization", 
+                  id: "PROTOCOL-A", 
+                  desc: "Mapeamento genético e bioquímico para alinhar seus hormônios ao seu ritmo de alta pressão.",
+                  icon: Microscope 
                 },
                 { 
-                  title: "Legal Shield", 
-                  id: "LS-02", 
-                  desc: "Proteção estratégica contra vazamentos operacionais e riscos de conformidade jurídica/clínica.",
-                  icon: ShieldCheck 
+                  title: "Cognitive Energy", 
+                  id: "PROTOCOL-B", 
+                  desc: "Controle da inflamação sistêmica para foco mental inabalável e clareza em decisões críticas.",
+                  icon: Zap 
                 },
                 { 
-                  title: "Authority Core", 
-                  id: "AC-03", 
-                  desc: "Domínio de narrativa digital para atrair o público que valoriza sua hora e seu conhecimento.",
-                  icon: Globe 
+                  title: "Age Engineering", 
+                  id: "PROTOCOL-C", 
+                  desc: "Estratégias de longevidade que protegem sua autoridade e sua vitalidade pelas próximas décadas.",
+                  icon: Waves 
                 }
               ].map((m, i) => (
-                <div key={i} className="group relative rounded-[56px] border border-slate-100 bg-slate-50/50 p-12 transition-all duration-500 hover:bg-emerald-950 hover:-translate-y-4 hover:shadow-[0_40px_80px_rgba(6,78,59,0.15)]">
-                  <div className="mb-20 flex items-center justify-between">
-                    <div className="flex h-20 w-20 items-center justify-center rounded-[32px] bg-white text-emerald-900 shadow-sm transition-transform group-hover:rotate-12 group-hover:bg-emerald-500 group-hover:text-white">
+                <div key={i} className="group relative rounded-[72px] border border-slate-100 bg-slate-50/30 p-16 transition-all duration-700 hover:bg-slate-950 hover:-translate-y-6 hover:shadow-[0_60px_100px_rgba(6,78,59,0.12)]">
+                  <div className="mb-24 flex items-center justify-between">
+                    <div className="flex h-24 w-24 items-center justify-center rounded-[40px] bg-white text-emerald-900 shadow-xl transition-all group-hover:rotate-[15deg] group-hover:bg-emerald-500 group-hover:text-white">
                         <m.icon className="h-10 w-10" />
                     </div>
-                    <span className="font-mono text-xs font-bold tracking-widest text-slate-300 group-hover:text-emerald-500/50">{m.id}</span>
+                    <span className="font-mono text-xs font-bold tracking-[0.3em] text-slate-300 group-hover:text-emerald-500/40">{m.id}</span>
                   </div>
-                  <h3 className="font-serif text-4xl font-black text-slate-950 group-hover:text-white transition-colors">{m.title}</h3>
-                  <p className="mt-8 text-lg leading-relaxed text-slate-500 group-hover:text-emerald-50/60 transition-colors">{m.desc}</p>
+                  <h3 className="text-4xl font-bold text-slate-950 group-hover:text-white transition-colors">{m.title}</h3>
+                  <p className="mt-10 text-xl leading-relaxed text-slate-500 group-hover:text-emerald-50/60 transition-colors">{m.desc}</p>
                   
-                  <div className="mt-16 flex items-center gap-4 text-[10px] font-black uppercase tracking-[0.3em] text-emerald-900 opacity-0 transition-all group-hover:opacity-100 group-hover:text-emerald-400">
-                    Deploy Module <ArrowRight className="h-4 w-4" />
+                  <div className="mt-20 flex items-center gap-6 text-[11px] font-bold uppercase tracking-[0.4em] text-emerald-900 opacity-0 transition-all group-hover:opacity-100 group-hover:text-emerald-400">
+                    Deploy Protocol <ArrowRight className="h-5 w-5" />
                   </div>
                 </div>
               ))}
@@ -217,86 +222,93 @@ const Landing = () => {
           </div>
         </section>
 
-        {/* QUOTE SECTION: Provocative Human Authority */}
-        <section className="bg-[#020617] py-40 lg:py-64 overflow-hidden">
-            <div className="mx-auto max-w-[1500px] px-8 lg:px-20 relative">
-                <div className="absolute -left-20 top-0 text-[300px] font-serif font-black text-white/5 italic select-none">"</div>
-                <div className="relative z-10 mx-auto max-w-5xl text-center">
-                    <h2 className="font-serif text-5xl font-black italic leading-[1.1] text-white lg:text-[100px] tracking-tighter">
-                        "Se você não sabe quanto seu tempo vale... <br />
-                        <span className="text-emerald-500 underline decoration-emerald-500/20 underline-offset-[20px]">o mercado define por você."</span>
+        {/* PROVOCATION: The Price of Neglect */}
+        <section className="bg-[#020808] py-48 lg:py-72 overflow-hidden relative">
+            <div className="absolute inset-0 bg-[radial-gradient(circle_at_top_right,_rgba(16,185,129,0.05),_transparent_50%)]" />
+            <div className="mx-auto max-w-[1600px] px-10 lg:px-24 relative">
+                <div className="relative z-10 mx-auto max-w-6xl text-center">
+                    <h2 className="text-5xl font-bold leading-[1.1] text-white lg:text-[110px] tracking-tighter">
+                        "Seu metabolismo é o <br />
+                        <span className="text-emerald-500">teto do seu sucesso."</span>
                     </h2>
-                    <div className="mt-24 flex flex-col items-center">
+                    <div className="mt-32 flex flex-col items-center">
                          <p className="max-w-2xl text-2xl leading-relaxed text-slate-400 font-medium">
-                            Dr Saullo Gomes construiu sua autoridade na interseção entre o rigor clínico e a agilidade executiva. Este não é um curso. É o seu novo sistema operacional.
+                            Dr Saullo Gomes utiliza o rigor científico da endocrinologia para transformar exaustão em autoridade. Para quem não aceita o declínio como destino.
                          </p>
-                         <div className="mt-16 h-24 w-px bg-gradient-to-b from-emerald-500 to-transparent" />
+                         <div className="mt-24 h-32 w-[1px] bg-gradient-to-b from-emerald-500 to-transparent" />
                     </div>
                 </div>
             </div>
         </section>
 
-        {/* ARCHIVE SECTION: Intelligence Briefings */}
-        <section id="briefings" className="bg-[#f8fafc] py-32 lg:py-56">
-          <div className="mx-auto max-w-[1500px] px-8 lg:px-20">
-            <div className="mb-32 grid gap-16 lg:grid-cols-[0.7fr_1.3fr] lg:items-end">
+        {/* ARCHIVE: Intelligence Briefings */}
+        <section id="briefings" className="bg-[#fcfdfd] py-40 lg:py-64">
+          <div className="mx-auto max-w-[1600px] px-10 lg:px-24">
+            <div className="mb-40 grid gap-24 lg:grid-cols-[0.8fr_1.2fr] lg:items-end">
               <div>
-                <span className="text-[10px] font-black uppercase tracking-[0.5em] text-emerald-800">Knowledge Stack</span>
-                <h2 className="mt-8 font-serif text-6xl font-black leading-none text-slate-950 lg:text-[100px]">Strategic <br /> Briefings.</h2>
+                <span className="text-[11px] font-bold uppercase tracking-[0.5em] text-emerald-800">Knowledge Stack</span>
+                <h2 className="mt-12 text-7xl font-bold leading-[0.9] text-slate-950 lg:text-[110px]">Medical <br /> Briefings.</h2>
               </div>
-              <div className="flex flex-col gap-10">
-                <p className="max-w-md text-xl leading-relaxed text-slate-500 font-medium">
-                    Explorações técnicas sobre o futuro da gestão médica e jurídica. Sem clichês, apenas dados e estratégia pura.
+              <div className="flex flex-col gap-12">
+                <p className="max-w-md text-2xl leading-relaxed text-slate-500 font-medium">
+                    Explorações profundas sobre fisiologia de alto nível. Sem fórmulas prontas, apenas dados e medicina pura.
                 </p>
-                <Link to="/blog" className="inline-flex items-center gap-4 text-xs font-black uppercase tracking-[0.4em] text-emerald-900 group">
-                    View Complete Index <div className="h-10 w-10 flex items-center justify-center rounded-full border border-emerald-900/10 group-hover:bg-emerald-900 group-hover:text-white transition-all"><ChevronRight className="h-4 w-4" /></div>
+                <Link to="/blog" className="inline-flex items-center gap-6 text-xs font-bold uppercase tracking-[0.5em] text-emerald-900 group">
+                    Full Scientific Index <div className="h-14 w-14 flex items-center justify-center rounded-full border border-emerald-900/10 group-hover:bg-emerald-900 group-hover:text-white transition-all duration-500"><ChevronRight className="h-5 w-5" /></div>
                 </Link>
               </div>
             </div>
 
-            <div className="grid gap-20 lg:grid-cols-2">
+            <div className="grid gap-24 lg:grid-cols-2">
               <RecentBriefings />
             </div>
           </div>
         </section>
 
-        {/* FINAL CALL TO ACTION */}
-        <section className="bg-emerald-950 py-32 lg:py-48 relative overflow-hidden">
-             <div className="absolute inset-0 pointer-events-none opacity-10" style={{ backgroundImage: 'radial-gradient(#fff 1px, transparent 1px)', backgroundSize: '30px 30px' }} />
-             <div className="mx-auto max-w-[1500px] px-8 lg:px-20 text-center relative z-10">
-                <h2 className="font-serif text-5xl font-black text-white lg:text-8xl tracking-tight">Pronto para o upgrade?</h2>
-                <p className="mt-12 mx-auto max-w-xl text-xl text-emerald-200/60 font-medium">
-                    Inicie o diagnóstico agora e descubra como o Operational Command do Dr. Saullo Gomes pode transformar sua prática em uma máquina de resultados.
+        {/* CTA: Final System Initialize */}
+        <section className="bg-emerald-950 py-40 lg:py-64 relative overflow-hidden">
+             <div className="absolute inset-0 pointer-events-none opacity-[0.03]" style={{ backgroundImage: 'radial-gradient(#fff 1px, transparent 1px)', backgroundSize: '40px 40px' }} />
+             <div className="mx-auto max-w-[1600px] px-10 lg:px-24 text-center relative z-10">
+                <h2 className="text-6xl font-bold text-white lg:text-[110px] tracking-tighter">Redefina seus limites.</h2>
+                <p className="mt-16 mx-auto max-w-2xl text-2xl text-emerald-100/40 font-medium leading-relaxed">
+                    Sua jornada para a máxima performance biológica começa com um mapeamento preciso. Inicie seu protocolo estratégico com o Dr. Saullo Gomes.
                 </p>
-                <div className="mt-16 flex flex-col sm:flex-row items-center justify-center gap-8">
-                     <Button asChild size="lg" className="h-20 rounded-full bg-white px-16 text-lg font-black text-emerald-950 hover:bg-emerald-400 hover:text-emerald-950 transition-all shadow-2xl shadow-emerald-500/20">
+                <div className="mt-24">
+                     <Button asChild size="lg" className="h-28 rounded-full bg-white px-20 text-2xl font-bold text-emerald-950 hover:bg-emerald-400 hover:text-white transition-all shadow-[0_30px_70px_rgba(16,185,129,0.2)]">
                         <Link to="/diagnostico-gratuito">Initialize System Scan</Link>
                      </Button>
                 </div>
              </div>
         </section>
 
-        {/* FOOTER: Minimalist & Technical */}
-        <footer className="bg-[#020617] py-24 border-t border-white/5">
-            <div className="mx-auto max-w-[1500px] px-8 lg:px-20">
-                <div className="flex flex-col lg:flex-row justify-between items-start gap-20">
-                    <div className="max-w-sm">
-                        <span className="font-serif text-3xl font-black text-white tracking-tighter">DR SAULLO GOMES</span>
-                        <p className="mt-8 text-slate-500 text-sm leading-relaxed font-medium">
-                            A nova fronteira da gestão estratégica para os profissionais de elite do século XXI. 
+        {/* FOOTER: Clinical Signature */}
+        <footer className="bg-[#020808] py-32 border-t border-emerald-500/5">
+            <div className="mx-auto max-w-[1600px] px-10 lg:px-24">
+                <div className="flex flex-col lg:flex-row justify-between items-start gap-32">
+                    <div className="max-w-md">
+                        <span className="text-3xl font-bold text-white tracking-[0.2em]">DR SAULLO GOMES</span>
+                        <p className="mt-10 text-slate-500 text-lg leading-relaxed font-medium">
+                            A nova fronteira da endocrinologia para profissionais que exigem o máximo de sua biologia e de seu tempo.
                         </p>
+                        <div className="mt-14 flex items-center gap-10">
+                          {["In", "Ig", "Wa"].map(social => (
+                            <a key={social} href="#" className="text-[11px] font-bold uppercase tracking-widest text-slate-500 hover:text-emerald-400 transition-colors">
+                              {social}
+                            </a>
+                          ))}
+                        </div>
                     </div>
                     
-                    <div className="grid grid-cols-2 sm:grid-cols-4 gap-16 lg:gap-24">
+                    <div className="grid grid-cols-2 sm:grid-cols-4 gap-20 lg:gap-32">
                         {[
-                            { label: "Sistema", links: ["Protocolos", "Módulos", "Diagnóstico"] },
-                            { label: "Legal", links: ["Privacidade", "Termos", "CRM/ES"] },
-                            { label: "Canal", links: ["LinkedIn", "Instagram", "WhatsApp"] },
-                            { label: "Elite", links: ["Acesso", "Briefings", "Admin"] }
+                            { label: "Medicina", links: ["Endocrinologia", "Metabolismo", "Longevidade"] },
+                            { label: "Ética", links: ["Privacidade", "Termos", "CRM/ES 435671"] },
+                            { label: "Redes", links: ["LinkedIn", "Instagram", "WhatsApp"] },
+                            { label: "Acesso", links: ["Diagnóstico", "Briefings", "Protocolos"] }
                         ].map((col, idx) => (
                             <div key={idx}>
-                                <h4 className="text-[10px] font-black uppercase tracking-[0.4em] text-white mb-8">{col.label}</h4>
-                                <ul className="space-y-4">
+                                <h4 className="text-[11px] font-bold uppercase tracking-[0.4em] text-white mb-10">{col.label}</h4>
+                                <ul className="space-y-5">
                                     {col.links.map(link => (
                                         <li key={link}><a href="#" className="text-sm font-bold text-slate-500 hover:text-emerald-400 transition-colors">{link}</a></li>
                                     ))}
@@ -306,13 +318,12 @@ const Landing = () => {
                     </div>
                 </div>
                 
-                <div className="mt-32 flex flex-col md:flex-row justify-between items-center gap-8 border-t border-white/5 pt-12">
-                    <p className="text-[10px] font-black uppercase tracking-widest text-slate-600">
-                        &copy; {new Date().getFullYear()} Dr Saullo Gomes. Engineering Strategic Success.
+                <div className="mt-48 flex flex-col md:flex-row justify-between items-center gap-12 border-t border-white/5 pt-16">
+                    <p className="text-[11px] font-bold uppercase tracking-widest text-slate-700">
+                        &copy; {new Date().getFullYear()} Dr Saullo Gomes. Engineering Human Potential.
                     </p>
-                    <div className="flex items-center gap-8">
-                         <span className="text-[9px] font-black uppercase tracking-[0.4em] text-slate-700">Protocol 01-EXE</span>
-                         <div className="h-1 w-20 rounded-full bg-white/5" />
+                    <div className="flex items-center gap-10">
+                         <span className="text-[10px] font-bold uppercase tracking-[0.5em] text-slate-800 italic underline underline-offset-8 decoration-emerald-500/20">Protocol EXE-2026</span>
                     </div>
                 </div>
             </div>
@@ -320,20 +331,23 @@ const Landing = () => {
       </main>
 
       <style dangerouslySetInnerHTML={{ __html: `
-        @import url('https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,900;1,900&family=Inter:wght@400;500;700;900&family=JetBrains+Mono:wght@700&display=swap');
-        .font-serif { font-family: 'Playfair Display', serif; }
-        .font-sans { font-family: 'Inter', sans-serif; }
+        @import url('https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&family=JetBrains+Mono:wght@700&display=swap');
+        
+        body { font-family: 'Plus Jakarta Sans', sans-serif; }
         .font-mono { font-family: 'JetBrains Mono', monospace; }
         
         html { scroll-behavior: smooth; }
         
         ::selection { background: rgba(16, 185, 129, 0.2); color: #fff; }
+        
+        .tracking-tight { letter-spacing: -0.04em; }
+        .tracking-tighter { letter-spacing: -0.06em; }
       `}} />
     </div>
   );
 };
 
-// Sub-component for Recent Briefings (Redesigned Blog Posts)
+// Sub-component for Recent Briefings
 const RecentBriefings = () => {
   const [posts, setPosts] = useState<any[]>([]);
   const [loading, setLoading] = useState(true);
@@ -352,41 +366,44 @@ const RecentBriefings = () => {
     fetchPosts();
   }, []);
 
-  if (loading) return <div className="h-64 w-full animate-spin flex items-center justify-center"><Zap className="h-10 w-10 text-emerald-900 opacity-20" /></div>;
+  if (loading) return <div className="h-96 w-full flex items-center justify-center"><Zap className="h-16 w-16 text-emerald-900 animate-pulse" /></div>;
 
   return (
     <>
       {posts.map((post, i) => (
         <motion.article 
           key={post.id}
-          initial={{ opacity: 0, x: i % 2 === 0 ? -30 : 30 }}
-          whileInView={{ opacity: 1, x: 0 }}
+          initial={{ opacity: 0, y: 30 }}
+          whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
-          className="group relative flex flex-col gap-10"
+          className="group relative flex flex-col gap-12"
         >
-          <Link to={`/blog/${post.slug}`} className="block relative aspect-[16/10] overflow-hidden rounded-[64px] border border-white/5 shadow-2xl">
+          <Link to={`/blog/${post.slug}`} className="block relative aspect-[16/10] overflow-hidden rounded-[80px] border border-white/5 shadow-2xl transition-all duration-700 group-hover:rounded-[40px]">
              {post.featured_image && (
-               <img src={post.featured_image} alt={post.title} className="h-full w-full object-cover grayscale brightness-75 group-hover:grayscale-0 group-hover:brightness-100 transition-all duration-1000 scale-110 group-hover:scale-100" />
+               <img src={post.featured_image} alt={post.title} className="h-full w-full object-cover grayscale brightness-50 group-hover:grayscale-0 group-hover:brightness-100 transition-all duration-1000 scale-110 group-hover:scale-100" />
              )}
-             <div className="absolute inset-0 bg-gradient-to-t from-[#020617] via-transparent to-transparent opacity-80" />
+             <div className="absolute inset-0 bg-gradient-to-t from-[#020808] via-[#020808]/20 to-transparent opacity-90 transition-opacity group-hover:opacity-40" />
              
-             <div className="absolute bottom-10 left-10 right-10">
-                <div className="mb-4 inline-flex rounded-full bg-emerald-500 px-4 py-1.5 text-[9px] font-black uppercase tracking-widest text-emerald-950">
-                    Briefing {i+1}
+             <div className="absolute bottom-12 left-12 right-12">
+                <div className="mb-6 inline-flex rounded-full border border-white/20 bg-white/10 px-6 py-2 text-[10px] font-bold uppercase tracking-widest text-white backdrop-blur-md">
+                    Clinical Briefing {i+1}
                 </div>
-                <h3 className="font-serif text-4xl font-black text-white leading-tight">
+                <h3 className="text-5xl font-bold text-white leading-[0.95] tracking-tighter transition-all group-hover:translate-x-2">
                     {post.title}
                 </h3>
              </div>
           </Link>
-          <div className="px-10">
-            <p className="text-slate-400 text-lg leading-relaxed font-medium line-clamp-3">
+          <div className="px-12 border-l border-emerald-500/10">
+            <p className="text-slate-400 text-xl leading-relaxed font-medium line-clamp-3">
                 {post.excerpt}
             </p>
-            <div className="mt-12 flex items-center justify-between">
-                <span className="text-[10px] font-black uppercase tracking-widest text-slate-600 italic">Release Date: {new Date(post.created_at).toLocaleDateString("pt-BR")}</span>
-                <Link to={`/blog/${post.slug}`} className="h-14 w-14 rounded-full border border-white/10 flex items-center justify-center hover:bg-emerald-500 hover:border-emerald-500 transition-all">
-                    <ArrowRight className="h-5 w-5 text-white" />
+            <div className="mt-14 flex items-center justify-between">
+                <div className="flex items-center gap-4">
+                  <div className="h-2 w-2 rounded-full bg-emerald-500" />
+                  <span className="text-[11px] font-bold uppercase tracking-widest text-slate-600">Issued: {new Date(post.created_at).toLocaleDateString("pt-BR")}</span>
+                </div>
+                <Link to={`/blog/${post.slug}`} className="h-20 w-20 rounded-full border border-emerald-500/20 flex items-center justify-center group-hover:bg-emerald-500 group-hover:border-emerald-500 transition-all duration-500">
+                    <ArrowRight className="h-7 w-7 text-white group-hover:text-slate-950 transition-colors" />
                 </Link>
             </div>
           </div>
