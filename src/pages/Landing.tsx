@@ -78,20 +78,31 @@ const Landing = () => {
       </header>
 
       <main className="relative z-10">
-        {/* HERO: Seamless Metabolic Integration */}
-        <section id="ciência" className="relative mx-auto flex min-h-screen max-w-[1600px] items-center px-10 lg:px-24 pt-40 pb-20 overflow-hidden bg-[#020808]">
+        {/* HERO: Cinematic Metabolic Integration */}
+        <section id="ciência" className="relative flex min-h-screen items-center overflow-hidden bg-[#020808]">
           
-          {/* RADICAL GRADIENT FLOW: From Title to Photo */}
+          {/* THE BACKGROUND LAYER: The Photo itself ('Por baixo') */}
           <div className="absolute inset-0 z-0">
-             <div className="absolute inset-0 bg-gradient-to-r from-[#062d27] via-[#020808] to-[#020808]" />
+             <div className="absolute right-0 top-0 h-full w-full lg:w-3/4">
+                <img 
+                    src={drSaulloImage} 
+                    alt="Dr Saullo Gomes Background" 
+                    className="h-full w-full object-cover object-top opacity-80" 
+                />
+                {/* THE RADICAL GRADIENT: Flows from background/title into the image */}
+                <div className="absolute inset-0 bg-gradient-to-r from-[#020808] via-[#020808]/80 to-transparent lg:from-10% lg:via-40%" />
+                <div className="absolute inset-0 bg-gradient-to-t from-[#020808] via-transparent to-transparent opacity-60" />
+             </div>
+             
+             {/* Base Clinical Gradient behind text */}
              <div className="absolute left-0 top-0 h-full w-full bg-[radial-gradient(circle_at_20%_50%,_rgba(16,185,129,0.1),_transparent_50%)]" />
           </div>
 
-          <div className="relative z-10 grid gap-16 lg:grid-cols-[1fr_1fr] lg:items-center w-full h-full">
-            <div className="z-20">
+          <div className="relative z-10 mx-auto max-w-[1600px] w-full px-10 lg:px-24 py-40">
+            <div className="max-w-4xl">
               <motion.div
-                initial={{ opacity: 0, x: -50 }}
-                animate={{ opacity: 1, x: 0 }}
+                initial={{ opacity: 0, y: 30 }}
+                animate={{ opacity: 1, y: 0 }}
                 transition={{ duration: 1.2 }}
               >
                 <h1 className="text-6xl font-bold leading-[1] tracking-tighter text-white sm:text-8xl lg:text-[110px]">
@@ -99,48 +110,23 @@ const Landing = () => {
                   <span className="text-emerald-500 italic">Metabólica.</span>
                 </h1>
 
-                <p className="mt-12 max-w-xl text-xl leading-relaxed text-slate-400 font-medium lg:text-2xl">
+                <p className="mt-12 max-w-xl text-xl leading-relaxed text-slate-300 font-medium lg:text-2xl drop-shadow-sm">
                   Sua fisiologia é o motor da sua carreira. Construímos estratégias hormonais sob medida para médicos e advogados que exigem performance cerebral e vitalidade física extrema.
                 </p>
 
                 <div className="mt-16 flex flex-col gap-10 sm:flex-row sm:items-center">
-                  <Button asChild size="lg" className="h-24 rounded-full bg-emerald-500 px-16 text-xl font-bold text-[#020808] transition-all hover:bg-emerald-400 hover:scale-[1.05] active:scale-95 shadow-[0_20px_50px_rgba(16,185,129,0.3)]">
+                  <Button asChild size="lg" className="h-24 rounded-full bg-emerald-500 px-16 text-xl font-bold text-[#020808] transition-all hover:bg-emerald-400 hover:scale-[1.05] active:scale-95 shadow-[0_20px_50px_rgba(16,185,129,0.4)]">
                     <Link to="/diagnostico-gratuito">
                       Iniciar Scan Clínico
                       <ArrowRight className="ml-4 h-6 w-6" />
                     </Link>
                   </Button>
                   <div className="flex flex-col border-l-2 border-emerald-500/20 pl-10">
-                      <span className="text-[10px] font-bold uppercase tracking-[0.4em] text-slate-500 mb-2">Autoridade Médica</span>
+                      <span className="text-[10px] font-bold uppercase tracking-[0.4em] text-slate-400 mb-2">Autoridade Médica</span>
                       <span className="text-xl font-bold text-white tracking-widest">CRM/ES 435671</span>
                   </div>
                 </div>
               </motion.div>
-            </div>
-
-            {/* THE SEAMLESS INTEGRATION: No border, Gradient Fade */}
-            <div className="relative h-full flex items-center justify-center lg:justify-end">
-              <motion.div 
-                initial={{ opacity: 0, x: 100 }}
-                animate={{ opacity: 1, x: 0 }}
-                transition={{ duration: 1.5, ease: [0.16, 1, 0.3, 1] }}
-                className="relative w-full max-w-[700px] aspect-[4/5] z-10"
-              >
-                {/* The Image with natural colors */}
-                <img 
-                    src={drSaulloImage} 
-                    alt="Dr Saullo Gomes" 
-                    className="w-full h-full object-cover transition-all duration-1000" 
-                    style={{ maskImage: 'linear-gradient(to left, black 60%, transparent 100%)', WebkitMaskImage: 'linear-gradient(to left, black 60%, transparent 100%)' }}
-                />
-                
-                {/* Gradient Overlays for seamless blending */}
-                <div className="absolute inset-0 bg-gradient-to-r from-[#020808] via-transparent to-transparent opacity-80" />
-                <div className="absolute inset-0 bg-gradient-to-t from-[#020808] via-transparent to-transparent opacity-40" />
-              </motion.div>
-              
-              {/* Technical Bio-Atmosphere */}
-              <div className="absolute -right-20 -top-20 h-[600px] w-[600px] rounded-full bg-emerald-500/5 blur-[120px]" />
             </div>
           </div>
         </section>              
