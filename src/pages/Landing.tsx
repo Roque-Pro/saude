@@ -79,7 +79,7 @@ const Landing = () => {
 
       <main className="relative z-10">
         {/* HERO: Metabolic Flow with Background Gradient */}
-        <section id="ciência" className="relative mx-auto flex min-h-screen max-w-[1600px] items-center px-10 lg:px-24 pt-40 pb-20 overflow-hidden bg-gradient-to-r from-[#020808] via-[#031c1a] to-[#020808]">
+        <section id="ciência" className="relative mx-auto flex min-h-screen max-w-[1600px] items-center px-10 lg:px-24 pt-40 pb-20 overflow-hidden bg-gradient-to-r from-[#020808] via-[#041a17] to-[#020808]">
           <div className="relative z-10 grid gap-24 lg:grid-cols-[1.1fr_0.9fr] lg:items-center w-full">
             <motion.div
               initial={{ opacity: 0, x: -30 }}
@@ -118,8 +118,8 @@ const Landing = () => {
                 className="relative z-10 rounded-[80px] border border-white/5 bg-slate-900/10 p-2 shadow-2xl backdrop-blur-sm overflow-hidden"
               >
                 <div className="relative rounded-[72px] overflow-hidden">
-                    <img src={drSaulloImage} alt="Dr Saullo Gomes" className="w-full aspect-[4/5] object-cover grayscale brightness-75 hover:grayscale-0 transition-all duration-1000" />
-                    <div className="absolute inset-0 bg-gradient-to-t from-[#020808] via-transparent to-transparent opacity-60" />
+                    <img src={drSaulloImage} alt="Dr Saullo Gomes" className="w-full aspect-[4/5] object-cover transition-all duration-1000" />
+                    <div className="absolute inset-0 bg-gradient-to-t from-[#020808] via-transparent to-transparent opacity-40" />
                 </div>
               </motion.div>
               
