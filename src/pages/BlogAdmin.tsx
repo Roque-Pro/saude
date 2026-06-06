@@ -183,104 +183,97 @@ const BlogAdmin = () => {
     };
 
     return (
-        <div className="min-h-screen bg-slate-950">
-            {/* Header */}
-            <header className="bg-gradient-to-r from-indigo-950 via-slate-900 to-purple-950 border-b border-indigo-500 sticky top-0 z-40 shadow-2xl">
-                <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-6 flex items-center justify-between">
-                    <div className="flex items-center gap-4">
+        <div className="min-h-screen bg-[#f8fafc] text-slate-900 font-sans">
+            {/* Header Sóbrio */}
+            <header className="sticky top-0 z-50 w-full border-b border-slate-200 bg-white/80 py-4 backdrop-blur-xl shadow-sm">
+                <div className="mx-auto flex max-w-7xl items-center justify-between px-6">
+                    <div className="flex items-center gap-6">
                         <Button
+                            variant="ghost"
                             onClick={() => navigate("/crm")}
-                            className="bg-indigo-600 hover:bg-indigo-700 text-white font-bold"
+                            className="h-9 px-3 text-xs font-bold text-slate-600 hover:bg-slate-100"
                         >
-                            <ArrowLeft className="w-4 h-4 mr-2" />
-                            Voltar
+                            <ArrowLeft className="mr-2 h-4 w-4" />
+                            CRM
                         </Button>
-                        <h1 className="text-3xl font-display font-bold text-white">
-                            Blog Admin
-                        </h1>
+                        <div>
+                            <h1 className="font-serif text-lg font-bold tracking-tight text-emerald-950">
+                                Editor de Conteúdo
+                            </h1>
+                            <p className="text-[10px] font-bold uppercase tracking-widest text-emerald-700/70">
+                                Gestão do Blog Estratégico
+                            </p>
+                        </div>
                     </div>
                     <Button
                         onClick={() => {
                             resetForm();
                             setShowForm(!showForm);
                         }}
-                        className="bg-indigo-600 hover:bg-indigo-700 text-white font-bold"
+                        className="h-9 bg-emerald-900 px-6 text-xs font-bold text-white hover:bg-emerald-800"
                     >
-                        <Plus className="w-4 h-4 mr-2" />
-                        Novo Post
+                        <Plus className="mr-2 h-4 w-4" />
+                        Nova Publicação
                     </Button>
                 </div>
             </header>
 
-            <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
-                {/* Form */}
+            <main className="mx-auto max-w-5xl px-6 py-12">
+                {/* Form Refinado */}
                 {showForm && (
                     <motion.div
                         initial={{ opacity: 0, y: 20 }}
                         animate={{ opacity: 1, y: 0 }}
-                        className="bg-slate-800 rounded-2xl p-8 shadow-xl border-2 border-indigo-500 mb-12"
+                        className="mb-16 rounded-[40px] border border-slate-200 bg-white p-8 shadow-2xl shadow-emerald-900/5 sm:p-12"
                     >
-                        <h2 className="text-2xl font-display font-bold text-white mb-6">
-                            {editingId ? "Editar Post" : "Criar Novo Post"}
+                        <h2 className="font-serif text-2xl font-bold text-slate-900 mb-8">
+                            {editingId ? "Refinar Publicação" : "Nova Publicação Estratégica"}
                         </h2>
 
-                        <form onSubmit={handleSubmit} className="space-y-6">
-                            {/* Título */}
-                            <div className="space-y-2">
-                                <Label className="font-semibold text-indigo-300">Título *</Label>
-                                <Input
-                                    placeholder="Título do post"
-                                    value={formData.title}
-                                    onChange={handleTitleChange}
-                                    required
-                                    className="bg-slate-700 border-indigo-500 text-white placeholder-slate-400"
-                                />
+                        <form onSubmit={handleSubmit} className="space-y-8">
+                            <div className="grid gap-8 sm:grid-cols-2">
+                                <div className="space-y-2">
+                                    <Label className="text-[10px] font-bold uppercase tracking-[0.2em] text-slate-400">Título da Matéria *</Label>
+                                    <Input
+                                        placeholder="Ex: A Ciência da Primeira Impressão"
+                                        value={formData.title}
+                                        onChange={handleTitleChange}
+                                        required
+                                        className="h-12 rounded-xl border-slate-200 bg-white focus-visible:ring-emerald-900"
+                                    />
+                                </div>
+
+                                <div className="space-y-2">
+                                    <Label className="text-[10px] font-bold uppercase tracking-[0.2em] text-slate-400">Slug / URL Amigável *</Label>
+                                    <Input
+                                        placeholder="url-da-materia"
+                                        value={formData.slug}
+                                        onChange={(e) =>
+                                            setFormData({ ...formData, slug: e.target.value })
+                                        }
+                                        required
+                                        className="h-12 rounded-xl border-slate-200 bg-white focus-visible:ring-emerald-900"
+                                    />
+                                </div>
                             </div>
 
-                            {/* Slug */}
                             <div className="space-y-2">
-                                <Label className="font-semibold text-indigo-300">Slug *</Label>
-                                <Input
-                                    placeholder="slug-do-post"
-                                    value={formData.slug}
-                                    onChange={(e) =>
-                                        setFormData({ ...formData, slug: e.target.value })
-                                    }
-                                    required
-                                    className="bg-slate-700 border-indigo-500 text-white placeholder-slate-400"
-                                />
-                                <p className="text-sm text-indigo-300">
-                                    URL: /blog/{formData.slug}
-                                </p>
-                            </div>
-
-                            {/* Excerpt */}
-                            <div className="space-y-2">
-                                <Label className="font-semibold text-indigo-300">
-                                    Resumo (opcional)
-                                </Label>
+                                <Label className="text-[10px] font-bold uppercase tracking-[0.2em] text-slate-400">Resumo Executivo (Excerpt)</Label>
                                 <textarea
-                                    placeholder="Resumo do post"
+                                    placeholder="Breve descrição para atrair o leitor..."
                                     value={formData.excerpt}
                                     onChange={(e) =>
                                         setFormData({ ...formData, excerpt: e.target.value })
                                     }
-                                    className="w-full px-4 py-2 rounded-lg border border-indigo-500 focus:outline-none focus:ring-2 focus:ring-indigo-500 min-h-20 resize-none !text-white bg-slate-700 placeholder-slate-400"
+                                    className="w-full h-24 rounded-2xl border border-slate-200 bg-white p-4 text-sm focus:border-emerald-900 focus:ring-4 focus:ring-emerald-900/5 transition-all outline-none resize-none"
                                 />
                             </div>
 
-                            {/* HTML Content */}
                             <div className="space-y-2">
-                                <Label className="font-semibold text-indigo-300">
-                                    Conteúdo HTML *
-                                </Label>
-                                <div className="bg-slate-900 rounded-lg border-2 border-dashed border-indigo-500 p-4">
-                                    <p className="text-sm text-indigo-300 mb-3">
-                                        Cole seu HTML aqui. Você pode incluir imagens, links,
-                                        formatação, etc.
-                                    </p>
+                                <Label className="text-[10px] font-bold uppercase tracking-[0.2em] text-slate-400">Conteúdo em HTML Estruturado *</Label>
+                                <div className="rounded-2xl border border-slate-200 bg-slate-50 p-6">
                                     <textarea
-                                        placeholder='<h1>Título</h1><p>Seu conteúdo aqui...</p>'
+                                        placeholder="Insira o HTML da matéria aqui..."
                                         value={formData.html_content}
                                         onChange={(e) =>
                                             setFormData({
@@ -289,13 +282,12 @@ const BlogAdmin = () => {
                                             })
                                         }
                                         required
-                                        className="w-full px-4 py-3 rounded-lg border border-indigo-500 focus:outline-none focus:ring-2 focus:ring-indigo-500 min-h-64 resize-vertical font-mono text-sm !text-white bg-slate-800 placeholder-slate-400"
+                                        className="w-full h-[400px] rounded-xl border border-slate-200 bg-white p-4 font-mono text-sm focus:border-emerald-900 transition-all outline-none resize-vertical"
                                     />
                                 </div>
                             </div>
 
-                            {/* Publicado */}
-                            <div className="flex items-center gap-3">
+                            <div className="flex items-center gap-4 p-4 rounded-2xl bg-slate-50 border border-slate-200">
                                 <input
                                     type="checkbox"
                                     id="published"
@@ -303,117 +295,111 @@ const BlogAdmin = () => {
                                     onChange={(e) =>
                                         setFormData({ ...formData, published: e.target.checked })
                                     }
-                                    className="w-5 h-5 rounded border-indigo-500 text-indigo-600 cursor-pointer"
+                                    className="w-5 h-5 rounded-lg border-slate-300 text-emerald-900 focus:ring-emerald-900"
                                 />
                                 <label
                                     htmlFor="published"
-                                    className="text-indigo-300 font-semibold cursor-pointer"
+                                    className="text-sm font-bold text-slate-700 cursor-pointer"
                                 >
-                                    Publicar agora
+                                    Tornar esta publicação visível no site agora
                                 </label>
                             </div>
 
-                            {/* Buttons */}
-                            <div className="flex gap-3 pt-4">
+                            <div className="flex gap-4 pt-4">
                                 <Button
                                     type="submit"
-                                    className="bg-gradient-to-r from-indigo-600 to-indigo-700 hover:from-indigo-700 hover:to-indigo-800 text-white font-bold"
+                                    className="h-12 bg-emerald-900 px-10 text-sm font-bold text-white hover:bg-emerald-800 active:scale-95 transition-all shadow-lg shadow-emerald-900/10"
                                 >
-                                    <Save className="w-4 h-4 mr-2" />
-                                    {editingId ? "Atualizar" : "Criar"} Post
+                                    <Save className="mr-2 h-4 w-4" />
+                                    {editingId ? "Salvar Alterações" : "Publicar Matéria"}
                                 </Button>
                                 <Button
                                     type="button"
+                                    variant="ghost"
                                     onClick={resetForm}
-                                    className="bg-red-600 hover:bg-red-700 text-white font-bold"
+                                    className="h-12 px-8 text-sm font-bold text-red-400 hover:bg-red-50 hover:text-red-600"
                                 >
-                                    Cancelar
+                                    Descartar
                                 </Button>
                             </div>
                         </form>
                     </motion.div>
                 )}
 
-                {/* Posts List */}
-                <div>
-                    <h2 className="text-2xl font-display font-bold text-white mb-6">
-                        Posts Publicados ({posts.length})
+                {/* Lista de Matérias */}
+                <div className="space-y-8">
+                    <h2 className="font-serif text-3xl font-bold text-slate-900">
+                        Acervo de Publicações <span className="text-emerald-900/30">({posts.length})</span>
                     </h2>
 
                     {loading ? (
-                        <div className="text-center py-12">
-                            <p className="text-indigo-300">Carregando posts...</p>
+                        <div className="flex h-64 items-center justify-center rounded-[40px] border border-dashed border-slate-200 bg-white">
+                            <div className="h-8 w-8 animate-spin rounded-full border-2 border-emerald-900 border-t-transparent" />
                         </div>
                     ) : posts.length === 0 ? (
-                        <div className="text-center py-12 bg-slate-800 rounded-2xl border-2 border-dashed border-indigo-500">
-                            <p className="text-indigo-300 mb-4">Nenhum post criado ainda</p>
+                        <div className="flex h-64 flex-col items-center justify-center rounded-[40px] border border-dashed border-slate-200 bg-white text-slate-400">
+                            <p className="font-bold">Nenhuma matéria publicada ainda</p>
                             <Button
+                                variant="link"
                                 onClick={() => setShowForm(true)}
-                                className="bg-indigo-600 hover:bg-indigo-700 text-white"
+                                className="mt-2 text-emerald-900 font-bold"
                             >
-                                <Plus className="w-4 h-4 mr-2" />
                                 Criar Primeiro Post
                             </Button>
                         </div>
                     ) : (
-                        <div className="grid gap-6">
+                        <div className="grid gap-4">
                             {posts.map((post) => (
                                 <motion.div
                                     key={post.id}
-                                    initial={{ opacity: 0, y: 20 }}
-                                    animate={{ opacity: 1, y: 0 }}
-                                    className="bg-slate-800 rounded-2xl p-6 shadow-lg border-2 border-indigo-500 hover:border-indigo-400 transition-all"
+                                    layout
+                                    className="group rounded-3xl border border-slate-200 bg-white p-6 shadow-sm hover:shadow-xl hover:shadow-emerald-900/5 transition-all"
                                 >
-                                    <div className="flex items-start justify-between">
-                                        <div className="flex-1">
+                                    <div className="flex items-center justify-between gap-6">
+                                        <div className="flex-1 min-w-0">
                                             <div className="flex items-center gap-3 mb-2">
-                                                <h3 className="text-xl font-display font-bold text-white">
+                                                <h3 className="truncate font-serif text-xl font-bold text-slate-900 group-hover:text-emerald-950 transition-colors">
                                                     {post.title}
                                                 </h3>
                                                 {post.published ? (
-                                                    <span className="inline-block px-3 py-1 bg-emerald-900 text-emerald-300 rounded-full text-xs font-semibold border border-emerald-500">
-                                                        Publicado
+                                                    <span className="rounded-full bg-emerald-50 px-3 py-1 text-[10px] font-bold uppercase tracking-widest text-emerald-700 border border-emerald-100">
+                                                        Ativo
                                                     </span>
                                                 ) : (
-                                                    <span className="inline-block px-3 py-1 bg-slate-700 text-slate-300 rounded-full text-xs font-semibold border border-slate-600">
+                                                    <span className="rounded-full bg-slate-50 px-3 py-1 text-[10px] font-bold uppercase tracking-widest text-slate-400 border border-slate-100">
                                                         Rascunho
                                                     </span>
                                                 )}
                                             </div>
-                                            <p className="text-indigo-300 text-sm mb-2">
+                                            <p className="text-xs font-bold text-emerald-900/40 mb-3">
                                                 /blog/{post.slug}
                                             </p>
-                                            {post.excerpt && (
-                                                <p className="text-slate-300 mb-3 line-clamp-2">
-                                                    {post.excerpt}
-                                                </p>
-                                            )}
-                                            <p className="text-slate-400 text-xs">
-                                                Criado em{" "}
-                                                {new Date(post.created_at).toLocaleDateString("pt-BR")}
-                                            </p>
+                                            <div className="flex items-center gap-4 text-xs font-bold text-slate-400 uppercase tracking-widest">
+                                                <span>{new Date(post.created_at).toLocaleDateString("pt-BR")}</span>
+                                            </div>
                                         </div>
 
-                                        <div className="flex gap-2 ml-4">
+                                        <div className="flex gap-2">
                                             <Button
-                                                onClick={() =>
-                                                    window.open(`/blog/${post.slug}`, "_blank")
-                                                }
-                                                className="bg-blue-600 hover:bg-blue-700 text-white"
+                                                variant="ghost"
+                                                onClick={() => window.open(`/blog/${post.slug}`, "_blank")}
+                                                className="h-10 w-10 p-0 text-slate-400 hover:text-emerald-900 hover:bg-emerald-50 rounded-xl"
                                             >
-                                                <Eye className="w-4 h-4" />
+                                                <Eye className="h-4 w-4" />
                                             </Button>
                                             <Button
+                                                variant="ghost"
                                                 onClick={() => handleEdit(post)}
-                                                className="bg-indigo-600 hover:bg-indigo-700 text-white"
+                                                className="h-10 w-10 p-0 text-slate-400 hover:text-emerald-900 hover:bg-emerald-50 rounded-xl"
                                             >
-                                                <Edit2 className="w-4 h-4" />
+                                                <Edit2 className="h-4 w-4" />
                                             </Button>
                                             <Button
+                                                variant="ghost"
                                                 onClick={() => handleDelete(post.id)}
-                                                className="bg-red-600 hover:bg-red-700 text-white"
+                                                className="h-10 w-10 p-0 text-red-300 hover:text-red-600 hover:bg-red-50 rounded-xl"
                                             >
-                                                <Trash2 className="w-4 h-4" />
+                                                <Trash2 className="h-4 w-4" />
                                             </Button>
                                         </div>
                                     </div>
@@ -422,7 +408,7 @@ const BlogAdmin = () => {
                         </div>
                     )}
                 </div>
-            </div>
+            </main>
         </div>
     );
 };

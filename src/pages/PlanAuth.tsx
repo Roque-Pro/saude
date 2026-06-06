@@ -26,62 +26,61 @@ import diagnosticoHeroMan from "@/img/diagnostico-hero-man.jpg";
 const highlights = [
   {
     icon: Clock3,
-    title: "Rápido",
-    description: "Leva menos de 2 minutos",
+    title: "Eficiente",
+    description: "Análise técnica em menos de 2 minutos",
   },
   {
-    icon: CheckCircle2,
-    title: "Gratuito",
-    description: "100% gratuito e sem compromisso",
+    icon: ShieldCheck,
+    title: "Confidencial",
+    description: "Sigilo absoluto sob ética profissional",
   },
   {
-    icon: Lock,
-    title: "Seguro",
-    description: "Seus dados estão protegidos",
+    icon: Target,
+    title: "Direto",
+    description: "Sem rodeios, foco em resultados reais",
   },
 ];
 
 const diagnosisPoints = [
   {
     icon: Target,
-    title: "Como atrair mais clientes com anúncios",
+    title: "Performance de Atendimento",
     description:
-      "Analisamos suas campanhas e estratégias para trazer as pessoas certas até você.",
+      "Analisamos como sua estrutura atual impacta na conversão e retenção de pacientes/clientes.",
   },
   {
     icon: MessageSquareMore,
-    title: "Onde sua empresa perde contatos",
+    title: "Gargalos de Comunicação",
     description:
-      "Descubra falhas no atendimento que fazem você perder vendas todos os dias.",
+      "Descubra onde sua equipe ou sistema falha no primeiro contato e no pós-atendimento.",
   },
   {
     icon: Workflow,
-    title: "O que pode ser automatizado",
+    title: "Potencial de Automação",
     description:
-      "Identificamos tarefas e processos que podem ser automatizados para você ganhar tempo e vender mais.",
+      "Identificamos processos repetitivos que podem ser automatizados para liberar seu tempo.",
   },
   {
     icon: TrendingUp,
-    title: "Onde você está desperdiçando dinheiro",
+    title: "Análise de Faturamento",
     description:
-      "Encontramos gargalos e investimentos que não estão trazendo retorno.",
+      "Encontramos vazamentos financeiros e oportunidades de aumento de margem em cada serviço.",
   },
   {
     icon: Rocket,
-    title: "Como transformar interesse em cliente",
+    title: "Escala com Sobriedade",
     description:
-      "Avaliamos seu funil de vendas e mostramos onde estão as oportunidades de fechamento.",
+      "Avaliamos seu posicionamento no mercado e como crescer sem perder a qualidade técnica.",
   },
 ];
 
 const businessTypes = [
-  { value: "", label: "Ex: Clínica, Restaurante, Loja, Serviços..." },
-  { value: "clinica", label: "Clínica / Saúde" },
-  { value: "restaurante", label: "Restaurante / Alimentação" },
-  { value: "loja", label: "Loja / Varejo" },
-  { value: "servicos", label: "Prestação de serviços" },
-  { value: "industria", label: "Indústria / Distribuição" },
-  { value: "outro", label: "Outro tipo de negócio" },
+  { value: "", label: "Selecione sua área de atuação..." },
+  { value: "medicina", label: "Clínica Médica / Especialidade" },
+  { value: "advocacia", label: "Escritório de Advocacia" },
+  { value: "saude", label: "Serviços de Saúde / Bem-estar" },
+  { value: "consultoria", label: "Consultoria / Serviços Profissionais" },
+  { value: "outro", label: "Outro tipo de negócio de elite" },
 ];
 
 const PlanAuth = () => {
@@ -90,27 +89,26 @@ const PlanAuth = () => {
   const [submitting, setSubmitting] = useState(false);
 
   useSEO({
-    title: "Diagnóstico Gratuito para descobrir onde sua empresa perde clientes",
+    title: "Diagnóstico Estratégico | Dr Saullo Gomes - Gestão para Médicos e Advogados",
     description:
-      "Em menos de 2 minutos, você recebe um diagnóstico gratuito com oportunidades reais para atrair mais clientes e aumentar seu faturamento.",
+      "Em menos de 2 minutos, receba uma análise estratégica da sua operação e descubra como otimizar seu faturamento e sua autoridade.",
     keywords: [
-      "diagnóstico gratuito",
-      "diagnóstico de vendas",
-      "atrair clientes",
-      "converter leads",
-      "automação comercial",
-      "faturamento empresarial",
-      "processo comercial",
-      "gargalos de vendas",
+      "diagnóstico médico",
+      "gestão clínica",
+      "estratégia para advogados",
+      "alta performance profissional",
+      "dr saullo gomes",
+      "automação para médicos",
+      "consultoria de gestão de elite",
     ],
-    ogTitle: "Descubra onde sua empresa está perdendo clientes",
+    ogTitle: "Descubra o potencial oculto da sua prática profissional",
     ogDescription:
-      "Receba um diagnóstico gratuito e descubra os gargalos que travam o crescimento da sua empresa.",
-    ogUrl: "https://www.technexos.com.br/diagnostico-gratuito",
-    twitterTitle: "Diagnóstico gratuito para sua empresa",
+      "Receba um diagnóstico estratégico gratuito e descubra os gargalos que travam o seu crescimento.",
+    ogUrl: "https://www.doutorsaullo.com.br/diagnostico-gratuito",
+    twitterTitle: "Diagnóstico Estratégico para Médicos e Advogados",
     twitterDescription:
-      "Descubra oportunidades reais para atrair mais clientes e vender melhor.",
-    canonicalUrl: "https://www.technexos.com.br/diagnostico-gratuito",
+      "Descubra oportunidades reais para escalar sua carreira com sobriedade.",
+    canonicalUrl: "https://www.doutorsaullo.com.br/diagnostico-gratuito",
   });
 
   const [diagnosticData, setDiagnosticData] = useState({
@@ -123,8 +121,8 @@ const PlanAuth = () => {
 
   if (loading) {
     return (
-      <div className="flex min-h-screen items-center justify-center bg-[#06121f]">
-        <div className="h-12 w-12 animate-spin rounded-full border-4 border-[#f6bf22] border-t-transparent" />
+      <div className="flex min-h-screen items-center justify-center bg-[#f8fafc]">
+        <div className="h-12 w-12 animate-spin rounded-full border-4 border-emerald-900 border-t-transparent" />
       </div>
     );
   }
@@ -155,8 +153,8 @@ const PlanAuth = () => {
       if (error) throw error;
 
       toast({
-        title: "Diagnóstico enviado!",
-        description: "Recebemos seus dados e vamos analisar sua empresa.",
+        title: "Dados recebidos com sucesso!",
+        description: "Dr. Saullo e sua equipe analisarão seu perfil em breve.",
       });
 
       setDiagnosticData({
@@ -168,7 +166,7 @@ const PlanAuth = () => {
       });
     } catch (error: any) {
       toast({
-        title: "Erro ao enviar",
+        title: "Erro no envio",
         description: error.message || "Tente novamente em instantes.",
         variant: "destructive",
       });
@@ -182,57 +180,60 @@ const PlanAuth = () => {
   };
 
   return (
-    <div className="min-h-screen bg-white text-slate-900">
-      <section className="relative overflow-hidden bg-[#06121f] text-white">
-        <div className="absolute inset-0 bg-[radial-gradient(circle_at_top_left,_rgba(255,196,37,0.12),_transparent_30%),radial-gradient(circle_at_bottom_right,_rgba(255,255,255,0.06),_transparent_30%)]" />
-        <div className="relative mx-auto grid max-w-7xl gap-10 px-5 pb-12 pt-8 lg:grid-cols-[1.05fr_0.95fr] lg:px-10 lg:pb-0 lg:pt-10">
+    <div className="min-h-screen bg-white text-slate-900 font-sans selection:bg-emerald-100 selection:text-emerald-900">
+      <section className="relative overflow-hidden bg-[#0c2e27] text-white">
+        <div className="absolute inset-0 bg-[radial-gradient(circle_at_top_left,_rgba(16,185,129,0.15),_transparent_40%),radial-gradient(circle_at_bottom_right,_rgba(255,255,255,0.05),_transparent_30%)]" />
+        <div className="relative mx-auto grid max-w-7xl gap-10 px-6 pb-16 pt-12 lg:grid-cols-[1.1fr_0.9fr] lg:px-12 lg:pt-20">
           <motion.div
             initial={{ opacity: 0, y: 24 }}
             animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.7 }}
+            transition={{ duration: 0.8, ease: [0.16, 1, 0.3, 1] }}
             className="flex flex-col justify-between"
           >
             <div>
-              <div className="mb-10">
-                <div className="flex items-center gap-2">
-                  <span className="text-[2.25rem] font-black tracking-tight text-white sm:text-[3.25rem]">
-                    TechNexos
-                  </span>
-                  <Search className="h-8 w-8 text-[#f6bf22] sm:h-10 sm:w-10" />
+              <div className="mb-12">
+                <div className="flex items-center gap-3">
+                  <div className="flex h-12 w-12 items-center justify-center rounded-xl bg-emerald-500 shadow-lg shadow-emerald-500/20">
+                    <Search className="h-6 w-6 text-emerald-950" />
+                  </div>
+                  <div>
+                    <span className="block font-serif text-2xl font-bold tracking-tight text-white">
+                      Dr Saullo Gomes
+                    </span>
+                    <span className="block text-[10px] font-bold uppercase tracking-[0.2em] text-emerald-400/80">
+                      Gestão & Estratégia
+                    </span>
+                  </div>
                 </div>
-                <p className="mt-1 text-xs font-semibold uppercase tracking-[0.2em] text-white/80 sm:text-sm">
-                  Automação • Tráfego • Resultados
-                </p>
               </div>
 
-              <h1 className="max-w-3xl text-4xl font-black leading-[1.08] sm:text-5xl lg:text-[4.2rem]">
-                Descubra onde sua empresa está{" "}
-                <span className="text-[#f6bf22]">perdendo clientes</span> (e dinheiro)
-                todos os dias.
+              <h1 className="max-w-3xl font-serif text-5xl font-bold leading-[1.1] sm:text-6xl lg:text-7xl">
+                Descubra onde sua prática está <br />
+                <span className="italic text-emerald-400">perdendo performance</span> <br />
+                e autoridade.
               </h1>
 
-              <div className="my-8 h-1.5 w-20 rounded-full bg-[#f6bf22]" />
+              <div className="my-10 h-1 w-20 rounded-full bg-emerald-500/30" />
 
-              <p className="max-w-2xl text-lg leading-relaxed text-white/88 sm:text-2xl">
-                Em menos de 2 minutos, você recebe um{" "}
-                <span className="font-bold text-[#f6bf22]">diagnóstico gratuito</span> com
-                oportunidades reais para atrair mais clientes e aumentar seu faturamento.
+              <p className="max-w-2xl text-lg leading-relaxed text-emerald-50/70 sm:text-xl">
+                Em menos de 2 minutos, você recebe um <br className="hidden sm:block" />
+                <span className="font-bold text-white underline decoration-emerald-500/50 underline-offset-8">diagnóstico estratégico exclusivo</span> com insights para médicos e advogados de elite.
               </p>
             </div>
 
-            <div className="mt-10 rounded-[28px] border border-white/20 bg-white/4 p-4 backdrop-blur-sm sm:p-5">
-              <div className="grid gap-4 sm:grid-cols-3">
+            <div className="mt-12 rounded-[32px] border border-white/10 bg-white/5 p-6 backdrop-blur-xl">
+              <div className="grid gap-6 sm:grid-cols-3">
                 {highlights.map(({ icon: Icon, title, description }) => (
                   <div
                     key={title}
-                    className="flex items-center gap-4 rounded-2xl border border-white/10 bg-[#071524]/70 px-4 py-4"
+                    className="flex flex-col items-start gap-4"
                   >
-                    <div className="flex h-14 w-14 items-center justify-center rounded-full border border-white/30">
-                      <Icon className="h-7 w-7 text-white" />
+                    <div className="flex h-12 w-12 items-center justify-center rounded-2xl bg-emerald-500/10 text-emerald-400">
+                      <Icon className="h-6 w-6" />
                     </div>
                     <div>
-                      <p className="text-lg font-bold">{title}</p>
-                      <p className="text-sm leading-snug text-white/78">{description}</p>
+                      <p className="text-sm font-bold text-white">{title}</p>
+                      <p className="mt-1 text-xs leading-relaxed text-emerald-50/50">{description}</p>
                     </div>
                   </div>
                 ))}
@@ -241,29 +242,29 @@ const PlanAuth = () => {
 
             <Button
               onClick={scrollToForm}
-              className="mt-8 h-14 w-full max-w-md rounded-xl bg-[#f6bf22] text-base font-black text-[#08111d] hover:bg-[#ffd24d] lg:hidden"
+              className="mt-10 h-16 w-full max-w-md rounded-2xl bg-emerald-500 text-base font-bold text-emerald-950 hover:bg-emerald-400 active:scale-95 transition-all lg:hidden"
             >
-              Receber diagnóstico gratuito
+              Iniciar Análise Gratuita
             </Button>
           </motion.div>
 
           <motion.div
-            initial={{ opacity: 0, x: 36 }}
-            animate={{ opacity: 1, x: 0 }}
-            transition={{ duration: 0.85, delay: 0.15 }}
-            className="relative flex items-end justify-center"
+            initial={{ opacity: 0, scale: 0.95 }}
+            animate={{ opacity: 1, scale: 1 }}
+            transition={{ duration: 1, ease: [0.16, 1, 0.3, 1], delay: 0.2 }}
+            className="relative hidden items-end justify-center lg:flex"
           >
-            <div className="absolute inset-x-0 bottom-0 h-32 bg-gradient-to-t from-[#06121f] to-transparent lg:hidden" />
+            <div className="absolute inset-x-0 bottom-0 h-40 bg-gradient-to-t from-[#0c2e27] to-transparent z-20" />
             <img
               src={diagnosticoHeroMan}
-              alt="Homem analisando dados no computador"
-              className="relative z-10 max-h-[690px] w-full max-w-[560px] rounded-[32px] object-cover object-center shadow-[0_30px_80px_rgba(0,0,0,0.45)] lg:rounded-none lg:shadow-none"
+              alt="Análise de Performance Profissional"
+              className="relative z-10 max-h-[750px] w-full rounded-[48px] object-cover shadow-2xl transition-transform duration-700 hover:scale-105"
             />
           </motion.div>
         </div>
       </section>
 
-      <section className="bg-white px-5 py-16 lg:px-10 lg:py-20">
+      <section className="bg-white px-6 py-24 lg:px-12 lg:py-32">
         <div className="mx-auto max-w-7xl">
           <motion.div
             initial={{ opacity: 0, y: 18 }}
@@ -272,16 +273,16 @@ const PlanAuth = () => {
             transition={{ duration: 0.6 }}
             className="mx-auto max-w-4xl text-center"
           >
-            <h2 className="text-3xl font-black leading-tight text-[#0b1320] sm:text-[3rem]">
-              Seu diagnóstico analisa{" "}
-              <span className="text-[#1a64d6]">5 pontos-chave</span>
+            <h2 className="font-serif text-4xl font-bold tracking-tight text-slate-950 sm:text-5xl lg:text-6xl">
+              Seu diagnóstico analisa <br />
+              <span className="text-emerald-800 italic">5 pilares fundamentais</span>
             </h2>
-            <p className="mt-3 text-xl text-slate-700 sm:text-[2rem] sm:leading-tight">
-              que podem estar travando o crescimento da sua empresa:
+            <p className="mt-6 text-xl text-slate-500 font-medium">
+              que definem o sucesso e a escala da sua carreira:
             </p>
           </motion.div>
 
-          <div className="mt-14 grid gap-8 md:grid-cols-2 xl:grid-cols-5">
+          <div className="mt-20 grid gap-8 md:grid-cols-2 xl:grid-cols-5">
             {diagnosisPoints.map(({ icon: Icon, title, description }, index) => (
               <motion.div
                 key={title}
@@ -289,61 +290,58 @@ const PlanAuth = () => {
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true }}
                 transition={{ duration: 0.55, delay: index * 0.08 }}
-                className="relative rounded-[28px] border border-slate-200 bg-white px-6 pb-8 pt-7 text-center shadow-[0_16px_40px_rgba(15,23,42,0.06)]"
+                className="group relative rounded-[40px] border border-slate-100 bg-white px-8 pb-10 pt-12 text-center shadow-sm transition-all hover:shadow-2xl hover:shadow-emerald-900/5 hover:-translate-y-2"
               >
-                <div className="mx-auto mb-7 flex h-11 w-11 items-center justify-center rounded-full bg-[#1a64d6] text-sm font-black text-white">
-                  {(index + 1).toString().padStart(2, "0")}
+                <div className="mx-auto mb-8 flex h-20 w-20 items-center justify-center rounded-3xl bg-slate-50 text-emerald-800 transition-colors group-hover:bg-emerald-900 group-hover:text-emerald-50">
+                  <Icon className="h-10 w-10" />
                 </div>
-                <div className="mx-auto mb-6 flex h-20 w-20 items-center justify-center rounded-[24px] bg-slate-50">
-                  <Icon className="h-11 w-11 text-[#071524]" />
+                <h3 className="font-serif text-xl font-bold leading-tight text-slate-900">{title}</h3>
+                <p className="mt-4 text-sm leading-relaxed text-slate-500">{description}</p>
+                <div className="absolute left-1/2 top-6 -translate-x-1/2 text-[10px] font-bold uppercase tracking-widest text-emerald-900/20">
+                  Pilar {(index + 1).toString().padStart(2, "0")}
                 </div>
-                <h3 className="text-xl font-black leading-snug text-[#0b1320]">{title}</h3>
-                <p className="mt-4 text-base leading-7 text-slate-600">{description}</p>
               </motion.div>
             ))}
           </div>
         </div>
       </section>
 
-      <section id="diagnostic-form" className="bg-[#f4f6fb] px-5 py-16 lg:px-10 lg:py-20">
-        <div className="mx-auto grid max-w-7xl gap-10 lg:grid-cols-[0.92fr_1.08fr] lg:items-start">
+      <section id="diagnostic-form" className="bg-[#f8fafc] px-6 py-24 lg:px-12 lg:py-32">
+        <div className="mx-auto grid max-w-7xl gap-16 lg:grid-cols-[0.9fr_1.1fr] lg:items-start">
           <motion.div
             initial={{ opacity: 0, x: -24 }}
             whileInView={{ opacity: 1, x: 0 }}
             viewport={{ once: true }}
             transition={{ duration: 0.65 }}
-            className="pt-2"
           >
-            <div className="max-w-xl border-l-4 border-[#f6bf22] pl-6">
-              <h2 className="text-4xl font-black leading-tight text-[#0b1320]">
-                Vamos descobrir juntos?
+            <div className="max-w-xl border-l-4 border-emerald-500 pl-8">
+              <h2 className="font-serif text-5xl font-bold leading-tight text-slate-950">
+                Pronto para a <br /> transformação?
               </h2>
-              <p className="mt-5 text-xl leading-9 text-slate-700">
-                Preencha os dados ao lado e receba seu diagnóstico personalizado com
-                insights práticos para sua empresa{" "}
-                <span className="font-black text-[#0b1320]">
-                  vender mais e crescer de verdade.
+              <p className="mt-8 text-xl leading-relaxed text-slate-600 font-medium">
+                Preencha os dados e receba uma análise personalizada que respeita sua inteligência e seu tempo. <br />
+                <span className="text-slate-950 font-bold italic">
+                  "Se você não sabe quanto está perdendo por mês... esse já é o problema."
                 </span>
               </p>
             </div>
 
-            <div className="mt-10 rounded-[26px] bg-white p-6 shadow-[0_18px_40px_rgba(15,23,42,0.08)]">
-              <div className="flex items-center gap-4">
-                <div className="flex h-16 w-16 items-center justify-center rounded-full bg-[#08111d]">
-                  <Gift className="h-8 w-8 text-[#f6bf22]" />
+            <div className="mt-12 rounded-[40px] bg-white p-8 shadow-sm border border-slate-100">
+              <div className="flex items-center gap-6">
+                <div className="flex h-16 w-16 shrink-0 items-center justify-center rounded-3xl bg-emerald-50 text-emerald-700">
+                  <Gift className="h-8 w-8" />
                 </div>
-                <p className="text-lg leading-8 text-slate-700">
-                  Seu diagnóstico é 100% gratuito e feito sob medida para a realidade
-                  do seu negócio.
+                <p className="text-lg leading-relaxed text-slate-600">
+                  Este diagnóstico é gratuito e exclusivo para profissionais que buscam o próximo nível de sua prática clínica ou jurídica.
                 </p>
               </div>
             </div>
 
             <p
-              className="mt-8 text-center text-3xl text-[#1f4ea6]"
-              style={{ fontFamily: '"Brush Script MT", "Segoe Script", cursive' }}
+              className="mt-12 text-center text-4xl text-emerald-900/30"
+              style={{ fontFamily: '"Playfair Display", serif', fontStyle: 'italic' }}
             >
-              Menos achismo, mais resultado.
+              Exatidão técnica. Visão estratégica.
             </p>
           </motion.div>
 
@@ -352,16 +350,16 @@ const PlanAuth = () => {
             whileInView={{ opacity: 1, x: 0 }}
             viewport={{ once: true }}
             transition={{ duration: 0.65 }}
-            className="rounded-[30px] bg-white p-6 shadow-[0_24px_50px_rgba(15,23,42,0.08)] sm:p-8 lg:p-10"
+            className="rounded-[48px] bg-white p-8 shadow-2xl shadow-emerald-900/5 sm:p-12 border border-slate-100"
           >
-            <h3 className="text-center text-3xl font-black text-[#0b1320]">
-              Receber meu diagnóstico gratuito
+            <h3 className="text-center font-serif text-3xl font-bold text-slate-950">
+              Receber Diagnóstico
             </h3>
 
-            <form onSubmit={handleDiagnosticSubmit} className="mt-8 space-y-5">
+            <form onSubmit={handleDiagnosticSubmit} className="mt-10 space-y-6">
               <div className="space-y-2">
-                <Label htmlFor="diagnosticName" className="text-base font-black text-[#0b1320]">
-                  Nome completo
+                <Label htmlFor="diagnosticName" className="text-[10px] font-bold uppercase tracking-[0.2em] text-slate-400">
+                  Nome Completo
                 </Label>
                 <Input
                   id="diagnosticName"
@@ -369,52 +367,54 @@ const PlanAuth = () => {
                   onChange={(e) =>
                     setDiagnosticData({ ...diagnosticData, diagnosticName: e.target.value })
                   }
-                  placeholder="Digite seu nome"
+                  placeholder="Seu nome aqui"
                   required
-                  className="h-14 rounded-xl border-slate-300 bg-white text-base text-slate-900 placeholder:text-slate-400 focus-visible:ring-[#1a64d6]"
+                  className="h-14 rounded-2xl border-slate-200 bg-white px-6 text-base focus-visible:ring-emerald-900"
                 />
               </div>
 
-              <div className="space-y-2">
-                <Label htmlFor="diagnosticPhone" className="text-base font-black text-[#0b1320]">
-                  Seu WhatsApp
-                </Label>
-                <Input
-                  id="diagnosticPhone"
-                  value={diagnosticData.diagnosticPhone}
-                  onChange={(e) =>
-                    setDiagnosticData({ ...diagnosticData, diagnosticPhone: e.target.value })
-                  }
-                  placeholder="(00) 00000-0000"
-                  required
-                  className="h-14 rounded-xl border-slate-300 bg-white text-base text-slate-900 placeholder:text-slate-400 focus-visible:ring-[#1a64d6]"
-                />
+              <div className="grid gap-6 sm:grid-cols-2">
+                <div className="space-y-2">
+                  <Label htmlFor="diagnosticPhone" className="text-[10px] font-bold uppercase tracking-[0.2em] text-slate-400">
+                    WhatsApp Profissional
+                  </Label>
+                  <Input
+                    id="diagnosticPhone"
+                    value={diagnosticData.diagnosticPhone}
+                    onChange={(e) =>
+                      setDiagnosticData({ ...diagnosticData, diagnosticPhone: e.target.value })
+                    }
+                    placeholder="(00) 00000-0000"
+                    required
+                    className="h-14 rounded-2xl border-slate-200 bg-white px-6 text-base focus-visible:ring-emerald-900"
+                  />
+                </div>
+
+                <div className="space-y-2">
+                  <Label
+                    htmlFor="diagnosticCompany"
+                    className="text-[10px] font-bold uppercase tracking-[0.2em] text-slate-400"
+                  >
+                    Nome da Clínica/Escritório
+                  </Label>
+                  <Input
+                    id="diagnosticCompany"
+                    value={diagnosticData.diagnosticCompany}
+                    onChange={(e) =>
+                      setDiagnosticData({
+                        ...diagnosticData,
+                        diagnosticCompany: e.target.value,
+                      })
+                    }
+                    placeholder="Nome da sua instituição"
+                    className="h-14 rounded-2xl border-slate-200 bg-white px-6 text-base focus-visible:ring-emerald-900"
+                  />
+                </div>
               </div>
 
               <div className="space-y-2">
-                <Label
-                  htmlFor="diagnosticCompany"
-                  className="text-base font-black text-[#0b1320]"
-                >
-                  Nome da empresa
-                </Label>
-                <Input
-                  id="diagnosticCompany"
-                  value={diagnosticData.diagnosticCompany}
-                  onChange={(e) =>
-                    setDiagnosticData({
-                      ...diagnosticData,
-                      diagnosticCompany: e.target.value,
-                    })
-                  }
-                  placeholder="Ex.: Nome da sua empresa"
-                  className="h-14 rounded-xl border-slate-300 bg-white text-base text-slate-900 placeholder:text-slate-400 focus-visible:ring-[#1a64d6]"
-                />
-              </div>
-
-              <div className="space-y-2">
-                <Label htmlFor="diagnosticArea" className="text-base font-black text-[#0b1320]">
-                  Qual o seu tipo de negócio?
+                <Label htmlFor="diagnosticArea" className="text-[10px] font-bold uppercase tracking-[0.2em] text-slate-400">
+                  Área de Atuação
                 </Label>
                 <select
                   id="diagnosticArea"
@@ -423,7 +423,7 @@ const PlanAuth = () => {
                     setDiagnosticData({ ...diagnosticData, diagnosticArea: e.target.value })
                   }
                   required
-                  className="flex h-14 w-full rounded-xl border border-slate-300 bg-white px-4 text-base text-slate-900 outline-none transition focus:border-[#1a64d6]"
+                  className="flex h-14 w-full rounded-2xl border border-slate-200 bg-white px-6 text-base outline-none transition focus:border-emerald-900"
                 >
                   {businessTypes.map((option) => (
                     <option key={option.value || "placeholder"} value={option.value}>
@@ -436,9 +436,9 @@ const PlanAuth = () => {
               <div className="space-y-2">
                 <Label
                   htmlFor="diagnosticDescription"
-                  className="text-base font-black text-[#0b1320]"
+                  className="text-[10px] font-bold uppercase tracking-[0.2em] text-slate-400"
                 >
-                  Qual sua principal dificuldade hoje?
+                  Principal desafio estratégico hoje?
                 </Label>
                 <textarea
                   id="diagnosticDescription"
@@ -449,48 +449,47 @@ const PlanAuth = () => {
                       diagnosticDescription: e.target.value,
                     })
                   }
-                  placeholder="Ex.: Poucos clientes, vendas baixas, processos desorganizados..."
+                  placeholder="Ex.: Baixa retenção, dificuldade com faturamento, falta de tempo..."
                   required
-                  className="min-h-28 w-full rounded-xl border border-slate-300 bg-white px-4 py-3 text-base text-slate-900 outline-none transition placeholder:text-slate-400 focus:border-[#1a64d6]"
+                  className="min-h-32 w-full rounded-2xl border border-slate-200 bg-white px-6 py-4 text-base outline-none transition focus:border-emerald-900 placeholder:text-slate-300"
                 />
               </div>
 
               <Button
                 type="submit"
                 disabled={submitting}
-                className="mt-2 flex h-16 w-full items-center justify-center gap-3 rounded-xl bg-[#f6bf22] text-lg font-black text-[#08111d] hover:bg-[#ffd24d]"
+                className="mt-4 flex h-16 w-full items-center justify-center gap-3 rounded-2xl bg-emerald-900 text-lg font-bold text-white hover:bg-emerald-800 active:scale-95 transition-all shadow-xl shadow-emerald-900/20"
               >
                 <Lock className="h-5 w-5" />
                 {submitting
-                  ? "Enviando diagnóstico..."
-                  : "RECEBER DIAGNÓSTICO GRATUITO"}
+                  ? "Processando dados..."
+                  : "RECEBER DIAGNÓSTICO ESTRATÉGICO"}
               </Button>
 
-              <div className="flex items-center justify-center gap-2 pt-1 text-sm text-slate-500">
+              <div className="flex items-center justify-center gap-2 pt-2 text-[10px] font-bold uppercase tracking-widest text-slate-300">
                 <ShieldCheck className="h-4 w-4" />
-                <span>Seus dados estão protegidos. Não enviamos spam.</span>
+                <span>Dados protegidos por ética profissional</span>
               </div>
             </form>
           </motion.div>
         </div>
       </section>
 
-      <section className="bg-[#071524] px-5 py-8 text-white lg:px-10">
-        <div className="mx-auto flex max-w-7xl flex-col items-center justify-between gap-6 lg:flex-row">
-          <div className="flex items-center gap-4 text-center lg:text-left">
-            <div className="flex h-14 w-14 flex-shrink-0 items-center justify-center rounded-full border border-[#f6bf22]">
-              <Rocket className="h-7 w-7 text-[#f6bf22]" />
+      <section className="bg-slate-950 px-6 py-12 text-white lg:px-12">
+        <div className="mx-auto flex max-w-7xl flex-col items-center justify-between gap-8 lg:flex-row">
+          <div className="flex items-center gap-6 text-center lg:text-left">
+            <div className="flex h-16 w-16 shrink-0 items-center justify-center rounded-3xl bg-emerald-500/10 text-emerald-500">
+              <Rocket className="h-8 w-8" />
             </div>
-            <p className="max-w-xl text-2xl leading-snug text-white/92">
-              Você pode estar deixando dinheiro na mesa sem perceber.{" "}
-              <span className="font-black text-[#f6bf22]">Descubra agora.</span>
+            <p className="max-w-xl font-serif text-2xl leading-snug">
+              Sua excelência técnica merece uma <span className="text-emerald-400 italic">gestão de elite.</span>
             </p>
           </div>
 
-          <ArrowRight className="hidden h-10 w-10 text-[#f6bf22] lg:block" />
+          <ArrowRight className="hidden h-10 w-10 text-emerald-500/20 lg:block" />
 
-          <p className="max-w-xl text-center text-2xl leading-snug text-white/92 lg:text-left">
-            Comece agora e veja o que sua empresa pode estar perdendo todos os dias.
+          <p className="max-w-md text-center text-sm font-medium text-slate-400 lg:text-right leading-relaxed">
+            Descubra agora os gargalos que estão impedindo o crescimento sustentável da sua carreira.
           </p>
         </div>
       </section>

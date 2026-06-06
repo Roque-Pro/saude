@@ -105,17 +105,17 @@ const InstagramReelsAdmin = () => {
       const captions = processedData.output?.captions || [];
 
       // Gerar legenda e hashtags padrão
-      const defaultCaption = `Confira este recorte imperdível! 🎬✨\n\nTransformação digital e automação inteligente em ação.\n\n#TechNexos #AutomaçãoInteligente #IA #TransformaçãoDigital #Inovação`;
+      const defaultCaption = `Confira este recorte imperdível! 🎬✨\n\nExcelência técnica e visão estratégica em ação.\n\n#DrSaulloGomes #GestãoDeElite #MedicinaModerna #AdvocaciaEstratégica #Performance`;
       
       const defaultHashtags = [
-        "#TechNexos",
-        "#AutomaçãoInteligente",
-        "#IA",
-        "#TransformaçãoDigital",
-        "#Inovação",
-        "#TecnologiaQueTrasforma",
-        "#ConsultoriaTech",
-        "#NegóciosInteligentes"
+        "#DrSaulloGomes",
+        "#GestãoDeElite",
+        "#MedicinaModerna",
+        "#AdvocaciaEstratégica",
+        "#Performance",
+        "#EstratégiaProfissional",
+        "#ConsultoriaDeAltoNivel",
+        "#ResultadosReais"
       ];
 
       const newReel: Reel = {
@@ -135,14 +135,14 @@ const InstagramReelsAdmin = () => {
       setCustomHashtags(defaultHashtags.join(" "));
 
       toast({
-        title: "✅ Vídeo Processado com Sucesso!",
-        description: "Seu reel está pronto para download com legenda e qualidade profissional.",
+        title: "✅ Reel Gerado com Sucesso!",
+        description: "Seu conteúdo estratégico está pronto para download.",
       });
     } catch (error: any) {
       console.error("Erro ao processar vídeo:", error);
       toast({
-        title: "❌ Erro ao Processar",
-        description: error.message || "Ocorreu um erro ao processar o vídeo. Tente novamente.",
+        title: "❌ Falha no Processamento",
+        description: error.message || "Tente novamente em instantes.",
         variant: "destructive",
       });
       
@@ -164,7 +164,7 @@ const InstagramReelsAdmin = () => {
   const handleProcessVideo = async () => {
     if (!youtubeUrl.trim()) {
       toast({
-        title: "URL vazia",
+        title: "Link ausente",
         description: "Insira um link válido do YouTube",
         variant: "destructive",
       });
@@ -174,8 +174,8 @@ const InstagramReelsAdmin = () => {
     const youtubeId = extractYoutubeId(youtubeUrl);
     if (!youtubeId) {
       toast({
-        title: "URL inválida",
-        description: "Insira um link válido do YouTube (youtu.be ou youtube.com)",
+        title: "Link inválido",
+        description: "Insira uma URL válida do YouTube",
         variant: "destructive",
       });
       return;
@@ -198,12 +198,10 @@ const InstagramReelsAdmin = () => {
 
       toast({
         title: "✅ Download Iniciado",
-        description: "Seu reel está sendo baixado. Pronto para postar no Instagram!",
       });
     } catch (error) {
       toast({
         title: "Erro ao baixar",
-        description: "Tente novamente",
         variant: "destructive",
       });
     }
@@ -213,199 +211,200 @@ const InstagramReelsAdmin = () => {
     navigator.clipboard.writeText(text);
     toast({
       title: "✅ Copiado!",
-      description: "Legenda copiada para área de transferência",
     });
   };
 
   return (
-    <div>
-      <PageHeader
-        title="Gerador de Reels Instagram"
-        description="Crie reels de primeira qualidade a partir de vídeos do YouTube"
-      />
+    <div className="min-h-screen bg-[#f8fafc] text-slate-900 font-sans">
+      {/* Header Sóbrio */}
+      <header className="sticky top-0 z-50 w-full border-b border-slate-200 bg-white/80 py-4 backdrop-blur-xl shadow-sm">
+        <div className="mx-auto flex max-w-7xl items-center justify-between px-6">
+          <div className="flex items-center gap-6">
+            <Button
+              variant="ghost"
+              onClick={() => navigate("/crm")}
+              className="h-9 px-3 text-xs font-bold text-slate-600 hover:bg-slate-100"
+            >
+              <ArrowLeft className="mr-2 h-4 w-4" />
+              CRM
+            </Button>
+            <div>
+              <h1 className="font-serif text-lg font-bold tracking-tight text-emerald-950">
+                Curadoria de Reels
+              </h1>
+              <p className="text-[10px] font-bold uppercase tracking-widest text-emerald-700/70">
+                Extração de Insights em Vídeo
+              </p>
+            </div>
+          </div>
+        </div>
+      </header>
 
-      <div className="max-w-6xl mx-auto">
-        {/* Input YouTube */}
+      <main className="mx-auto max-w-4xl px-6 py-12">
+        {/* Input YouTube Moderno */}
         <motion.div
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
-          className="glass-card p-8 rounded-lg border border-border mb-8"
+          className="mb-12 rounded-[40px] border border-slate-200 bg-white p-8 shadow-2xl shadow-emerald-900/5 sm:p-12"
         >
-          <h2 className="text-2xl font-bold mb-6">📹 Criar Novo Reel</h2>
+          <h2 className="font-serif text-2xl font-bold text-slate-900 mb-8 flex items-center gap-3">
+            <Play className="h-6 w-6 text-emerald-900" />
+            Processar Nova Matéria
+          </h2>
           
-          <div className="space-y-4">
-            <div>
-              <Label className="text-base font-semibold mb-2">Link do YouTube</Label>
+          <div className="space-y-6">
+            <div className="space-y-2">
+              <Label className="text-[10px] font-bold uppercase tracking-[0.2em] text-slate-400">URL do YouTube</Label>
               <Input
-                placeholder="Cole aqui: https://youtu.be/... ou https://youtube.com/watch?v=..."
+                placeholder="https://www.youtube.com/watch?v=..."
                 value={youtubeUrl}
                 onChange={(e) => setYoutubeUrl(e.target.value)}
-                className="text-base h-12"
+                className="h-14 rounded-2xl border-slate-200 bg-white px-6 text-base focus-visible:ring-emerald-900"
                 disabled={processing}
               />
-              <p className="text-xs text-muted-foreground mt-2">
-                Formatos aceitos: youtu.be/xxxxx ou youtube.com/watch?v=xxxxx
-              </p>
             </div>
 
             <Button
               onClick={handleProcessVideo}
               disabled={processing || !youtubeUrl.trim()}
-              size="lg"
-              className="w-full gradient-primary text-primary-foreground font-bold text-base glow-primary"
+              className="h-14 w-full rounded-2xl bg-emerald-900 text-base font-bold text-white hover:bg-emerald-800 active:scale-95 transition-all shadow-xl shadow-emerald-900/10"
             >
               {processing ? (
                 <>
-                  <Loader className="w-5 h-5 mr-2 animate-spin" />
-                  Processando... (aguarde até 5 min)
+                  <Loader className="mr-3 h-5 w-5 animate-spin" />
+                  Sintetizando Reel... (aguarde)
                 </>
               ) : (
                 <>
-                  <Play className="w-5 h-5 mr-2" />
-                  Processar Vídeo com Runway ML
+                  <Play className="mr-3 h-5 w-5" />
+                  Gerar Reel Estratégico com Runway ML
                 </>
               )}
             </Button>
           </div>
         </motion.div>
 
-        {/* Reel Selecionado */}
+        {/* Reel Selecionado Refinado */}
         {selectedReel && (
           <motion.div
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
-            className="glass-card p-8 rounded-lg border border-primary/30 mb-8"
+            className="mb-12 rounded-[40px] border border-emerald-900/20 bg-white p-8 shadow-2xl shadow-emerald-900/10 sm:p-12"
           >
-            <div className="flex items-center gap-3 mb-6">
-              {selectedReel.status === "ready" && (
+            <div className="flex items-center gap-4 mb-8">
+              {selectedReel.status === "ready" ? (
                 <>
-                  <CheckCircle className="w-6 h-6 text-green-500" />
-                  <h2 className="text-2xl font-bold">✅ Reel Pronto!</h2>
+                  <div className="flex h-10 w-10 items-center justify-center rounded-full bg-emerald-50 text-emerald-600">
+                    <CheckCircle className="h-6 w-6" />
+                  </div>
+                  <h2 className="font-serif text-2xl font-bold text-slate-900">Reel Processado</h2>
                 </>
-              )}
-              {selectedReel.status === "error" && (
-                <h2 className="text-2xl font-bold text-destructive">❌ Erro no Processamento</h2>
+              ) : (
+                <h2 className="font-serif text-2xl font-bold text-red-600">Falha no Processamento</h2>
               )}
             </div>
 
             {selectedReel.status === "ready" && (
-              <div className="space-y-6">
-                {/* Preview */}
-                <div className="relative w-full max-w-sm mx-auto aspect-video bg-black rounded-lg overflow-hidden border-2 border-primary">
-                  <div className="w-full h-full flex items-center justify-center bg-gradient-to-br from-primary/20 to-transparent">
-                    <div className="text-center">
-                      <Play className="w-16 h-16 text-primary mx-auto mb-4" />
-                      <p className="text-white font-semibold">Vídeo pronto para download</p>
-                      <p className="text-white/70 text-sm mt-1">Duração: {selectedReel.duration}s</p>
+              <div className="space-y-8">
+                {/* Preview Placeholder */}
+                <div className="relative aspect-video w-full overflow-hidden rounded-[32px] bg-slate-900 shadow-2xl">
+                  <div className="flex h-full w-full flex-col items-center justify-center bg-gradient-to-br from-emerald-900/20 to-transparent">
+                    <Play className="mb-4 h-16 w-16 text-emerald-500 opacity-50" />
+                    <p className="text-sm font-bold uppercase tracking-widest text-white/50">Recorte Pronto ({selectedReel.duration}s)</p>
+                  </div>
+                </div>
+
+                <div className="grid gap-8 sm:grid-cols-2">
+                  <div className="space-y-6">
+                    <div>
+                      <Label className="text-[10px] font-bold uppercase tracking-[0.2em] text-slate-400">Legenda Estratégica</Label>
+                      <Textarea
+                        value={customCaption}
+                        onChange={(e) => setCustomCaption(e.target.value)}
+                        className="mt-2 min-h-[150px] rounded-2xl border-slate-200 bg-white p-4 text-sm resize-none focus:border-emerald-900 transition-all outline-none"
+                      />
+                      <Button
+                        onClick={() => copyToClipboard(customCaption)}
+                        variant="ghost"
+                        className="mt-2 h-9 text-xs font-bold text-emerald-900 hover:bg-emerald-50"
+                      >
+                        <Copy className="mr-2 h-4 w-4" />
+                        Copiar Texto
+                      </Button>
+                    </div>
+                  </div>
+
+                  <div className="space-y-6">
+                    <div>
+                      <Label className="text-[10px] font-bold uppercase tracking-[0.2em] text-slate-400">Hashtags Curadas</Label>
+                      <Textarea
+                        value={customHashtags}
+                        onChange={(e) => setCustomHashtags(e.target.value)}
+                        className="mt-2 min-h-[150px] rounded-2xl border-slate-200 bg-white p-4 text-sm resize-none focus:border-emerald-900 transition-all outline-none"
+                      />
+                      <Button
+                        onClick={() => copyToClipboard(customHashtags)}
+                        variant="ghost"
+                        className="mt-2 h-9 text-xs font-bold text-emerald-900 hover:bg-emerald-50"
+                      >
+                        <Copy className="mr-2 h-4 w-4" />
+                        Copiar Hashtags
+                      </Button>
                     </div>
                   </div>
                 </div>
 
-                {/* Legenda */}
-                <div>
-                  <Label className="text-base font-semibold mb-2">📝 Legenda (customizável)</Label>
-                  <Textarea
-                    value={customCaption}
-                    onChange={(e) => setCustomCaption(e.target.value)}
-                    className="min-h-24 resize-none"
-                    placeholder="Edite a legenda do reel..."
-                  />
-                  <div className="flex gap-2 mt-2">
-                    <Button
-                      onClick={() => copyToClipboard(customCaption)}
-                      variant="outline"
-                      size="sm"
-                      className="gap-2"
-                    >
-                      <Copy className="w-4 h-4" />
-                      Copiar Legenda
-                    </Button>
-                  </div>
-                </div>
-
-                {/* Hashtags */}
-                <div>
-                  <Label className="text-base font-semibold mb-2">#️⃣ Hashtags (customizáveis)</Label>
-                  <Textarea
-                    value={customHashtags}
-                    onChange={(e) => setCustomHashtags(e.target.value)}
-                    className="min-h-20 resize-none"
-                    placeholder="Edite as hashtags separadas por espaço..."
-                  />
-                  <div className="flex gap-2 mt-2">
-                    <Button
-                      onClick={() => copyToClipboard(customHashtags)}
-                      variant="outline"
-                      size="sm"
-                      className="gap-2"
-                    >
-                      <Copy className="w-4 h-4" />
-                      Copiar Hashtags
-                    </Button>
-                  </div>
-                </div>
-
-                {/* Botões de Ação */}
-                <div className="flex gap-3 pt-4 border-t border-border">
-                  <Button
-                    onClick={() => downloadReel(selectedReel)}
-                    className="flex-1 gradient-primary text-primary-foreground font-bold text-base glow-primary gap-2"
-                    size="lg"
-                  >
-                    <Download className="w-5 h-5" />
-                    Baixar Reel (MP4)
-                  </Button>
-                </div>
-
-                <p className="text-xs text-muted-foreground text-center">
-                  💡 Dica: Copie a legenda e as hashtags, faça o download do vídeo e poste no Instagram Stories ou Feed com qualidade profissional!
-                </p>
+                <Button
+                  onClick={() => downloadReel(selectedReel)}
+                  className="h-14 w-full rounded-2xl bg-emerald-900 text-base font-bold text-white hover:bg-emerald-800 active:scale-95 transition-all shadow-xl shadow-emerald-900/20"
+                >
+                  <Download className="mr-3 h-5 w-5" />
+                  Baixar Matéria em Vídeo (MP4)
+                </Button>
               </div>
             )}
           </motion.div>
         )}
 
-        {/* Histórico de Reels */}
+        {/* Histórico com Cards Refinados */}
         {reels.length > 0 && (
-          <motion.div
-            initial={{ opacity: 0, y: 20 }}
-            animate={{ opacity: 1, y: 0 }}
-            className="glass-card p-8 rounded-lg border border-border"
-          >
-            <h3 className="text-xl font-bold mb-4">📊 Histórico de Reels</h3>
-            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
+          <div className="space-y-8">
+            <h3 className="font-serif text-3xl font-bold text-slate-900">Histórico de Produção</h3>
+            <div className="grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
               {reels.map((reel) => (
                 <motion.div
                   key={reel.id}
-                  initial={{ opacity: 0 }}
-                  animate={{ opacity: 1 }}
-                  className={`p-4 rounded-lg border-2 cursor-pointer transition-all ${
-                    reel.status === "ready"
-                      ? "border-green-500 bg-green-500/5 hover:bg-green-500/10"
-                      : reel.status === "processing"
-                      ? "border-blue-500 bg-blue-500/5"
-                      : "border-destructive bg-destructive/5"
-                  }`}
+                  layout
                   onClick={() => reel.status === "ready" && setSelectedReel(reel)}
+                  className={`cursor-pointer rounded-[32px] border p-6 transition-all hover:shadow-xl ${
+                    reel.status === "ready"
+                      ? "border-emerald-100 bg-white hover:border-emerald-900/20"
+                      : reel.status === "processing"
+                      ? "border-blue-100 bg-blue-50/30 animate-pulse"
+                      : "border-red-100 bg-red-50/30"
+                  }`}
                 >
-                  <div className="flex items-start justify-between mb-2">
-                    <span className="text-sm font-medium">
-                      {reel.status === "ready" && "✅ Pronto"}
-                      {reel.status === "processing" && "⏳ Processando"}
-                      {reel.status === "error" && "❌ Erro"}
+                  <div className="flex items-center justify-between mb-4">
+                    <span className={`text-[10px] font-bold uppercase tracking-widest ${
+                      reel.status === "ready" ? "text-emerald-600" : reel.status === "processing" ? "text-blue-600" : "text-red-600"
+                    }`}>
+                      {reel.status === "ready" ? "Pronto" : reel.status === "processing" ? "Em Fila" : "Erro"}
                     </span>
-                    <span className="text-xs text-muted-foreground">{reel.timestamp}</span>
+                    <span className="text-[10px] font-bold text-slate-300">{reel.timestamp?.split(",")[0]}</span>
                   </div>
-                  <p className="text-xs text-muted-foreground line-clamp-2">{reel.videoUrl}</p>
-                  {reel.status === "ready" && reel.duration && (
-                    <p className="text-xs font-semibold text-primary mt-2">⏱️ {reel.duration}s</p>
+                  <p className="text-xs font-bold text-slate-900 truncate mb-4">{reel.videoUrl}</p>
+                  {reel.status === "ready" && (
+                    <div className="flex items-center gap-2 text-xs font-bold text-emerald-900/40">
+                      <Play className="h-3 w-3" />
+                      {reel.duration} Segundos
+                    </div>
                   )}
                 </motion.div>
               ))}
             </div>
-          </motion.div>
+          </div>
         )}
-      </div>
+      </main>
     </div>
   );
 };

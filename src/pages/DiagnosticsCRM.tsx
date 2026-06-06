@@ -16,8 +16,9 @@ import {
     LogOut,
     BookOpen,
     Clapperboard,
+    ArrowRight,
 } from "lucide-react";
-import { motion } from "framer-motion";
+import { motion, AnimatePresence } from "framer-motion";
 
 interface Diagnostic {
     id: string;
@@ -240,116 +241,113 @@ const DiagnosticsCRM = () => {
     };
 
     const statusColors: Record<string, string> = {
-        new: "bg-blue-900 text-blue-300 border border-blue-500",
-        contacted: "bg-amber-900 text-amber-300 border border-amber-500",
-        quoted: "bg-purple-900 text-purple-300 border border-purple-500",
-        won: "bg-emerald-900 text-emerald-300 border border-emerald-500",
-        lost: "bg-red-900 text-red-300 border border-red-500",
+        new: "bg-blue-50 text-blue-700 border border-blue-200",
+        contacted: "bg-amber-50 text-amber-700 border border-amber-200",
+        quoted: "bg-purple-50 text-purple-700 border border-purple-200",
+        won: "bg-emerald-50 text-emerald-700 border border-emerald-200",
+        lost: "bg-slate-50 text-slate-700 border border-slate-200",
     };
 
     return (
-        <div className="min-h-screen bg-slate-950">
-            {/* Header */}
-            <div className="border-b border-indigo-500 bg-gradient-to-r from-indigo-950 via-slate-900 to-purple-950 sticky top-0 z-40 shadow-2xl">
-                <div className="max-w-7xl mx-auto px-6 py-5 flex items-center justify-between">
+        <div className="min-h-screen bg-[#f8fafc] text-slate-900 font-sans selection:bg-emerald-100 selection:text-emerald-900">
+            {/* Header Moderno & Sóbrio */}
+            <header className="sticky top-0 z-50 w-full border-b border-slate-200 bg-white/80 py-4 backdrop-blur-xl shadow-sm">
+                <div className="mx-auto flex max-w-7xl items-center justify-between px-6">
                     <motion.div
                         initial={{ opacity: 0, x: -20 }}
                         animate={{ opacity: 1, x: 0 }}
-                        className="flex items-center gap-3"
+                        className="flex items-center gap-4"
                     >
-                        <div className="w-10 h-10 rounded-lg bg-gradient-to-br from-indigo-400 to-purple-600 flex items-center justify-center">
-                            <Code2 className="w-6 h-6 text-white" />
+                        <div className="flex h-10 w-10 items-center justify-center rounded-xl bg-emerald-900 shadow-lg shadow-emerald-900/20">
+                            <Code2 className="h-5 w-5 text-emerald-50" />
                         </div>
                         <div>
-                            <h1 className="text-xl font-display font-bold text-white">
-                                CRM Diagnósticos
+                            <h1 className="font-serif text-lg font-bold tracking-tight text-emerald-950">
+                                Dr Saullo Gomes
                             </h1>
-                            <p className="text-xs text-indigo-300">Gerenciar captações</p>
+                            <p className="text-[10px] font-bold uppercase tracking-widest text-emerald-700/70">
+                                Gestão & Diagnósticos
+                            </p>
                         </div>
                     </motion.div>
 
-                    <div className="flex items-center gap-3">
+                    <div className="flex items-center gap-2 overflow-x-auto pb-1 sm:pb-0 scrollbar-hide">
                         <Button
+                            variant="ghost"
                             onClick={() => (window.location.href = "/blog-admin")}
-                            className="bg-indigo-500 hover:bg-indigo-600 text-white font-bold text-sm"
+                            className="h-9 px-3 text-xs font-bold text-slate-600 hover:bg-slate-100 sm:text-sm"
                         >
-                            <BookOpen className="w-4 h-4 mr-2" />
+                            <BookOpen className="mr-2 h-4 w-4" />
                             Blog
                         </Button>
                         <Button
+                            variant="ghost"
                             onClick={() => (window.location.href = "/instagram-reels-admin")}
-                            className="bg-pink-500 hover:bg-pink-600 text-white font-bold text-sm"
+                            className="h-9 px-3 text-xs font-bold text-slate-600 hover:bg-slate-100 sm:text-sm"
                         >
-                            <Clapperboard className="w-4 h-4 mr-2" />
+                            <Clapperboard className="mr-2 h-4 w-4" />
                             Reels
                         </Button>
                         <Button
                             onClick={exportCSV}
-                            className="bg-emerald-500 hover:bg-emerald-600 text-white font-bold text-sm"
+                            className="h-9 bg-emerald-900 px-4 text-xs font-bold text-white hover:bg-emerald-800 sm:text-sm"
                         >
-                            <Download className="w-4 h-4 mr-2" />
+                            <Download className="mr-2 h-4 w-4" />
                             Exportar
                         </Button>
                         <Button
+                            variant="ghost"
                             onClick={handleLogout}
-                            className="bg-red-500 hover:bg-red-600 text-white font-bold text-sm"
+                            className="h-9 px-3 text-xs font-bold text-red-600 hover:bg-red-50 sm:text-sm"
                         >
-                            <LogOut className="w-4 h-4 mr-2" />
+                            <LogOut className="mr-2 h-4 w-4" />
                             Sair
                         </Button>
                     </div>
                 </div>
-            </div>
+            </header>
 
             {/* Conteúdo */}
-            <div className="max-w-7xl mx-auto p-6">
-                {/* Stats */}
+            <main className="mx-auto max-w-7xl p-6 lg:p-12">
+                {/* Stats Modernas */}
                 <motion.div
                     initial={{ opacity: 0, y: 20 }}
                     animate={{ opacity: 1, y: 0 }}
-                    className="grid grid-cols-2 sm:grid-cols-5 gap-3 mb-6"
+                    className="grid grid-cols-2 gap-4 sm:grid-cols-5 mb-10"
                 >
-                    <div className="bg-gradient-to-br from-slate-800 to-slate-900 rounded-lg p-4 border border-indigo-500 shadow-lg text-center">
-                        <p className="text-indigo-300 text-xs font-semibold mb-1">Total</p>
-                        <p className="text-3xl font-bold text-white">{stats.total}</p>
-                    </div>
-                    <div className="bg-gradient-to-br from-blue-900 to-blue-950 rounded-lg p-4 border border-blue-500 shadow-lg text-center">
-                        <p className="text-blue-300 text-xs font-semibold mb-1">Novo</p>
-                        <p className="text-3xl font-bold text-blue-300">{stats.new}</p>
-                    </div>
-                    <div className="bg-gradient-to-br from-amber-900 to-amber-950 rounded-lg p-4 border border-amber-500 shadow-lg text-center">
-                        <p className="text-amber-300 text-xs font-semibold mb-1">Contatado</p>
-                        <p className="text-3xl font-bold text-amber-300">{stats.contacted}</p>
-                    </div>
-                    <div className="bg-gradient-to-br from-purple-900 to-purple-950 rounded-lg p-4 border border-purple-500 shadow-lg text-center">
-                        <p className="text-purple-300 text-xs font-semibold mb-1">Orçado</p>
-                        <p className="text-3xl font-bold text-purple-300">{stats.quoted}</p>
-                    </div>
-                    <div className="bg-gradient-to-br from-emerald-900 to-emerald-950 rounded-lg p-4 border border-emerald-500 shadow-lg text-center">
-                        <p className="text-emerald-300 text-xs font-semibold mb-1">Ganho</p>
-                        <p className="text-3xl font-bold text-emerald-300">{stats.won}</p>
-                    </div>
+                    {[
+                        { label: "Total", value: stats.total, color: "text-slate-900", bg: "bg-white" },
+                        { label: "Novos", value: stats.new, color: "text-blue-600", bg: "bg-blue-50/50" },
+                        { label: "Contatados", value: stats.contacted, color: "text-amber-600", bg: "bg-amber-50/50" },
+                        { label: "Orçados", value: stats.quoted, color: "text-purple-600", bg: "bg-purple-50/50" },
+                        { label: "Ganhos", value: stats.won, color: "text-emerald-600", bg: "bg-emerald-50/50" },
+                    ].map((stat, i) => (
+                        <div key={i} className={`${stat.bg} rounded-3xl p-6 border border-slate-200 shadow-sm transition-all hover:shadow-md`}>
+                            <p className="text-[10px] font-bold uppercase tracking-widest text-slate-400 mb-2">{stat.label}</p>
+                            <p className={`text-4xl font-serif font-bold ${stat.color}`}>{stat.value}</p>
+                        </div>
+                    ))}
                 </motion.div>
 
-                {/* Filtros */}
+                {/* Filtros Refinados */}
                 <motion.div
                     initial={{ opacity: 0, y: 20 }}
                     animate={{ opacity: 1, y: 0 }}
-                    className="mb-6 flex flex-col sm:flex-row gap-3"
+                    className="mb-10 flex flex-col sm:flex-row gap-4"
                 >
-                    <div className="flex-1 relative">
-                        <Search className="absolute left-3 top-3 w-4 h-4 text-indigo-400" />
+                    <div className="flex-1 relative group">
+                        <Search className="absolute left-4 top-1/2 -translate-y-1/2 w-4 h-4 text-slate-400 group-focus-within:text-emerald-700 transition-colors" />
                         <Input
                             placeholder="Buscar por nome, WhatsApp ou empresa..."
                             value={searchTerm}
                             onChange={(e) => setSearchTerm(e.target.value)}
-                            className="pl-10 text-sm bg-slate-800 border-indigo-500 text-white placeholder-slate-400"
+                            className="h-12 pl-11 rounded-2xl border-slate-200 bg-white text-sm focus-visible:ring-emerald-900 transition-all placeholder:text-slate-400"
                         />
                     </div>
                     <select
                         value={filterStatus}
                         onChange={(e) => setFilterStatus(e.target.value)}
-                        className="px-3 py-2 rounded-lg border border-indigo-500 bg-slate-800 text-white text-sm font-medium"
+                        className="h-12 px-4 rounded-2xl border border-slate-200 bg-white text-sm font-bold text-slate-700 outline-none focus:ring-2 focus:ring-emerald-900/10 transition-all cursor-pointer"
                     >
                         <option value="all">Todos os Status</option>
                         <option value="new">Novo</option>
@@ -362,183 +360,204 @@ const DiagnosticsCRM = () => {
 
                 {/* Lista */}
                 {loading ? (
-                    <div className="bg-slate-800 rounded-lg p-8 text-center border border-indigo-500">
-                        <p className="text-indigo-300">Carregando...</p>
+                    <div className="flex h-64 items-center justify-center rounded-[40px] border border-dashed border-slate-200 bg-white shadow-sm">
+                        <div className="flex flex-col items-center gap-3">
+                            <div className="h-8 w-8 animate-spin rounded-full border-2 border-emerald-900 border-t-transparent" />
+                            <p className="text-sm font-bold text-slate-400">Processando diagnósticos...</p>
+                        </div>
                     </div>
                 ) : filteredDiagnostics.length === 0 ? (
-                    <div className="bg-slate-800 rounded-lg p-8 text-center border border-indigo-500">
-                        <Users className="w-12 h-12 text-indigo-500 mx-auto mb-3" />
-                        <p className="text-indigo-300 font-semibold">Nenhum diagnóstico</p>
+                    <div className="flex h-64 flex-col items-center justify-center rounded-[40px] border border-dashed border-slate-200 bg-white shadow-sm">
+                        <Users className="mb-4 h-12 w-12 text-slate-200" />
+                        <p className="text-sm font-bold text-slate-400">Nenhum registro encontrado</p>
                     </div>
                 ) : (
-                    <div className="space-y-3">
+                    <div className="grid gap-4">
                         {filteredDiagnostics.map((diagnostic) => (
                             <motion.div
                                 key={diagnostic.id}
-                                initial={{ opacity: 0 }}
-                                animate={{ opacity: 1 }}
-                                className="bg-slate-800 rounded-lg border border-indigo-500 overflow-hidden shadow-lg"
+                                layout
+                                initial={{ opacity: 0, y: 10 }}
+                                animate={{ opacity: 1, y: 0 }}
+                                className="group overflow-hidden rounded-[32px] border border-slate-200 bg-white shadow-sm transition-all hover:shadow-xl hover:shadow-emerald-900/5"
                             >
-                                {/* Header */}
+                                {/* Header do Card */}
                                 <div
                                     onClick={() =>
                                         setExpandedId(
                                             expandedId === diagnostic.id ? null : diagnostic.id
                                         )
                                     }
-                                    className="p-4 cursor-pointer hover:bg-slate-700 transition-colors"
+                                    className="cursor-pointer p-6 sm:p-8"
                                 >
-                                    <div className="flex items-center justify-between gap-4">
-                                        <div className="flex-1 min-w-0">
-                                            <p className="font-bold text-white truncate">
-                                                {diagnostic.name}
-                                            </p>
-                                            <p className="text-xs text-indigo-300 truncate">
-                                                {new Date(diagnostic.created_at).toLocaleDateString(
-                                                    "pt-BR"
-                                                )}
-                                            </p>
+                                    <div className="flex flex-col gap-6 sm:flex-row sm:items-center sm:justify-between">
+                                        <div className="flex items-center gap-5">
+                                            <div className="flex h-14 w-14 shrink-0 items-center justify-center rounded-2xl bg-slate-50 text-slate-400 group-hover:bg-emerald-50 group-hover:text-emerald-700 transition-colors">
+                                                <Users className="h-6 w-6" />
+                                            </div>
+                                            <div className="min-w-0">
+                                                <h3 className="truncate font-serif text-xl font-bold text-slate-900">
+                                                    {diagnostic.name}
+                                                </h3>
+                                                <div className="mt-1 flex flex-wrap items-center gap-3 text-xs font-bold uppercase tracking-wider text-slate-400">
+                                                    <span>{diagnostic.area}</span>
+                                                    <span className="h-1 w-1 rounded-full bg-slate-200" />
+                                                    <span>
+                                                        {new Date(diagnostic.created_at).toLocaleDateString("pt-BR")}
+                                                    </span>
+                                                </div>
+                                            </div>
                                         </div>
 
-                                        <div className="hidden sm:flex items-center gap-4">
-                                            <a
-                                                href={`https://wa.me/${diagnostic.phone.replace(/\D/g, "")}`}
-                                                target="_blank"
-                                                rel="noopener noreferrer"
-                                                className="text-sm text-indigo-400 hover:text-indigo-300 font-semibold"
-                                                onClick={(e) => e.stopPropagation()}
-                                            >
-                                                {diagnostic.phone}
-                                            </a>
-                                            <span className="text-sm text-indigo-300 bg-slate-700 px-2 py-1 rounded border border-indigo-500">
-                                                {diagnostic.area}
-                                            </span>
-                                            <span
-                                                className={`text-xs font-bold px-2 py-1 rounded ${statusColors[diagnostic.status] ||
-                                                    "bg-slate-700 text-slate-300"
+                                        <div className="flex items-center justify-between gap-4 sm:justify-end">
+                                            <div className="flex flex-wrap gap-2">
+                                                <span
+                                                    className={`rounded-full px-4 py-1.5 text-[10px] font-bold uppercase tracking-widest ${statusColors[diagnostic.status] ||
+                                                        "bg-slate-50 text-slate-400 border-slate-200"
+                                                        }`}
+                                                >
+                                                    {diagnostic.status === "new" ? "Novo" :
+                                                     diagnostic.status === "contacted" ? "Contatado" :
+                                                     diagnostic.status === "quoted" ? "Orçado" :
+                                                     diagnostic.status === "won" ? "Ganho" :
+                                                     diagnostic.status === "lost" ? "Perdido" : diagnostic.status}
+                                                </span>
+                                            </div>
+                                            <ChevronDown
+                                                className={`h-5 w-5 text-slate-300 transition-transform duration-500 ${expandedId === diagnostic.id ? "rotate-180 text-emerald-900" : "group-hover:text-slate-600"
                                                     }`}
-                                            >
-                                                {diagnostic.status}
-                                            </span>
+                                            />
                                         </div>
-
-                                        <ChevronDown
-                                            className={`w-5 h-5 text-indigo-400 transition-transform ${expandedId === diagnostic.id ? "rotate-180" : ""
-                                                }`}
-                                        />
                                     </div>
                                 </div>
 
-                                {/* Detalhe */}
-                                {expandedId === diagnostic.id && (
-                                    <motion.div
-                                        initial={{ opacity: 0, height: 0 }}
-                                        animate={{ opacity: 1, height: "auto" }}
-                                        className="bg-slate-900 border-t border-indigo-500 p-4 space-y-4"
-                                    >
-                                        <div>
-                                            <Label className="text-xs font-bold text-indigo-300 mb-2 block">
-                                                Descrição do Problema
-                                            </Label>
-                                            <p className="text-sm text-white bg-slate-800 p-3 rounded border border-indigo-500">
-                                                {diagnostic.description}
-                                            </p>
-                                        </div>
+                                {/* Detalhes Expandidos */}
+                                <AnimatePresence>
+                                    {expandedId === diagnostic.id && (
+                                        <motion.div
+                                            initial={{ height: 0, opacity: 0 }}
+                                            animate={{ height: "auto", opacity: 1 }}
+                                            exit={{ height: 0, opacity: 0 }}
+                                            transition={{ duration: 0.5, ease: [0.16, 1, 0.3, 1] }}
+                                            className="overflow-hidden border-t border-slate-100 bg-slate-50/50"
+                                        >
+                                            <div className="p-6 sm:p-10">
+                                                <div className="grid gap-8 lg:grid-cols-2">
+                                                    <div className="space-y-6">
+                                                        <div>
+                                                            <Label className="text-[10px] font-bold uppercase tracking-[0.2em] text-emerald-900/60">
+                                                                Relato do Cliente
+                                                            </Label>
+                                                            <div className="mt-3 rounded-2xl border border-slate-200 bg-white p-5 text-sm leading-relaxed text-slate-600 shadow-sm">
+                                                                {diagnostic.description}
+                                                            </div>
+                                                        </div>
 
-                                        {diagnostic.company && (
-                                            <div>
-                                                <Label className="text-xs font-bold text-indigo-300 mb-2 block">
-                                                    Empresa
-                                                </Label>
-                                                <p className="text-sm text-white bg-slate-800 p-3 rounded border border-indigo-500">
-                                                    {diagnostic.company}
-                                                </p>
+                                                        {diagnostic.company && (
+                                                            <div>
+                                                                <Label className="text-[10px] font-bold uppercase tracking-[0.2em] text-emerald-900/60">
+                                                                    Empresa / Instituição
+                                                                </Label>
+                                                                <p className="mt-2 text-sm font-bold text-slate-900">
+                                                                    {diagnostic.company}
+                                                                </p>
+                                                            </div>
+                                                        )}
+
+                                                        <div className="grid gap-6 sm:grid-cols-2">
+                                                            <div>
+                                                                <Label className="text-[10px] font-bold uppercase tracking-[0.2em] text-emerald-900/60">
+                                                                    WhatsApp de Contato
+                                                                </Label>
+                                                                <a
+                                                                    href={`https://wa.me/${diagnostic.phone.replace(/\D/g, "")}`}
+                                                                    target="_blank"
+                                                                    rel="noopener noreferrer"
+                                                                    className="mt-3 flex items-center justify-between rounded-xl border border-emerald-900/10 bg-emerald-50/30 px-4 py-3 text-sm font-bold text-emerald-900 transition-colors hover:bg-emerald-50"
+                                                                >
+                                                                    {diagnostic.phone}
+                                                                    <ArrowRight className="h-4 w-4" />
+                                                                </a>
+                                                            </div>
+                                                            <div>
+                                                                <Label className="text-[10px] font-bold uppercase tracking-[0.2em] text-emerald-900/60">
+                                                                    Estimativa (R$)
+                                                                </Label>
+                                                                <Input
+                                                                    type="number"
+                                                                    value={diagnostic.budget_estimate || ""}
+                                                                    onChange={(e) => {
+                                                                        const val = e.target.value
+                                                                            ? parseFloat(e.target.value)
+                                                                            : null;
+                                                                        updateBudget(diagnostic.id, val as number);
+                                                                    }}
+                                                                    placeholder="0.00"
+                                                                    className="mt-2 h-11 rounded-xl border-slate-200 bg-white text-sm font-bold focus-visible:ring-emerald-900"
+                                                                />
+                                                            </div>
+                                                        </div>
+                                                    </div>
+
+                                                    <div className="space-y-6">
+                                                        <div>
+                                                            <Label className="text-[10px] font-bold uppercase tracking-[0.2em] text-emerald-900/60">
+                                                                Status da Jornada
+                                                            </Label>
+                                                            <div className="mt-3 grid grid-cols-2 gap-2 sm:grid-cols-3">
+                                                                {["new", "contacted", "quoted", "won", "lost"].map((status) => (
+                                                                    <button
+                                                                        key={status}
+                                                                        onClick={() => updateStatus(diagnostic.id, status)}
+                                                                        className={`rounded-xl border px-3 py-2 text-[10px] font-bold uppercase tracking-wider transition-all ${diagnostic.status === status
+                                                                            ? "border-emerald-900 bg-emerald-900 text-white"
+                                                                            : "border-slate-200 bg-white text-slate-400 hover:border-emerald-900/20 hover:text-emerald-900"
+                                                                            }`}
+                                                                    >
+                                                                        {status === "new" ? "Novo" :
+                                                                         status === "contacted" ? "Contatado" :
+                                                                         status === "quoted" ? "Orçado" :
+                                                                         status === "won" ? "Ganho" : "Perdido"}
+                                                                    </button>
+                                                                ))}
+                                                            </div>
+                                                        </div>
+
+                                                        <div>
+                                                            <Label className="text-[10px] font-bold uppercase tracking-[0.2em] text-emerald-900/60">
+                                                                Notas de Planejamento
+                                                            </Label>
+                                                            <textarea
+                                                                value={diagnostic.notes || ""}
+                                                                onChange={(e) =>
+                                                                    updateNotes(diagnostic.id, e.target.value)
+                                                                }
+                                                                placeholder="Descreva os próximos passos estratégicos..."
+                                                                className="mt-3 min-h-[120px] w-full resize-none rounded-2xl border border-slate-200 bg-white p-4 text-sm leading-relaxed text-slate-600 outline-none transition-all focus:border-emerald-900/30 focus:ring-4 focus:ring-emerald-900/5 placeholder:text-slate-300"
+                                                            />
+                                                        </div>
+
+                                                        <div className="flex justify-end pt-4">
+                                                            <Button
+                                                                variant="ghost"
+                                                                onClick={() => deleteDiagnostic(diagnostic.id)}
+                                                                className="h-10 rounded-xl text-xs font-bold text-red-400 hover:bg-red-50 hover:text-red-600"
+                                                            >
+                                                                <Trash2 className="mr-2 h-4 w-4" />
+                                                                Remover Registro
+                                                            </Button>
+                                                        </div>
+                                                    </div>
+                                                </div>
                                             </div>
-                                        )}
-
-                                        <div className="grid sm:grid-cols-3 gap-3">
-                                            <div>
-                                                <Label className="text-xs font-bold text-indigo-300 mb-2 block">
-                                                    Status
-                                                </Label>
-                                                <select
-                                                    value={diagnostic.status}
-                                                    onChange={(e) =>
-                                                        updateStatus(diagnostic.id, e.target.value)
-                                                    }
-                                                    className="w-full text-sm px-2 py-2 rounded border border-indigo-500 bg-slate-800 text-white font-medium"
-                                                >
-                                                    <option value="new">Novo</option>
-                                                    <option value="contacted">Contatado</option>
-                                                    <option value="quoted">Orçado</option>
-                                                    <option value="won">Ganho</option>
-                                                    <option value="lost">Perdido</option>
-                                                </select>
-                                            </div>
-
-                                            <div>
-                                                <Label className="text-xs font-bold text-indigo-300 mb-2 block">
-                                                    Orçamento (R$)
-                                                </Label>
-                                                <Input
-                                                    type="number"
-                                                    value={diagnostic.budget_estimate || ""}
-                                                    onChange={(e) => {
-                                                        const val = e.target.value
-                                                            ? parseFloat(e.target.value)
-                                                            : null;
-                                                        updateBudget(diagnostic.id, val as number);
-                                                    }}
-                                                    placeholder="0.00"
-                                                    className="text-sm bg-slate-800 border-indigo-500 text-white placeholder-slate-400"
-                                                />
-                                            </div>
-
-                                            <div>
-                                                <Label className="text-xs font-bold text-indigo-300 mb-2 block">
-                                                    WhatsApp
-                                                </Label>
-                                                <a
-                                                    href={`https://wa.me/${diagnostic.phone.replace(/\D/g, "")}`}
-                                                    target="_blank"
-                                                    rel="noopener noreferrer"
-                                                    className="flex items-center justify-center h-9 text-sm font-bold bg-emerald-600 text-white rounded hover:bg-emerald-700"
-                                                >
-                                                    Enviar mensagem
-                                                </a>
-                                            </div>
-                                        </div>
-
-                                        <div>
-                                            <Label className="text-xs font-bold text-indigo-300 mb-2 block">
-                                                Notas Internas
-                                            </Label>
-                                            <textarea
-                                                value={diagnostic.notes || ""}
-                                                onChange={(e) =>
-                                                    updateNotes(diagnostic.id, e.target.value)
-                                                }
-                                                placeholder="Adicionar notas sobre este cliente..."
-                                                className="w-full text-sm px-3 py-2 rounded border border-indigo-500 bg-slate-800 text-white placeholder-slate-400 min-h-20 resize-none"
-                                            />
-                                        </div>
-
-                                        <div className="flex gap-2 justify-end pt-2 border-t border-indigo-500">
-                                            <Button
-                                                onClick={() => deleteDiagnostic(diagnostic.id)}
-                                                className="bg-red-600 hover:bg-red-700 text-white text-sm font-bold"
-                                            >
-                                                <Trash2 className="w-4 h-4 mr-2" />
-                                                Deletar
-                                            </Button>
-                                        </div>
-                                    </motion.div>
-                                )}
+                                        </motion.div>
+                                    )}
+                                </AnimatePresence>
                             </motion.div>
                         ))}
                     </div>
                 )}
-            </div>
+            </main>
         </div>
     );
 };

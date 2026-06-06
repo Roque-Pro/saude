@@ -31,21 +31,21 @@ type BlogPost = {
 const topicCards = [
   {
     icon: Activity,
-    title: "Equilíbrio Metabólico",
+    title: "Performance Clínica",
     description:
-      "Insights científicos sobre como alinhar seu metabolismo e hormônios para uma vida com mais vitalidade e menos pressão.",
+      "Como otimizar o fluxo de atendimento e a jornada do paciente para uma prática médica de alto valor e baixo estresse.",
   },
   {
-    icon: Leaf,
-    title: "Longevidade Ativa",
+    icon: ShieldCheck,
+    title: "Segurança & Gestão",
     description:
-      "Estratégias sobre nutrição regenerativa, sono reparador e movimento consciente para uma saúde que respira liberdade.",
+      "Estratégias robustas de gestão e conformidade para proteger seu patrimônio e garantir a sustentabilidade do seu consultório.",
   },
   {
     icon: Sparkles,
-    title: "Perspectivas Médicas",
+    title: "Autoridade Digital",
     description:
-      "Conteúdo editorial com curadoria técnica e olhar humanizado sobre as tendências da endocrinologia moderna.",
+      "Construção de presença digital com ética e sobriedade, atraindo os clientes certos sem fórmulas prontas ou promessas vazias.",
   },
 ];
 
@@ -248,20 +248,20 @@ const Landing = () => {
                 </span>
               </div>
               
-              <h1 className="font-serif text-6xl font-bold leading-[1.05] tracking-tight text-emerald-950 sm:text-7xl lg:text-8xl">
-                Onde a saúde <br />
+              <h1 className="font-serif text-6xl font-extrabold leading-[1.05] tracking-tight text-emerald-950 sm:text-7xl lg:text-8xl">
+                A ciência da <br />
                 <span className="relative inline-block italic text-emerald-800">
-                  encontra
+                  medicina
                   <svg className="absolute -bottom-2 left-0 h-3 w-full text-emerald-200/60" viewBox="0 0 100 10" preserveAspectRatio="none">
                     <path d="M0 5 Q 25 0, 50 5 T 100 5" fill="none" stroke="currentColor" strokeWidth="4" />
                   </svg>
                 </span>
                 <br />
-                o equilíbrio.
+                encontra a gestão.
               </h1>
 
-              <p className="mt-8 max-w-lg text-lg leading-relaxed text-slate-600 lg:text-xl">
-                Dr Saullo Gomes apresenta uma perspectiva humanizada sobre <strong>endocrinologia</strong> e <strong>longevidade</strong>. Descubra como pequenos ajustes metabólicos podem transformar sua vitalidade diária.
+              <p className="mt-8 max-w-lg text-lg leading-relaxed text-slate-600 lg:text-xl font-medium">
+                Dr Saullo Gomes apresenta uma perspectiva de <strong>alta performance</strong> para médicos e advogados. Onde a excelência técnica se une à inteligência estratégica para resultados extraordinários.
               </p>
               
               <p className="mt-4 text-sm font-bold tracking-widest text-emerald-800/80 uppercase">
@@ -339,44 +339,45 @@ const Landing = () => {
                 <div className="absolute -left-12 -top-12 h-64 w-64 rounded-full bg-emerald-50/80 blur-3xl" />
                 <p className="relative z-10 mb-6 inline-flex items-center gap-2 font-bold uppercase tracking-[0.2em] text-emerald-700 text-[10px]">
                   <BookOpen className="h-4 w-4" />
-                  conhecimento que transforma
+                  conhecimento que liberta
                 </p>
                 <h2 className="relative z-10 font-serif text-4xl font-bold leading-tight text-emerald-950 sm:text-5xl lg:text-6xl">
-                  Ciência e bem-estar sem fórmulas mirabolantes.
+                  Excelência profissional <br />
+                  sem fórmulas mágicas.
                 </h2>
                 <p className="relative z-10 mt-8 text-lg leading-relaxed text-slate-600">
-                  O Dr. Saullo Gomes acredita que a saúde corporal e o equilíbrio metabólico não vêm de promessas rápidas, mas de uma compreensão profunda de como seu corpo funciona. 
+                  O Dr. Saullo Gomes acredita que o sucesso sustentável de um médico ou advogado não vem de "hacks" de marketing, mas de uma estrutura de gestão sólida e uma entrega técnica impecável. 
                 </p>
                 <div className="mt-10 grid gap-6 sm:grid-cols-2">
                   <div className="flex gap-4">
                     <div className="flex h-12 w-12 shrink-0 items-center justify-center rounded-2xl bg-emerald-50 text-emerald-700">
-                      <Stethoscope className="h-6 w-6" />
+                      <ShieldCheck className="h-6 w-6" />
                     </div>
                     <div>
-                      <h4 className="font-bold text-emerald-950">Rigor Científico</h4>
-                      <p className="mt-1 text-sm text-slate-500">Informações validadas por estudos e prática clínica.</p>
+                      <h4 className="font-bold text-emerald-950">Sobriedade</h4>
+                      <p className="mt-1 text-sm text-slate-500">Gestão com os pés no chão e foco em resultados reais.</p>
                     </div>
                   </div>
                   <div className="flex gap-4">
                     <div className="flex h-12 w-12 shrink-0 items-center justify-center rounded-2xl bg-emerald-50 text-emerald-700">
-                      <Sparkles className="h-6 w-6" />
+                      <Activity className="h-6 w-6" />
                     </div>
                     <div>
-                      <h4 className="font-bold text-emerald-950">Leitura Leve</h4>
-                      <p className="mt-1 text-sm text-slate-500">Complexidade médica traduzida para o seu dia a dia.</p>
+                      <h4 className="font-bold text-emerald-950">Alta Performance</h4>
+                      <p className="mt-1 text-sm text-slate-500">Otimização de processos para quem não tem tempo a perder.</p>
                     </div>
                   </div>
                 </div>
               </div>
 
               <div className="grid gap-4">
-                <div className="rounded-[32px] border border-emerald-900/5 bg-emerald-900 p-8 text-emerald-50 lg:p-12">
-                  <h3 className="font-serif text-3xl font-bold">Uma voz editorial única na saúde.</h3>
+                <div className="rounded-[32px] border border-emerald-900/5 bg-emerald-900 p-8 text-emerald-50 lg:p-12 shadow-2xl shadow-emerald-900/20">
+                  <h3 className="font-serif text-3xl font-bold italic">"Se você não sabe quanto está perdendo por mês... esse já é o problema."</h3>
                   <p className="mt-6 text-lg leading-relaxed opacity-80">
-                    Nesta página, a proposta é direta: reunir conteúdo que inspire pequenas mudanças reais. Sem vender atendimentos ou pacotes mágicos. Apenas a medicina compartilhada com propósito.
+                    Nesta plataforma, apresentamos uma visão 360º para profissionais de elite. Unimos o rigor científico da medicina com a precisão da gestão estratégica para advogados e médicos.
                   </p>
-                  <Button asChild variant="outline" className="mt-10 h-12 rounded-full border-emerald-700 bg-transparent px-8 font-bold text-white hover:bg-emerald-800 hover:text-white">
-                    <Link to="/blog">Explorar Temas</Link>
+                  <Button asChild variant="outline" className="mt-10 h-12 rounded-full border-emerald-700 bg-transparent px-8 font-bold text-white hover:bg-emerald-800 hover:text-white transition-all active:scale-95">
+                    <Link to="/blog">Conhecer a Metodologia</Link>
                   </Button>
                 </div>
               </div>
@@ -393,8 +394,8 @@ const Landing = () => {
               <h2 className="font-serif text-4xl font-bold tracking-tight text-emerald-950 sm:text-5xl lg:text-6xl">
                 O que você encontra por aqui
               </h2>
-              <p className="mx-auto mt-6 max-w-2xl text-lg text-slate-600">
-                Uma curadoria estratégica de temas fundamentais para quem busca olhar para a saúde corporal e longevidade com clareza e autoridade.
+              <p className="mx-auto mt-6 max-w-2xl text-lg text-slate-600 font-medium">
+                Uma curadoria estratégica de temas fundamentais para médicos e advogados que buscam autoridade, segurança e crescimento.
               </p>
             </div>
 
@@ -417,7 +418,7 @@ const Landing = () => {
                   </p>
                   <div className="mt-auto pt-10">
                     <Link to="/blog" className="inline-flex items-center text-sm font-bold text-emerald-900 opacity-0 transition-all group-hover:opacity-100">
-                      Ver publicações
+                      Explorar Artigos
                       <ChevronRight className="ml-1 h-4 w-4" />
                     </Link>
                   </div>
@@ -436,14 +437,14 @@ const Landing = () => {
             <div className="flex flex-col items-center justify-between gap-8 md:flex-row">
               <div className="text-center md:text-left">
                 <h2 className="font-serif text-4xl font-bold tracking-tight text-emerald-950 sm:text-5xl">
-                  Publicações Recentes
+                  Publicações Estratégicas
                 </h2>
-                <p className="mt-4 text-lg text-slate-600">
-                  Os insights mais novos sobre metabolismo e saúde integrativa.
+                <p className="mt-4 text-lg text-slate-600 font-medium">
+                  Insights práticos sobre performance, gestão e autoridade profissional.
                 </p>
               </div>
-              <Button asChild variant="outline" className="h-12 rounded-full border-emerald-900/20 px-8 font-bold text-emerald-900 hover:bg-emerald-50">
-                <Link to="/blog">Acessar Todo Acervo</Link>
+              <Button asChild variant="outline" className="h-12 rounded-full border-emerald-900/20 px-8 font-bold text-emerald-900 hover:bg-emerald-50 active:scale-95 transition-all">
+                <Link to="/blog">Ver Todo o Acervo</Link>
               </Button>
             </div>
 
@@ -536,40 +537,40 @@ const Landing = () => {
             <div className="grid gap-16 lg:grid-cols-2 lg:items-center">
               <div>
                 <h2 className="font-serif text-5xl font-bold tracking-tight text-white sm:text-6xl lg:text-7xl">
-                  Saúde corporal, <br />
+                  Gestão estratégica, <br />
                   sem ruído.
                 </h2>
                 <p className="mt-8 text-xl leading-relaxed text-emerald-50/70">
-                  Dr Saullo Gomes acredita que a medicina deve ser compartilhada com clareza. Este portal é um esforço para levar a endocrinologia moderna e a ciência da longevidade a todos que buscam viver melhor.
+                  Dr Saullo Gomes acredita que a excelência técnica deve ser acompanhada por clareza estratégica. Este portal é um convite para profissionais de elite que buscam dominar sua prática e escalar resultados com segurança.
                 </p>
                 <div className="mt-12 flex flex-wrap gap-4">
                   <Button asChild size="lg" className="h-14 rounded-full bg-emerald-500 px-10 text-base font-bold text-emerald-950 transition-all hover:bg-emerald-400 active:scale-95">
-                    <Link to="/blog">Explorar Publicações</Link>
+                    <Link to="/blog">Explorar Metodologia</Link>
                   </Button>
-                  <Button asChild variant="outline" size="lg" className="h-14 rounded-full border-emerald-500/30 bg-transparent px-10 text-base font-bold text-white hover:bg-emerald-900/50 hover:text-white">
+                  <Button asChild variant="outline" size="lg" className="h-14 rounded-full border-emerald-500/30 bg-transparent px-10 text-base font-bold text-white hover:bg-emerald-900/50 hover:text-white transition-all">
                     <a href="#artigos">Ver Artigos Recentes</a>
                   </Button>
                 </div>
               </div>
 
-              <div className="rounded-[40px] border border-white/5 bg-white/5 p-8 backdrop-blur-sm lg:p-12">
+              <div className="rounded-[40px] border border-white/5 bg-white/5 p-8 backdrop-blur-sm lg:p-12 shadow-2xl">
                 <div className="space-y-8">
-                  <div className="flex gap-6">
-                    <div className="flex h-12 w-12 shrink-0 items-center justify-center rounded-2xl bg-emerald-500/10 text-emerald-400">
-                      <Activity className="h-6 w-6" />
-                    </div>
-                    <div>
-                      <h4 className="font-bold text-white">Presença Editorial</h4>
-                      <p className="mt-2 text-sm text-emerald-50/60 leading-relaxed">Foco exclusivo em educação em saúde e disseminação de boas práticas clínicas.</p>
-                    </div>
-                  </div>
                   <div className="flex gap-6">
                     <div className="flex h-12 w-12 shrink-0 items-center justify-center rounded-2xl bg-emerald-500/10 text-emerald-400">
                       <ShieldCheck className="h-6 w-6" />
                     </div>
                     <div>
-                      <h4 className="font-bold text-white">Linguagem Direta</h4>
-                      <p className="mt-2 text-sm text-emerald-50/60 leading-relaxed">Conteúdo acessível que respeita sua inteligência e seu tempo.</p>
+                      <h4 className="font-bold text-white uppercase tracking-widest text-[10px]">Visão Estratégica</h4>
+                      <p className="mt-2 text-sm text-emerald-50/60 leading-relaxed">Foco exclusivo em resultados sustentáveis e disseminação de boas práticas de gestão.</p>
+                    </div>
+                  </div>
+                  <div className="flex gap-6">
+                    <div className="flex h-12 w-12 shrink-0 items-center justify-center rounded-2xl bg-emerald-500/10 text-emerald-400">
+                      <Activity className="h-6 w-6" />
+                    </div>
+                    <div>
+                      <h4 className="font-bold text-white uppercase tracking-widest text-[10px]">Linguagem de Elite</h4>
+                      <p className="mt-2 text-sm text-emerald-50/60 leading-relaxed">Conteúdo direto que respeita sua inteligência, seu tempo e sua ambição.</p>
                     </div>
                   </div>
                 </div>
