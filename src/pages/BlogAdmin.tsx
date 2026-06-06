@@ -183,25 +183,25 @@ const BlogAdmin = () => {
     };
 
     return (
-        <div className="min-h-screen bg-[#f8fafc] text-slate-900 font-sans">
+        <div className="min-h-screen bg-[#f8fafc] text-slate-900 font-sans overflow-x-hidden">
             {/* Header Sóbrio */}
             <header className="sticky top-0 z-50 w-full border-b border-slate-200 bg-white/80 py-4 backdrop-blur-xl shadow-sm">
-                <div className="mx-auto flex max-w-7xl items-center justify-between px-6">
-                    <div className="flex items-center gap-6">
+                <div className="mx-auto flex max-w-7xl items-center justify-between px-4 sm:px-6">
+                    <div className="flex items-center gap-3 sm:gap-6">
                         <Button
                             variant="ghost"
                             onClick={() => navigate("/crm")}
-                            className="h-9 px-3 text-xs font-bold text-slate-600 hover:bg-slate-100"
+                            className="h-8 px-2 sm:h-9 sm:px-3 text-[10px] sm:text-xs font-bold text-slate-600 hover:bg-slate-100"
                         >
-                            <ArrowLeft className="mr-2 h-4 w-4" />
-                            CRM
+                            <ArrowLeft className="sm:mr-2 h-3.5 w-3.5 sm:h-4 sm:w-4" />
+                            <span className="hidden xs:inline">CRM</span>
                         </Button>
-                        <div>
-                            <h1 className="font-serif text-lg font-bold tracking-tight text-emerald-950">
-                                Editor de Conteúdo
+                        <div className="hidden xxs:block">
+                            <h1 className="font-serif text-base sm:text-lg font-bold tracking-tight text-emerald-950 truncate">
+                                Editor
                             </h1>
-                            <p className="text-[10px] font-bold uppercase tracking-widest text-emerald-700/70">
-                                Gestão do Blog Estratégico
+                            <p className="text-[9px] sm:text-[10px] font-bold uppercase tracking-widest text-emerald-700/70">
+                                Blog Estratégico
                             </p>
                         </div>
                     </div>
@@ -210,28 +210,29 @@ const BlogAdmin = () => {
                             resetForm();
                             setShowForm(!showForm);
                         }}
-                        className="h-9 bg-emerald-900 px-6 text-xs font-bold text-white hover:bg-emerald-800"
+                        className="h-8 px-3 sm:h-9 sm:px-6 bg-emerald-900 text-[10px] sm:text-xs font-bold text-white hover:bg-emerald-800"
                     >
-                        <Plus className="mr-2 h-4 w-4" />
-                        Nova Publicação
+                        <Plus className="sm:mr-2 h-3.5 w-3.5 sm:h-4 sm:w-4" />
+                        <span className="hidden xs:inline">Nova Publicação</span>
+                        <span className="xs:hidden">Novo</span>
                     </Button>
                 </div>
             </header>
 
-            <main className="mx-auto max-w-5xl px-6 py-12">
+            <main className="mx-auto max-w-5xl px-4 sm:px-6 py-8 sm:py-12">
                 {/* Form Refinado */}
                 {showForm && (
                     <motion.div
                         initial={{ opacity: 0, y: 20 }}
                         animate={{ opacity: 1, y: 0 }}
-                        className="mb-16 rounded-[40px] border border-slate-200 bg-white p-8 shadow-2xl shadow-emerald-900/5 sm:p-12"
+                        className="mb-12 sm:mb-16 rounded-3xl sm:rounded-[40px] border border-slate-200 bg-white p-6 sm:p-12 shadow-2xl shadow-emerald-900/5"
                     >
-                        <h2 className="font-serif text-2xl font-bold text-slate-900 mb-8">
+                        <h2 className="font-serif text-xl sm:text-2xl font-bold text-slate-900 mb-6 sm:mb-8">
                             {editingId ? "Refinar Publicação" : "Nova Publicação Estratégica"}
                         </h2>
 
-                        <form onSubmit={handleSubmit} className="space-y-8">
-                            <div className="grid gap-8 sm:grid-cols-2">
+                        <form onSubmit={handleSubmit} className="space-y-6 sm:space-y-8">
+                            <div className="grid gap-6 sm:grid-cols-2">
                                 <div className="space-y-2">
                                     <Label className="text-[10px] font-bold uppercase tracking-[0.2em] text-slate-400">Título da Matéria *</Label>
                                     <Input
@@ -239,7 +240,7 @@ const BlogAdmin = () => {
                                         value={formData.title}
                                         onChange={handleTitleChange}
                                         required
-                                        className="h-12 rounded-xl border-slate-200 bg-white focus-visible:ring-emerald-900"
+                                        className="h-11 sm:h-12 rounded-xl border-slate-200 bg-white focus-visible:ring-emerald-900"
                                     />
                                 </div>
 
@@ -252,7 +253,7 @@ const BlogAdmin = () => {
                                             setFormData({ ...formData, slug: e.target.value })
                                         }
                                         required
-                                        className="h-12 rounded-xl border-slate-200 bg-white focus-visible:ring-emerald-900"
+                                        className="h-11 sm:h-12 rounded-xl border-slate-200 bg-white focus-visible:ring-emerald-900"
                                     />
                                 </div>
                             </div>
@@ -271,7 +272,7 @@ const BlogAdmin = () => {
 
                             <div className="space-y-2">
                                 <Label className="text-[10px] font-bold uppercase tracking-[0.2em] text-slate-400">Conteúdo em HTML Estruturado *</Label>
-                                <div className="rounded-2xl border border-slate-200 bg-slate-50 p-6">
+                                <div className="rounded-2xl border border-slate-200 bg-slate-50 p-3 sm:p-6">
                                     <textarea
                                         placeholder="Insira o HTML da matéria aqui..."
                                         value={formData.html_content}
@@ -282,12 +283,12 @@ const BlogAdmin = () => {
                                             })
                                         }
                                         required
-                                        className="w-full h-[400px] rounded-xl border border-slate-200 bg-white p-4 font-mono text-sm focus:border-emerald-900 transition-all outline-none resize-vertical"
+                                        className="w-full h-[300px] sm:h-[400px] rounded-xl border border-slate-200 bg-white p-4 font-mono text-sm focus:border-emerald-900 transition-all outline-none resize-vertical"
                                     />
                                 </div>
                             </div>
 
-                            <div className="flex items-center gap-4 p-4 rounded-2xl bg-slate-50 border border-slate-200">
+                            <div className="flex items-center gap-3 sm:gap-4 p-4 rounded-2xl bg-slate-50 border border-slate-200">
                                 <input
                                     type="checkbox"
                                     id="published"
@@ -295,20 +296,20 @@ const BlogAdmin = () => {
                                     onChange={(e) =>
                                         setFormData({ ...formData, published: e.target.checked })
                                     }
-                                    className="w-5 h-5 rounded-lg border-slate-300 text-emerald-900 focus:ring-emerald-900"
+                                    className="w-5 h-5 shrink-0 rounded-lg border-slate-300 text-emerald-900 focus:ring-emerald-900"
                                 />
                                 <label
                                     htmlFor="published"
-                                    className="text-sm font-bold text-slate-700 cursor-pointer"
+                                    className="text-xs sm:text-sm font-bold text-slate-700 cursor-pointer"
                                 >
                                     Tornar esta publicação visível no site agora
                                 </label>
                             </div>
 
-                            <div className="flex gap-4 pt-4">
+                            <div className="flex flex-col sm:flex-row gap-3 pt-4">
                                 <Button
                                     type="submit"
-                                    className="h-12 bg-emerald-900 px-10 text-sm font-bold text-white hover:bg-emerald-800 active:scale-95 transition-all shadow-lg shadow-emerald-900/10"
+                                    className="h-11 sm:h-12 bg-emerald-900 px-10 text-sm font-bold text-white hover:bg-emerald-800 active:scale-95 transition-all shadow-lg shadow-emerald-900/10"
                                 >
                                     <Save className="mr-2 h-4 w-4" />
                                     {editingId ? "Salvar Alterações" : "Publicar Matéria"}
@@ -317,7 +318,7 @@ const BlogAdmin = () => {
                                     type="button"
                                     variant="ghost"
                                     onClick={resetForm}
-                                    className="h-12 px-8 text-sm font-bold text-red-400 hover:bg-red-50 hover:text-red-600"
+                                    className="h-11 sm:h-12 px-8 text-sm font-bold text-red-400 hover:bg-red-50 hover:text-red-600"
                                 >
                                     Descartar
                                 </Button>
@@ -327,17 +328,17 @@ const BlogAdmin = () => {
                 )}
 
                 {/* Lista de Matérias */}
-                <div className="space-y-8">
-                    <h2 className="font-serif text-3xl font-bold text-slate-900">
-                        Acervo de Publicações <span className="text-emerald-900/30">({posts.length})</span>
+                <div className="space-y-6 sm:space-y-8">
+                    <h2 className="font-serif text-2xl sm:text-3xl font-bold text-slate-900">
+                        Acervo <span className="text-emerald-900/30">({posts.length})</span>
                     </h2>
 
                     {loading ? (
-                        <div className="flex h-64 items-center justify-center rounded-[40px] border border-dashed border-slate-200 bg-white">
+                        <div className="flex h-48 sm:h-64 items-center justify-center rounded-3xl sm:rounded-[40px] border border-dashed border-slate-200 bg-white">
                             <div className="h-8 w-8 animate-spin rounded-full border-2 border-emerald-900 border-t-transparent" />
                         </div>
                     ) : posts.length === 0 ? (
-                        <div className="flex h-64 flex-col items-center justify-center rounded-[40px] border border-dashed border-slate-200 bg-white text-slate-400">
+                        <div className="flex h-48 sm:h-64 flex-col items-center justify-center rounded-3xl sm:rounded-[40px] border border-dashed border-slate-200 bg-white text-slate-400">
                             <p className="font-bold">Nenhuma matéria publicada ainda</p>
                             <Button
                                 variant="link"
@@ -348,56 +349,56 @@ const BlogAdmin = () => {
                             </Button>
                         </div>
                     ) : (
-                        <div className="grid gap-4">
+                        <div className="grid gap-3 sm:gap-4">
                             {posts.map((post) => (
                                 <motion.div
                                     key={post.id}
                                     layout
-                                    className="group rounded-3xl border border-slate-200 bg-white p-6 shadow-sm hover:shadow-xl hover:shadow-emerald-900/5 transition-all"
+                                    className="group rounded-2xl sm:rounded-3xl border border-slate-200 bg-white p-4 sm:p-6 shadow-sm hover:shadow-xl hover:shadow-emerald-900/5 transition-all"
                                 >
-                                    <div className="flex items-center justify-between gap-6">
+                                    <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-4 sm:gap-6">
                                         <div className="flex-1 min-w-0">
-                                            <div className="flex items-center gap-3 mb-2">
-                                                <h3 className="truncate font-serif text-xl font-bold text-slate-900 group-hover:text-emerald-950 transition-colors">
+                                            <div className="flex items-center gap-2 sm:gap-3 mb-1 sm:mb-2">
+                                                <h3 className="truncate font-serif text-lg sm:text-xl font-bold text-slate-900 group-hover:text-emerald-950 transition-colors">
                                                     {post.title}
                                                 </h3>
                                                 {post.published ? (
-                                                    <span className="rounded-full bg-emerald-50 px-3 py-1 text-[10px] font-bold uppercase tracking-widest text-emerald-700 border border-emerald-100">
+                                                    <span className="shrink-0 rounded-full bg-emerald-50 px-2 sm:px-3 py-0.5 sm:py-1 text-[8px] sm:text-[10px] font-bold uppercase tracking-widest text-emerald-700 border border-emerald-100">
                                                         Ativo
                                                     </span>
                                                 ) : (
-                                                    <span className="rounded-full bg-slate-50 px-3 py-1 text-[10px] font-bold uppercase tracking-widest text-slate-400 border border-slate-100">
+                                                    <span className="shrink-0 rounded-full bg-slate-50 px-2 sm:px-3 py-0.5 sm:py-1 text-[8px] sm:text-[10px] font-bold uppercase tracking-widest text-slate-400 border border-slate-100">
                                                         Rascunho
                                                     </span>
                                                 )}
                                             </div>
-                                            <p className="text-xs font-bold text-emerald-900/40 mb-3">
+                                            <p className="text-[10px] sm:text-xs font-bold text-emerald-900/40 mb-2 sm:mb-3 truncate">
                                                 /blog/{post.slug}
                                             </p>
-                                            <div className="flex items-center gap-4 text-xs font-bold text-slate-400 uppercase tracking-widest">
+                                            <div className="flex items-center gap-4 text-[10px] sm:text-xs font-bold text-slate-400 uppercase tracking-widest">
                                                 <span>{new Date(post.created_at).toLocaleDateString("pt-BR")}</span>
                                             </div>
                                         </div>
 
-                                        <div className="flex gap-2">
+                                        <div className="flex items-center justify-end gap-1 sm:gap-2 border-t sm:border-t-0 pt-3 sm:pt-0">
                                             <Button
                                                 variant="ghost"
                                                 onClick={() => window.open(`/blog/${post.slug}`, "_blank")}
-                                                className="h-10 w-10 p-0 text-slate-400 hover:text-emerald-900 hover:bg-emerald-50 rounded-xl"
+                                                className="h-9 w-9 sm:h-10 sm:w-10 p-0 text-slate-400 hover:text-emerald-900 hover:bg-emerald-50 rounded-xl"
                                             >
                                                 <Eye className="h-4 w-4" />
                                             </Button>
                                             <Button
                                                 variant="ghost"
                                                 onClick={() => handleEdit(post)}
-                                                className="h-10 w-10 p-0 text-slate-400 hover:text-emerald-900 hover:bg-emerald-50 rounded-xl"
+                                                className="h-9 w-9 sm:h-10 sm:w-10 p-0 text-slate-400 hover:text-emerald-900 hover:bg-emerald-50 rounded-xl"
                                             >
                                                 <Edit2 className="h-4 w-4" />
                                             </Button>
                                             <Button
                                                 variant="ghost"
                                                 onClick={() => handleDelete(post.id)}
-                                                className="h-10 w-10 p-0 text-red-300 hover:text-red-600 hover:bg-red-50 rounded-xl"
+                                                className="h-9 w-9 sm:h-10 sm:w-10 p-0 text-red-300 hover:text-red-600 hover:bg-red-50 rounded-xl"
                                             >
                                                 <Trash2 className="h-4 w-4" />
                                             </Button>

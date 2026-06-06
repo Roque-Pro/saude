@@ -249,20 +249,20 @@ const DiagnosticsCRM = () => {
     };
 
     return (
-        <div className="min-h-screen bg-[#f8fafc] text-slate-900 font-sans selection:bg-emerald-100 selection:text-emerald-900">
+        <div className="min-h-screen bg-[#f8fafc] text-slate-900 font-sans selection:bg-emerald-100 selection:text-emerald-900 overflow-x-hidden">
             {/* Header Moderno & Sóbrio */}
             <header className="sticky top-0 z-50 w-full border-b border-slate-200 bg-white/80 py-4 backdrop-blur-xl shadow-sm">
-                <div className="mx-auto flex max-w-7xl items-center justify-between px-6">
+                <div className="mx-auto flex max-w-7xl items-center justify-between px-4 sm:px-6">
                     <motion.div
                         initial={{ opacity: 0, x: -20 }}
                         animate={{ opacity: 1, x: 0 }}
-                        className="flex items-center gap-4"
+                        className="flex items-center gap-3 sm:gap-4"
                     >
-                        <div className="flex h-10 w-10 items-center justify-center rounded-xl bg-emerald-900 shadow-lg shadow-emerald-900/20">
+                        <div className="flex h-10 w-10 shrink-0 items-center justify-center rounded-xl bg-emerald-900 shadow-lg shadow-emerald-900/20">
                             <Code2 className="h-5 w-5 text-emerald-50" />
                         </div>
-                        <div>
-                            <h1 className="font-serif text-lg font-bold tracking-tight text-emerald-950">
+                        <div className="hidden xs:block">
+                            <h1 className="font-serif text-base sm:text-lg font-bold tracking-tight text-emerald-950 truncate">
                                 Dr Saullo Gomes
                             </h1>
                             <p className="text-[10px] font-bold uppercase tracking-widest text-emerald-700/70">
@@ -271,49 +271,49 @@ const DiagnosticsCRM = () => {
                         </div>
                     </motion.div>
 
-                    <div className="flex items-center gap-2 overflow-x-auto pb-1 sm:pb-0 scrollbar-hide">
+                    <div className="flex items-center gap-1 sm:gap-2">
                         <Button
                             variant="ghost"
                             onClick={() => (window.location.href = "/blog-admin")}
-                            className="h-9 px-3 text-xs font-bold text-slate-600 hover:bg-slate-100 sm:text-sm"
+                            className="h-8 px-2 sm:h-9 sm:px-3 text-[10px] sm:text-xs font-bold text-slate-600 hover:bg-slate-100"
                         >
-                            <BookOpen className="mr-2 h-4 w-4" />
-                            Blog
+                            <BookOpen className="sm:mr-2 h-3.5 w-3.5 sm:h-4 sm:w-4" />
+                            <span className="hidden xs:inline">Blog</span>
                         </Button>
                         <Button
                             variant="ghost"
                             onClick={() => (window.location.href = "/instagram-reels-admin")}
-                            className="h-9 px-3 text-xs font-bold text-slate-600 hover:bg-slate-100 sm:text-sm"
+                            className="h-8 px-2 sm:h-9 sm:px-3 text-[10px] sm:text-xs font-bold text-slate-600 hover:bg-slate-100"
                         >
-                            <Clapperboard className="mr-2 h-4 w-4" />
-                            Reels
+                            <Clapperboard className="sm:mr-2 h-3.5 w-3.5 sm:h-4 sm:w-4" />
+                            <span className="hidden xs:inline">Reels</span>
                         </Button>
                         <Button
                             onClick={exportCSV}
-                            className="h-9 bg-emerald-900 px-4 text-xs font-bold text-white hover:bg-emerald-800 sm:text-sm"
+                            className="h-8 px-2 sm:h-9 sm:px-4 bg-emerald-900 text-[10px] sm:text-xs font-bold text-white hover:bg-emerald-800"
                         >
-                            <Download className="mr-2 h-4 w-4" />
-                            Exportar
+                            <Download className="sm:mr-2 h-3.5 w-3.5 sm:h-4 sm:w-4" />
+                            <span className="hidden xs:inline">Exportar</span>
                         </Button>
                         <Button
                             variant="ghost"
                             onClick={handleLogout}
-                            className="h-9 px-3 text-xs font-bold text-red-600 hover:bg-red-50 sm:text-sm"
+                            className="h-8 px-2 sm:h-9 sm:px-3 text-[10px] sm:text-xs font-bold text-red-600 hover:bg-red-50"
                         >
-                            <LogOut className="mr-2 h-4 w-4" />
-                            Sair
+                            <LogOut className="sm:mr-2 h-3.5 w-3.5 sm:h-4 sm:w-4" />
+                            <span className="hidden xs:inline">Sair</span>
                         </Button>
                     </div>
                 </div>
             </header>
 
             {/* Conteúdo */}
-            <main className="mx-auto max-w-7xl p-6 lg:p-12">
+            <main className="mx-auto max-w-7xl p-4 sm:p-6 lg:p-12">
                 {/* Stats Modernas */}
                 <motion.div
                     initial={{ opacity: 0, y: 20 }}
                     animate={{ opacity: 1, y: 0 }}
-                    className="grid grid-cols-2 gap-4 sm:grid-cols-5 mb-10"
+                    className="grid grid-cols-2 gap-3 sm:gap-4 md:grid-cols-5 mb-8 sm:mb-10"
                 >
                     {[
                         { label: "Total", value: stats.total, color: "text-slate-900", bg: "bg-white" },
@@ -322,9 +322,9 @@ const DiagnosticsCRM = () => {
                         { label: "Orçados", value: stats.quoted, color: "text-purple-600", bg: "bg-purple-50/50" },
                         { label: "Ganhos", value: stats.won, color: "text-emerald-600", bg: "bg-emerald-50/50" },
                     ].map((stat, i) => (
-                        <div key={i} className={`${stat.bg} rounded-3xl p-6 border border-slate-200 shadow-sm transition-all hover:shadow-md`}>
-                            <p className="text-[10px] font-bold uppercase tracking-widest text-slate-400 mb-2">{stat.label}</p>
-                            <p className={`text-4xl font-serif font-bold ${stat.color}`}>{stat.value}</p>
+                        <div key={i} className={`${stat.bg} rounded-2xl sm:rounded-3xl p-4 sm:p-6 border border-slate-200 shadow-sm transition-all hover:shadow-md`}>
+                            <p className="text-[9px] sm:text-[10px] font-bold uppercase tracking-widest text-slate-400 mb-1 sm:mb-2">{stat.label}</p>
+                            <p className={`text-2xl sm:text-3xl md:text-4xl font-serif font-bold ${stat.color}`}>{stat.value}</p>
                         </div>
                     ))}
                 </motion.div>
@@ -333,23 +333,23 @@ const DiagnosticsCRM = () => {
                 <motion.div
                     initial={{ opacity: 0, y: 20 }}
                     animate={{ opacity: 1, y: 0 }}
-                    className="mb-10 flex flex-col sm:flex-row gap-4"
+                    className="mb-8 sm:mb-10 flex flex-col sm:flex-row gap-3 sm:gap-4"
                 >
                     <div className="flex-1 relative group">
                         <Search className="absolute left-4 top-1/2 -translate-y-1/2 w-4 h-4 text-slate-400 group-focus-within:text-emerald-700 transition-colors" />
                         <Input
-                            placeholder="Buscar por nome, WhatsApp ou empresa..."
+                            placeholder="Buscar registros..."
                             value={searchTerm}
                             onChange={(e) => setSearchTerm(e.target.value)}
-                            className="h-12 pl-11 rounded-2xl border-slate-200 bg-white text-sm focus-visible:ring-emerald-900 transition-all placeholder:text-slate-400"
+                            className="h-11 sm:h-12 pl-11 rounded-xl sm:rounded-2xl border-slate-200 bg-white text-sm focus-visible:ring-emerald-900 transition-all placeholder:text-slate-400"
                         />
                     </div>
                     <select
                         value={filterStatus}
                         onChange={(e) => setFilterStatus(e.target.value)}
-                        className="h-12 px-4 rounded-2xl border border-slate-200 bg-white text-sm font-bold text-slate-700 outline-none focus:ring-2 focus:ring-emerald-900/10 transition-all cursor-pointer"
+                        className="h-11 sm:h-12 px-4 rounded-xl sm:rounded-2xl border border-slate-200 bg-white text-sm font-bold text-slate-700 outline-none focus:ring-2 focus:ring-emerald-900/10 transition-all cursor-pointer"
                     >
-                        <option value="all">Todos os Status</option>
+                        <option value="all">Todos Status</option>
                         <option value="new">Novo</option>
                         <option value="contacted">Contatado</option>
                         <option value="quoted">Orçado</option>
