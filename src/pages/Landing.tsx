@@ -53,7 +53,7 @@ const Landing = () => {
       </div>
 
       {/* Sophisticated Clinical Navigation */}
-      <header className={`fixed top-0 z-50 w-full transition-all duration-1000 ${scrolled ? "bg-[#020808]/90 backdrop-blur-3xl border-b border-emerald-500/10 py-5" : "py-12"}`}>
+      <header className={`fixed top-0 z-50 w-full transition-all duration-1000 ${scrolled ? "bg-[#020808]/95 backdrop-blur-3xl border-b border-emerald-500/10 py-5" : "py-12"}`}>
         <div className="mx-auto flex max-w-[1600px] items-center justify-between px-10 lg:px-24">
           <div className="flex items-center gap-8">
             <div className="flex flex-col">
@@ -68,7 +68,7 @@ const Landing = () => {
           <nav className="hidden lg:flex items-center gap-16">
             <a href="#ciência" className="text-[11px] font-bold uppercase tracking-[0.3em] text-slate-500 hover:text-emerald-400 transition-all">Ciência</a>
             <a href="#protocolos" className="text-[11px] font-bold uppercase tracking-[0.3em] text-slate-500 hover:text-emerald-400 transition-all">Protocolos</a>
-            <a href="#briefings" className="text-[11px] font-bold uppercase tracking-[0.3em] text-slate-500 hover:text-emerald-400 transition-all">Briefings</a>
+            <a href="#acervo" className="text-[11px] font-bold uppercase tracking-[0.3em] text-slate-500 hover:text-emerald-400 transition-all">Acervo</a>
             <div className="h-5 w-[1px] bg-white/5" />
             <Link to="/crm" className="text-[11px] font-bold uppercase tracking-[0.3em] text-slate-500 hover:text-emerald-400 transition-all">
               Restrito
@@ -78,144 +78,67 @@ const Landing = () => {
       </header>
 
       <main className="relative z-10">
-        {/* HERO: Metabolic Command Center */}
-        <section id="ciência" className="mx-auto flex min-h-screen max-w-[1600px] items-center px-10 lg:px-24 pt-40 pb-20">
-          <div className="grid gap-24 lg:grid-cols-[1.1fr_0.9fr] lg:items-center">
-            <div>
-              <motion.div
-                initial={{ opacity: 0, x: -30 }}
-                animate={{ opacity: 1, x: 0 }}
-                transition={{ duration: 1 }}
-              >
-                <div className="mb-12 inline-flex items-center gap-5 rounded-full border border-emerald-500/10 bg-emerald-500/5 px-8 py-3">
-                  <Dna className="h-4 w-4 text-emerald-500" />
-                  <span className="text-[10px] font-bold uppercase tracking-[0.5em] text-emerald-400">Clinical Protocol: Active</span>
+        {/* HERO: Metabolic Flow with Background Gradient */}
+        <section id="ciência" className="relative mx-auto flex min-h-screen max-w-[1600px] items-center px-10 lg:px-24 pt-40 pb-20 overflow-hidden bg-gradient-to-r from-[#020808] via-[#031c1a] to-[#020808]">
+          <div className="relative z-10 grid gap-24 lg:grid-cols-[1.1fr_0.9fr] lg:items-center w-full">
+            <motion.div
+              initial={{ opacity: 0, x: -30 }}
+              animate={{ opacity: 1, x: 0 }}
+              transition={{ duration: 1 }}
+            >
+              <h1 className="text-6xl font-bold leading-[1.05] tracking-tight text-white sm:text-8xl lg:text-[110px]">
+                Engenharia <br />
+                <span className="text-emerald-500 italic">Metabólica.</span>
+              </h1>
+
+              <p className="mt-14 max-w-xl text-xl leading-relaxed text-slate-400 font-medium lg:text-2xl">
+                Sua fisiologia é o motor da sua carreira. Construímos estratégias hormonais sob medida para médicos e advogados que exigem performance cerebral e vitalidade física extrema.
+              </p>
+
+              <div className="mt-20 flex flex-col gap-10 sm:flex-row sm:items-center">
+                <Button asChild size="lg" className="h-24 rounded-[40px] bg-white px-16 text-xl font-bold text-[#020808] transition-all hover:bg-emerald-500 hover:text-white hover:scale-[1.03] active:scale-95 shadow-2xl shadow-emerald-500/10">
+                  <Link to="/diagnostico-gratuito">
+                    Iniciar Scan Clínico
+                    <ArrowRight className="ml-4 h-6 w-6" />
+                  </Link>
+                </Button>
+                <div className="flex flex-col border-l-2 border-emerald-500/20 pl-10">
+                    <span className="text-[10px] font-bold uppercase tracking-[0.4em] text-slate-500 mb-2">Autoridade Médica</span>
+                    <span className="text-xl font-bold text-white tracking-widest">CRM/ES 435671</span>
                 </div>
+              </div>
+            </motion.div>
 
-                <h1 className="text-6xl font-bold leading-[1.05] tracking-tight text-white sm:text-8xl lg:text-[110px]">
-                  Engenharia <br />
-                  <span className="text-emerald-500">Metabólica.</span>
-                </h1>
-
-                <p className="mt-14 max-w-xl text-xl leading-relaxed text-slate-400 font-medium lg:text-2xl">
-                  Sua fisiologia é o motor da sua carreira. Construímos estratégias hormonais sob medida para médicos e advogados que exigem performance cerebral e vitalidade física extrema.
-                </p>
-
-                <div className="mt-20 flex flex-col gap-10 sm:flex-row sm:items-center">
-                  <Button asChild size="lg" className="h-24 rounded-[40px] bg-white px-16 text-xl font-bold text-[#020808] transition-all hover:bg-emerald-500 hover:text-white hover:scale-[1.03] active:scale-95 shadow-2xl shadow-emerald-500/10">
-                    <Link to="/diagnostico-gratuito">
-                      Iniciar Scan Clínico
-                      <ArrowRight className="ml-4 h-6 w-6" />
-                    </Link>
-                  </Button>
-                  <div className="flex flex-col border-l-2 border-emerald-500/20 pl-10">
-                      <span className="text-[10px] font-bold uppercase tracking-[0.4em] text-slate-500 mb-2">Autoridade Médica</span>
-                      <span className="text-xl font-bold text-white tracking-widest">CRM/ES 435671</span>
-                  </div>
-                </div>
-              </motion.div>
-            </div>
-
-            {/* THE MEDICAL DASHBOARD: Human-Made High Fidelity */}
+            {/* THE MEDICAL PORTRAIT: Sophisticated & Clean */}
             <div className="relative">
               <motion.div 
-                initial={{ opacity: 0, scale: 0.95 }}
+                initial={{ opacity: 0, scale: 0.98 }}
                 animate={{ opacity: 1, scale: 1 }}
                 transition={{ duration: 1.5, ease: [0.16, 1, 0.3, 1] }}
-                className="relative z-10 rounded-[80px] border border-white/5 bg-slate-900/30 p-5 shadow-[0_0_100px_rgba(16,185,129,0.05)] backdrop-blur-3xl overflow-hidden"
+                className="relative z-10 rounded-[80px] border border-white/5 bg-slate-900/10 p-2 shadow-2xl backdrop-blur-sm overflow-hidden"
               >
-                <div className="absolute inset-0 bg-gradient-to-br from-emerald-500/5 via-transparent to-transparent" />
-                <div className="relative rounded-[64px] overflow-hidden">
-                    <img src={drSaulloImage} alt="Dr Saullo Gomes" className="w-full aspect-[4/5] object-cover grayscale opacity-50 contrast-125 mix-blend-screen" />
-                    <div className="absolute inset-0 bg-gradient-to-t from-[#020808] via-transparent to-transparent opacity-80" />
-                </div>
-
-                {/* Tactical Medical Modules Overlay */}
-                <div className="absolute inset-0 p-8 lg:p-12 flex flex-col justify-between pointer-events-none">
-                    <div className="flex justify-between items-start">
-                         {/* Card 1: Insulin Sensitivity */}
-                         <motion.div 
-                            animate={{ y: [0, -10, 0] }}
-                            transition={{ duration: 4, repeat: Infinity, ease: "easeInOut" }}
-                            className="rounded-[28px] border border-white/10 bg-[#020808]/90 p-6 backdrop-blur-xl shadow-2xl pointer-events-auto"
-                         >
-                            <div className="flex items-center gap-4 mb-3">
-                                <div className="h-2 w-2 rounded-full bg-emerald-500 animate-pulse" />
-                                <span className="text-[9px] font-black uppercase tracking-widest text-slate-500">Insulin Sensitivity</span>
-                            </div>
-                            <div className="flex items-baseline gap-2">
-                                <p className="text-2xl font-bold text-white tracking-tight">Optimal</p>
-                                <span className="text-[10px] text-emerald-400 font-bold">98.2%</span>
-                            </div>
-                         </motion.div>
-
-                         {/* Card 2: Bio-Age Status */}
-                         <motion.div 
-                            animate={{ y: [0, 10, 0] }}
-                            transition={{ duration: 5, repeat: Infinity, ease: "easeInOut", delay: 1 }}
-                            className="h-14 w-14 rounded-full border border-emerald-500/20 flex items-center justify-center bg-emerald-500/5 backdrop-blur-md pointer-events-auto"
-                         >
-                            <span className="text-[10px] font-black text-emerald-400">AGE-X</span>
-                         </motion.div>
-                    </div>
-                    
-                    <div className="flex flex-col gap-5 items-start">
-                        {/* Card 3: Hormonal Balance Graph */}
-                        <motion.div 
-                            initial={{ x: -20, opacity: 0 }}
-                            animate={{ x: 0, opacity: 1 }}
-                            transition={{ delay: 0.5 }}
-                            className="rounded-[32px] border border-white/10 bg-slate-950/80 p-6 backdrop-blur-xl shadow-2xl pointer-events-auto w-full max-w-[220px]"
-                        >
-                            <div className="flex items-center justify-between mb-4">
-                                <span className="text-[8px] font-black uppercase tracking-[0.2em] text-slate-400">Hormonal Balance</span>
-                                <Activity className="h-3 w-3 text-emerald-500" />
-                            </div>
-                            <div className="flex items-end gap-1.5 h-8">
-                                {[40, 70, 50, 90, 60, 80].map((h, i) => (
-                                    <div key={i} className="flex-1 bg-emerald-500/10 rounded-t-sm relative overflow-hidden" style={{ height: '100%' }}>
-                                        <motion.div 
-                                            initial={{ height: 0 }}
-                                            animate={{ height: `${h}%` }}
-                                            transition={{ duration: 1, delay: 1 + (i * 0.1) }}
-                                            className="absolute bottom-0 left-0 right-0 bg-emerald-500"
-                                        />
-                                    </div>
-                                ))}
-                            </div>
-                        </motion.div>
-
-                        {/* Card 4: Metabolic Yield */}
-                        <motion.div 
-                            animate={{ scale: [1, 1.02, 1] }}
-                            transition={{ duration: 3, repeat: Infinity }}
-                            className="rounded-[40px] border border-emerald-500/20 bg-emerald-950/90 p-8 backdrop-blur-xl shadow-2xl pointer-events-auto w-full max-w-[240px]"
-                        >
-                            <Zap className="h-7 w-7 text-emerald-400 mb-4" />
-                            <p className="text-4xl font-bold text-white tracking-tighter">100%</p>
-                            <p className="mt-2 text-[9px] font-black uppercase tracking-[0.3em] text-emerald-500/70">Metabolic Precision</p>
-                        </motion.div>
-                    </div>
+                <div className="relative rounded-[72px] overflow-hidden">
+                    <img src={drSaulloImage} alt="Dr Saullo Gomes" className="w-full aspect-[4/5] object-cover grayscale brightness-75 hover:grayscale-0 transition-all duration-1000" />
+                    <div className="absolute inset-0 bg-gradient-to-t from-[#020808] via-transparent to-transparent opacity-60" />
                 </div>
               </motion.div>
               
-              {/* Technical Aura Decorations */}
               <div className="absolute -right-20 -top-20 h-96 w-96 rounded-full bg-emerald-500/5 blur-[120px]" />
               <div className="absolute -left-20 -bottom-20 h-96 w-96 rounded-full bg-blue-500/5 blur-[120px]" />
             </div>
           </div>
         </section>
 
-        {/* METHODOLOGY: The Clinical OS */}
+        {/* METHODOLOGY: Elite Protocols */}
         <section id="protocolos" className="bg-white py-40 lg:py-64 rounded-[120px] lg:rounded-[200px] relative overflow-hidden">
           <div className="mx-auto max-w-[1600px] px-10 lg:px-24">
             <div className="mb-40 flex flex-col lg:flex-row lg:items-end justify-between gap-24">
               <div className="max-w-3xl">
                 <div className="mb-10 h-[2px] w-32 bg-emerald-900" />
-                <span className="text-[11px] font-bold uppercase tracking-[0.6em] text-emerald-700">Strategic Healthcare</span>
+                <span className="text-[11px] font-bold uppercase tracking-[0.6em] text-emerald-700">Medicina de Precisão</span>
                 <h2 className="mt-10 text-6xl font-bold leading-[0.9] tracking-tighter text-slate-950 lg:text-[100px]">
-                    O Próximo <br />
-                    <span className="text-slate-300">Nível Fisiológico.</span>
+                    Protocolos <br />
+                    <span className="text-slate-300 italic">de Elite.</span>
                 </h2>
               </div>
               <p className="max-w-md text-2xl leading-relaxed text-slate-500 font-medium italic border-l-4 border-emerald-100 pl-10">
@@ -226,21 +149,21 @@ const Landing = () => {
             <div className="grid gap-12 lg:grid-cols-3">
               {[
                 { 
-                  title: "Bio-Optimization", 
+                  title: "Bio-Otimização", 
                   id: "PROTOCOL-A", 
                   desc: "Mapeamento genético e bioquímico para alinhar seus hormônios ao seu ritmo de alta pressão.",
                   icon: Microscope 
                 },
                 { 
-                  title: "Cognitive Energy", 
+                  title: "Energia Cognitiva", 
                   id: "PROTOCOL-B", 
                   desc: "Controle da inflamação sistêmica para foco mental inabalável e clareza em decisões críticas.",
                   icon: Zap 
                 },
                 { 
-                  title: "Age Engineering", 
+                  title: "Longevidade", 
                   id: "PROTOCOL-C", 
-                  desc: "Estratégias de longevidade que protegem sua autoridade e sua vitalidade pelas próximas décadas.",
+                  desc: "Estratégias de bio-engenharia que protegem sua autoridade e sua vitalidade pelas próximas décadas.",
                   icon: Waves 
                 }
               ].map((m, i) => (
@@ -255,7 +178,7 @@ const Landing = () => {
                   <p className="mt-10 text-xl leading-relaxed text-slate-500 group-hover:text-emerald-50/60 transition-colors">{m.desc}</p>
                   
                   <div className="mt-20 flex items-center gap-6 text-[11px] font-bold uppercase tracking-[0.4em] text-emerald-900 opacity-0 transition-all group-hover:opacity-100 group-hover:text-emerald-400">
-                    Deploy Protocol <ArrowRight className="h-5 w-5" />
+                    Ver Protocolo <ArrowRight className="h-5 w-5" />
                   </div>
                 </div>
               ))}
@@ -283,19 +206,19 @@ const Landing = () => {
         </section>
 
         {/* ARCHIVE: Intelligence Briefings */}
-        <section id="briefings" className="bg-[#fcfdfd] py-40 lg:py-64">
+        <section id="acervo" className="bg-[#fcfdfd] py-40 lg:py-64">
           <div className="mx-auto max-w-[1600px] px-10 lg:px-24">
             <div className="mb-40 grid gap-24 lg:grid-cols-[0.8fr_1.2fr] lg:items-end">
               <div>
-                <span className="text-[11px] font-bold uppercase tracking-[0.5em] text-emerald-800">Knowledge Stack</span>
-                <h2 className="mt-12 text-7xl font-bold leading-[0.9] text-slate-950 lg:text-[110px]">Medical <br /> Briefings.</h2>
+                <span className="text-[11px] font-bold uppercase tracking-[0.5em] text-emerald-800">Ciência e Performance</span>
+                <h2 className="mt-12 text-7xl font-bold leading-[0.9] text-slate-950 lg:text-[110px]">Acervo <br /> Médico.</h2>
               </div>
               <div className="flex flex-col gap-12">
                 <p className="max-w-md text-2xl leading-relaxed text-slate-500 font-medium">
                     Explorações profundas sobre fisiologia de alto nível. Sem fórmulas prontas, apenas dados e medicina pura.
                 </p>
                 <Link to="/blog" className="inline-flex items-center gap-6 text-xs font-bold uppercase tracking-[0.5em] text-emerald-900 group">
-                    Full Scientific Index <div className="h-14 w-14 flex items-center justify-center rounded-full border border-emerald-900/10 group-hover:bg-emerald-900 group-hover:text-white transition-all duration-500"><ChevronRight className="h-5 w-5" /></div>
+                    Index Científico Completo <div className="h-14 w-14 flex items-center justify-center rounded-full border border-emerald-900/10 group-hover:bg-emerald-900 group-hover:text-white transition-all duration-500"><ChevronRight className="h-5 w-5" /></div>
                 </Link>
               </div>
             </div>
